@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Micro-location-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="FirstViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -16,38 +17,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="First View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
-                                <rect key="frame" x="221" y="279" width="157.5" height="41.5"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Micro-Location" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="KQZ-1w-vlD">
+                                <rect key="frame" x="181" y="279" width="236.5" height="41.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="textColor" red="0.054901964962482452" green="0.16078431904315948" blue="0.078431375324726105" alpha="1" colorSpace="deviceRGB"/>
+                                <color key="highlightedColor" red="0.95686280727386475" green="0.91764712333679199" blue="0.83921575546264648" alpha="1" colorSpace="deviceRGB"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by FirstViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
-                                <rect key="frame" x="203" y="329" width="194.5" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNIT, Purdue University" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5M-7J-77L">
+                                <rect key="frame" x="223" y="329" width="153.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
+                                <rect key="frame" x="0.0" y="20" width="600" height="140"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.96078437566757202" green="0.96862751245498657" blue="0.87843143939971924" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="dp9-0W-EFI" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="0mF-hZ-B0n"/>
                             <constraint firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="6BV-lF-sBN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dp9-0W-EFI" secondAttribute="trailing" constant="-16" id="7vT-Eg-V0A"/>
+                            <constraint firstItem="dp9-0W-EFI" firstAttribute="centerX" secondItem="A5M-7J-77L" secondAttribute="centerX" id="ZcH-o3-oM0"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="top" secondItem="KQZ-1w-vlD" secondAttribute="bottom" constant="8" symbolic="YES" id="cfb-er-3JN"/>
                             <constraint firstItem="A5M-7J-77L" firstAttribute="centerX" secondItem="KQZ-1w-vlD" secondAttribute="centerX" id="e1l-AV-tCB"/>
                             <constraint firstAttribute="centerY" secondItem="KQZ-1w-vlD" secondAttribute="centerY" id="exm-UA-ej4"/>
+                            <constraint firstItem="dp9-0W-EFI" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="mIB-Re-T2O"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Micro-location" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="-320"/>
+            <point key="canvasLocation" x="652" y="482"/>
         </scene>
-        <!--Second-->
+        <!--Geofencing-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -56,33 +64,115 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Second View" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zEq-FU-wV5">
-                                <rect key="frame" x="195" y="279" width="209.5" height="41.5"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-z5-PSF">
+                                <rect key="frame" x="175" y="175" width="375" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="8ri-ES-KzR"/>
+                                    <constraint firstAttribute="width" constant="375" id="PP6-8o-yUp"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9647059440612793" green="0.97254908084869385" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="cbb-z5-PSF" secondAttribute="centerY" id="KuS-OX-DIc"/>
+                            <constraint firstAttribute="centerX" secondItem="cbb-z5-PSF" secondAttribute="centerX" id="tSN-sR-WfX"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Geofencing" image="second" id="cPa-gy-q4n"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="1184"/>
+        </scene>
+        <!--Proximity-->
+        <scene sceneID="nls-a8-Oa3">
+            <objects>
+                <viewController id="cM3-9Y-Acb" customClass="ProximityViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="laD-5r-asu"/>
+                        <viewControllerLayoutGuide type="bottom" id="tee-3F-kzD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OlY-Lj-l26">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="teY-ZY-LeY">
+                                <rect key="frame" x="16" y="230" width="568" height="140"/>
+                            </imageView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g3K-4Q-ab3">
+                                <rect key="frame" x="16" y="176" width="568" height="375"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="cM3-9Y-Acb" id="O3g-ko-LHp"/>
+                                    <outlet property="delegate" destination="cM3-9Y-Acb" id="lPg-4G-zBO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.9647059440612793" green="0.96862751245498657" blue="0.88627457618713379" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="trailing" secondItem="OlY-Lj-l26" secondAttribute="trailingMargin" id="IKL-pp-UaQ"/>
+                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="leading" secondItem="OlY-Lj-l26" secondAttribute="leadingMargin" id="Njz-IJ-W8q"/>
+                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="leading" secondItem="OlY-Lj-l26" secondAttribute="leadingMargin" constant="118" id="eXp-R7-P4j"/>
+                            <constraint firstItem="tee-3F-kzD" firstAttribute="top" secondItem="g3K-4Q-ab3" secondAttribute="bottom" id="ixi-vt-Eoc"/>
+                            <constraint firstItem="tee-3F-kzD" firstAttribute="top" secondItem="g3K-4Q-ab3" secondAttribute="bottom" id="uSQ-Yi-Lkb"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eXp-R7-P4j"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Proximity" image="first" id="Xyr-1O-TUH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Cw-vu-IDG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="640" y="1956"/>
+        </scene>
+        <!--Make a Map-->
+        <scene sceneID="ngf-VM-8Q3">
+            <objects>
+                <viewController id="0PC-HU-rnG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8GB-Sx-x4o"/>
+                        <viewControllerLayoutGuide type="bottom" id="QCF-k8-ZhW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="GYW-ya-CgQ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Create a Map" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-hj-glW">
+                                <rect key="frame" x="191" y="279" width="218.5" height="41.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loaded by SecondViewController" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDk-cv-Gan">
-                                <rect key="frame" x="192" y="329" width="215.5" height="17"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CNIT, Purdue University" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4f-93-6DO">
+                                <rect key="frame" x="223.5" y="329" width="153.5" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-WA-P3p">
+                                <rect key="frame" x="0.0" y="20" width="600" height="140"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.9647059440612793" green="0.96862751245498657" blue="0.89019614458084106" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="top" secondItem="zEq-FU-wV5" secondAttribute="bottom" constant="8" symbolic="YES" id="Day-4N-Vmt"/>
-                            <constraint firstItem="NDk-cv-Gan" firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="JgO-Fn-dHn"/>
-                            <constraint firstAttribute="centerX" secondItem="zEq-FU-wV5" secondAttribute="centerX" id="qqM-NS-xev"/>
-                            <constraint firstAttribute="centerY" secondItem="zEq-FU-wV5" secondAttribute="centerY" id="qzY-Ky-pLD"/>
+                            <constraint firstItem="C4f-93-6DO" firstAttribute="top" secondItem="Abt-hj-glW" secondAttribute="bottom" constant="8" id="6bz-5n-Fn0"/>
+                            <constraint firstAttribute="centerX" secondItem="Abt-hj-glW" secondAttribute="centerX" id="KAt-yw-EQm"/>
+                            <constraint firstAttribute="centerX" secondItem="C4f-93-6DO" secondAttribute="centerX" id="PIY-Zf-Pyg"/>
+                            <constraint firstItem="FwI-WA-P3p" firstAttribute="top" secondItem="8GB-Sx-x4o" secondAttribute="bottom" id="gDQ-KR-Rik"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FwI-WA-P3p" secondAttribute="trailing" constant="-16" id="tJl-p0-IWU"/>
+                            <constraint firstAttribute="centerY" secondItem="Abt-hj-glW" secondAttribute="centerY" id="tq6-9A-6UU"/>
+                            <constraint firstItem="FwI-WA-P3p" firstAttribute="leading" secondItem="GYW-ya-CgQ" secondAttribute="leadingMargin" constant="-16" id="yLO-Kp-0SV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Make a Map" image="second" id="MwH-8q-4Dk"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ven-ge-LJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="-128" y="1956"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
@@ -97,15 +187,19 @@
                     <connections>
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="cM3-9Y-Acb" kind="relationship" relationship="viewControllers" id="Vwk-Cz-9oT"/>
+                        <segue destination="0PC-HU-rnG" kind="relationship" relationship="viewControllers" id="YwX-ut-a6k"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="0.0" y="0.0"/>
+            <point key="canvasLocation" x="-128" y="1178"/>
         </scene>
     </scenes>
     <resources>
+        <image name="bg_proximity.png" width="1100" height="1100"/>
         <image name="first" width="30" height="30"/>
+        <image name="purdue_logo.png" width="400" height="208"/>
         <image name="second" width="30" height="30"/>
     </resources>
 </document>
