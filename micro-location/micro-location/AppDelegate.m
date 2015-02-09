@@ -7,6 +7,12 @@
 //
 
 #import "AppDelegate.h"
+#import "ProximityViewController.h"
+#import "Singleton.h"
+
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+
 
 @interface AppDelegate ()
 
@@ -15,9 +21,131 @@
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    //NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
+    
+    NSString *regionIdentifier = @"12345";
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:beaconUUID identifier:regionIdentifier];
+    
+    switch ([CLLocationManager authorizationStatus])
+    {
+        case kCLAuthorizationStatusAuthorizedAlways:
+            NSLog(@"Authorized Always");
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            NSLog(@"Authorized when in use");
+            break;
+        case kCLAuthorizationStatusDenied:
+            NSLog(@"Denied");
+            break;
+        case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"Not determined");
+            break;
+        case kCLAuthorizationStatusRestricted:
+            NSLog(@"Restricted");
+            break;
+            
+        default:
+            break;
+    }
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    self.locationManager.delegate = self;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    [self.locationManager startMonitoringForRegion:beaconRegion];
+    
+    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+    [self.locationManager startUpdatingLocation];
+    
+    [Singleton instance];
+    
+    
     return YES;
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    [manager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
+    [self.locationManager startUpdatingLocation];
+    
+    NSLog(@"You entered the region.");
+    [self sendLocalNotificationWithMessage:@"You entered the region."];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+    [self.locationManager stopUpdatingLocation];
+    
+    NSLog(@"You exited the region.");
+    [self sendLocalNotificationWithMessage:@"You exited the region."];
+}
+
+-(void)sendLocalNotificationWithMessage:(NSString*)message
+{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = message;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
+{
+    NSString *message = @"";
+    
+    
+    [Singleton instance].beacons = beacons;
+    [[Singleton instance].tableView reloadData];
+    [self postBeaconUpdateNotification];
+    
+    if(beacons.count > 0)
+    {
+        CLBeacon *nearestBeacon = beacons.firstObject;
+        
+        if(nearestBeacon.proximity == self.lastProximity || nearestBeacon.proximity == CLProximityUnknown)
+        {
+            return;
+        }
+        self.lastProximity = nearestBeacon.proximity;
+        
+        switch(nearestBeacon.proximity)
+        {
+            case CLProximityFar:
+                message = @"You are far away from the beacon";
+                break;
+            case CLProximityNear:
+                message = @"You are near the beacon";
+                break;
+            case CLProximityImmediate:
+                message = @"You are in the immediate proximity of the beacon";
+                break;
+            case CLProximityUnknown:
+                return;
+        }
+    }
+    else
+    {
+        message = @"No beacons are nearby";
+    }
+    
+    
+    
+    NSLog(@"%@", message);
+    //[self sendLocalNotificationWithMessage:message];
+}
+
+- (void)postBeaconUpdateNotification //post notification method and logic
+{
+    NSString *notificationName = @"UpdateBeaconsNotification";
+    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -43,3 +171,4 @@
 }
 
 @end
+

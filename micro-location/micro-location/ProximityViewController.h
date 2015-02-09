@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  ProximityViewController.h
 //  micro-location
 //
 //  Created by Ian Hamilton on 2/9/15.
@@ -7,12 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface SecondViewController : UIViewController
+@interface ProximityViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIApplicationDelegate>
 
 @property (strong) NSArray *beacons;
-@property (strong) UIImage *beaconImage;
 
 @end
-
-
