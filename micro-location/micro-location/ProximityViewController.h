@@ -11,6 +11,7 @@
 
 @interface ProximityViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIApplicationDelegate>
 
-@property (strong) NSArray *beacons;
+@property (strong) UIImage *beaconImage;
+@property (strong) UIImage *sel_beaconImage;
 
 @end

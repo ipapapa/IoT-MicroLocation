@@ -12,7 +12,7 @@
 @interface Singleton : NSObject
 
 @property (nonatomic, strong) NSArray *beacons;
-@property  UITableView *tableView;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 
 + (Singleton *)instance;
 
