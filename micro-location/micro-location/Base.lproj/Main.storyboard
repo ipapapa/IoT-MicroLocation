@@ -30,7 +30,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
                                 <rect key="frame" x="0.0" y="20" width="600" height="140"/>
                             </imageView>
                         </subviews>
@@ -64,18 +64,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-z5-PSF">
-                                <rect key="frame" x="175" y="175" width="375" height="375"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-z5-PSF">
+                                <rect key="frame" x="113" y="0.0" width="375" height="375"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="8ri-ES-KzR"/>
-                                    <constraint firstAttribute="width" constant="375" id="PP6-8o-yUp"/>
+                                    <constraint firstAttribute="height" constant="375" id="bL2-k1-8cR"/>
+                                    <constraint firstAttribute="width" constant="375" id="ggo-pd-az1"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.9647059440612793" green="0.97254908084869385" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="cbb-z5-PSF" secondAttribute="centerY" id="KuS-OX-DIc"/>
-                            <constraint firstAttribute="centerX" secondItem="cbb-z5-PSF" secondAttribute="centerX" id="tSN-sR-WfX"/>
+                            <constraint firstAttribute="centerX" secondItem="cbb-z5-PSF" secondAttribute="centerX" id="F1z-gW-cDX"/>
+                            <constraint firstItem="cbb-z5-PSF" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="ebS-9L-vL7"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Geofencing" image="second" id="cPa-gy-q4n"/>
@@ -96,31 +96,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="teY-ZY-LeY">
-                                <rect key="frame" x="16" y="230" width="568" height="140"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="XAm-V0-P2D">
+                                <rect key="frame" x="16" y="20" width="568" height="375"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="375" id="2G9-hM-M2C"/>
+                                    <constraint firstAttribute="width" constant="375" id="f1l-wt-Vyl"/>
+                                </constraints>
                             </imageView>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="g3K-4Q-ab3">
-                                <rect key="frame" x="16" y="176" width="568" height="375"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="cM3-9Y-Acb" id="O3g-ko-LHp"/>
-                                    <outlet property="delegate" destination="cM3-9Y-Acb" id="lPg-4G-zBO"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.9647059440612793" green="0.96862751245498657" blue="0.88627457618713379" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
-                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="trailing" secondItem="OlY-Lj-l26" secondAttribute="trailingMargin" id="IKL-pp-UaQ"/>
-                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="leading" secondItem="OlY-Lj-l26" secondAttribute="leadingMargin" id="Njz-IJ-W8q"/>
-                            <constraint firstItem="g3K-4Q-ab3" firstAttribute="leading" secondItem="OlY-Lj-l26" secondAttribute="leadingMargin" constant="118" id="eXp-R7-P4j"/>
-                            <constraint firstItem="tee-3F-kzD" firstAttribute="top" secondItem="g3K-4Q-ab3" secondAttribute="bottom" id="ixi-vt-Eoc"/>
-                            <constraint firstItem="tee-3F-kzD" firstAttribute="top" secondItem="g3K-4Q-ab3" secondAttribute="bottom" id="uSQ-Yi-Lkb"/>
+                            <constraint firstItem="XAm-V0-P2D" firstAttribute="top" secondItem="OlY-Lj-l26" secondAttribute="top" constant="20" id="24z-5W-Mqs"/>
+                            <constraint firstAttribute="centerX" secondItem="XAm-V0-P2D" secondAttribute="centerX" id="irA-un-MAJ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="eXp-R7-P4j"/>
-                            </mask>
-                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Proximity" image="first" id="Xyr-1O-TUH"/>
                 </viewController>
@@ -153,7 +141,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-WA-P3p">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-WA-P3p">
                                 <rect key="frame" x="0.0" y="20" width="600" height="140"/>
                             </imageView>
                         </subviews>
