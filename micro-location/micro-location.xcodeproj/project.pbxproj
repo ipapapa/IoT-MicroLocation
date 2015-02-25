@@ -26,6 +26,12 @@
 		1B89D1F61A895CDC0082F9CF /* beacon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89D1F41A895CDC0082F9CF /* beacon.png */; };
 		1B89D1F71A895CDC0082F9CF /* bg_proximity.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89D1F51A895CDC0082F9CF /* bg_proximity.png */; };
 		1B89D1F91A895FFF0082F9CF /* purdue_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89D1F81A895FFF0082F9CF /* purdue_logo.png */; };
+		C57EAF4B1A95295600F58E2D /* GenericBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF4A1A95295500F58E2D /* GenericBeaconManager.m */; };
+		C57EAF4E1A9529A500F58E2D /* CDSiBeaconPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF4D1A9529A500F58E2D /* CDSiBeaconPFViewController.m */; };
+		C57EAF511A9529F800F58E2D /* CDSBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF501A9529F800F58E2D /* CDSBeaconLandmark.m */; };
+		C57EAF541A952A3B00F58E2D /* CDSArenaView.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF531A952A3B00F58E2D /* CDSArenaView.m */; };
+		C57EAF571A952A7D00F58E2D /* UIColor+Interpolation.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF561A952A7D00F58E2D /* UIColor+Interpolation.m */; };
+		FA7D73FC375B152BA7653D58 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C3A7E2C9016DAB252237329 /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		068B4E85A6E29D88B3C75EAF /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		1B363D091A8C077A001306D0 /* beacon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beacon_selected.png; sourceTree = "<group>"; };
 		1B89D1B61A8952D60082F9CF /* micro-location.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "micro-location.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B89D1BA1A8952D60082F9CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -67,6 +74,20 @@
 		1B89D1F41A895CDC0082F9CF /* beacon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = beacon.png; sourceTree = "<group>"; };
 		1B89D1F51A895CDC0082F9CF /* bg_proximity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_proximity.png; sourceTree = "<group>"; };
 		1B89D1F81A895FFF0082F9CF /* purdue_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purdue_logo.png; sourceTree = "<group>"; };
+		3791C88D5548CD0FD8C82D63 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		4C3A7E2C9016DAB252237329 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C57EAF481A95293700F58E2D /* BeaconManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaconManagerProtocol.h; sourceTree = "<group>"; };
+		C57EAF491A95295500F58E2D /* GenericBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericBeaconManager.h; sourceTree = "<group>"; };
+		C57EAF4A1A95295500F58E2D /* GenericBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericBeaconManager.m; sourceTree = "<group>"; };
+		C57EAF4C1A9529A500F58E2D /* CDSiBeaconPFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSiBeaconPFViewController.h; sourceTree = "<group>"; };
+		C57EAF4D1A9529A500F58E2D /* CDSiBeaconPFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSiBeaconPFViewController.m; sourceTree = "<group>"; };
+		C57EAF4F1A9529F800F58E2D /* CDSBeaconLandmark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSBeaconLandmark.h; sourceTree = "<group>"; };
+		C57EAF501A9529F800F58E2D /* CDSBeaconLandmark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSBeaconLandmark.m; sourceTree = "<group>"; };
+		C57EAF521A952A3B00F58E2D /* CDSArenaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSArenaView.h; sourceTree = "<group>"; };
+		C57EAF531A952A3B00F58E2D /* CDSArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSArenaView.m; sourceTree = "<group>"; };
+		C57EAF551A952A7D00F58E2D /* UIColor+Interpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Interpolation.h"; sourceTree = "<group>"; };
+		C57EAF561A952A7D00F58E2D /* UIColor+Interpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Interpolation.m"; sourceTree = "<group>"; };
+		C57EAF581A9943CF00F58E2D /* micro-location.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "micro-location.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +100,7 @@
 				1B89D1E81A8959740082F9CF /* CoreGraphics.framework in Frameworks */,
 				1B89D1E61A89596B0082F9CF /* UIKit.framework in Frameworks */,
 				1B89D1E41A89595F0082F9CF /* CoreLocation.framework in Frameworks */,
+				FA7D73FC375B152BA7653D58 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +121,7 @@
 				1B89D1E21A8959260082F9CF /* Frameworks */,
 				1B89D1D51A8952D60082F9CF /* micro-locationTests */,
 				1B89D1B71A8952D60082F9CF /* Products */,
+				1BDF4B020722994D745BA8CA /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,6 +139,17 @@
 			children = (
 				1B89D1BD1A8952D60082F9CF /* AppDelegate.h */,
 				1B89D1BE1A8952D60082F9CF /* AppDelegate.m */,
+				C57EAF481A95293700F58E2D /* BeaconManagerProtocol.h */,
+				C57EAF491A95295500F58E2D /* GenericBeaconManager.h */,
+				C57EAF4A1A95295500F58E2D /* GenericBeaconManager.m */,
+				C57EAF4C1A9529A500F58E2D /* CDSiBeaconPFViewController.h */,
+				C57EAF4D1A9529A500F58E2D /* CDSiBeaconPFViewController.m */,
+				C57EAF4F1A9529F800F58E2D /* CDSBeaconLandmark.h */,
+				C57EAF501A9529F800F58E2D /* CDSBeaconLandmark.m */,
+				C57EAF521A952A3B00F58E2D /* CDSArenaView.h */,
+				C57EAF531A952A3B00F58E2D /* CDSArenaView.m */,
+				C57EAF551A952A7D00F58E2D /* UIColor+Interpolation.h */,
+				C57EAF561A952A7D00F58E2D /* UIColor+Interpolation.m */,
 				1B89D1C01A8952D60082F9CF /* FirstViewController.h */,
 				1B89D1C11A8952D60082F9CF /* FirstViewController.m */,
 				1B89D1C31A8952D60082F9CF /* SecondViewController.h */,
@@ -137,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1B89D1BA1A8952D60082F9CF /* Info.plist */,
+				C57EAF581A9943CF00F58E2D /* micro-location.pch */,
 				1B89D1BB1A8952D60082F9CF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -167,6 +202,7 @@
 				1B89D1E71A8959740082F9CF /* CoreGraphics.framework */,
 				1B89D1E51A89596B0082F9CF /* UIKit.framework */,
 				1B89D1E31A89595F0082F9CF /* CoreLocation.framework */,
+				4C3A7E2C9016DAB252237329 /* libPods.a */,
 			);
 			name = Frameworks;
 			path = "micro-location";
@@ -183,6 +219,15 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		1BDF4B020722994D745BA8CA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				068B4E85A6E29D88B3C75EAF /* Pods.debug.xcconfig */,
+				3791C88D5548CD0FD8C82D63 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -190,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1B89D1DC1A8952D60082F9CF /* Build configuration list for PBXNativeTarget "micro-location" */;
 			buildPhases = (
+				7C5D71454CBB647763F56AE3 /* Check Pods Manifest.lock */,
 				1B89D1B21A8952D60082F9CF /* Sources */,
 				1B89D1B31A8952D60082F9CF /* Frameworks */,
 				1B89D1B41A8952D60082F9CF /* Resources */,
+				2BA53D24AD196B49BB6E6B32 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -287,6 +334,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2BA53D24AD196B49BB6E6B32 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7C5D71454CBB647763F56AE3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1B89D1B21A8952D60082F9CF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -294,10 +374,15 @@
 			files = (
 				1B89D1F21A895AED0082F9CF /* ProximityViewController.m in Sources */,
 				1B89D1C51A8952D60082F9CF /* SecondViewController.m in Sources */,
+				C57EAF4B1A95295600F58E2D /* GenericBeaconManager.m in Sources */,
+				C57EAF571A952A7D00F58E2D /* UIColor+Interpolation.m in Sources */,
 				1B89D1BF1A8952D60082F9CF /* AppDelegate.m in Sources */,
 				1B89D1C21A8952D60082F9CF /* FirstViewController.m in Sources */,
 				1B89D1BC1A8952D60082F9CF /* main.m in Sources */,
 				1B89D1EF1A8959E80082F9CF /* Singleton.m in Sources */,
+				C57EAF541A952A3B00F58E2D /* CDSArenaView.m in Sources */,
+				C57EAF4E1A9529A500F58E2D /* CDSiBeaconPFViewController.m in Sources */,
+				C57EAF511A9529F800F58E2D /* CDSBeaconLandmark.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,8 +502,10 @@
 		};
 		1B89D1DD1A8952D60082F9CF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 068B4E85A6E29D88B3C75EAF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -427,8 +514,10 @@
 		};
 		1B89D1DE1A8952D60082F9CF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3791C88D5548CD0FD8C82D63 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

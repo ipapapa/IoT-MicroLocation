@@ -242,23 +242,28 @@
     
     cell.textLabel.text = proximityLabel;
     
-    int e=(int)beacon.rssi;
+//    int e = beacon.rssi;
+//    double ret = 0.0003351 * exp(0.1103220*-e);
+//    
+//    ret *= 1.75;
+
+     int e=(int)beacon.rssi;
     double d= (e+55.0)/(-26.4432);
     double result=pow(10,d);
     
     NSString *beaconName = @"Placeholder";
     
-    if(beacon.major.intValue==19712)
+    if(beacon.minor.intValue==1)
     {
-        beaconName=@"Mint Green";
+        beaconName=@"Beacon 1";
     }
-    else if(beacon.major.intValue==28989)
+    else if(beacon.minor.intValue==2)
     {
-        beaconName=@"Ice Blue";
+        beaconName=@"Beacon 2";
     }
-    else if(beacon.major.intValue==55115)
+    else if(beacon.minor.intValue==3)
     {
-        beaconName=@"Blue Berry";
+        beaconName=@"Beacon 3";
     }
     
     NSString *detailLabel = [NSString stringWithFormat:@"%@, RSSI: %d, Dist(m): %f",
