@@ -8,11 +8,11 @@
 
 #import "SecondViewController.h"
 #import "Singleton.h"
+#import "AFNetworking.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface SecondViewController ()
 
-@property (nonatomic, strong) NSMutableArray *imageViews;
 
 @end
 
@@ -22,155 +22,123 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.imageViews = [NSMutableArray array];
     
-    NSString *notificationName = @"UpdateBeaconsNotification";
+    float height = self.view.bounds.size.height;
+    float width = self.view.bounds.size.width;
     
-    [[NSNotificationCenter defaultCenter]
-     addObserver:self
-     selector:@selector(updateBeacons)
-     name:notificationName
-     object:nil];
+    CGRect tableFrame = CGRectMake(0, 20, width,height);//568, 375);
+    [Singleton instance].geoTableView = [[UITableView alloc]initWithFrame:tableFrame];
+    [Singleton instance].geoTableView.allowsMultipleSelection = NO;
+    [Singleton instance].geoTableView.delegate = self;
+    [Singleton instance].geoTableView.dataSource = self;
+    
+    [self.view addSubview:[Singleton instance].geoTableView];
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    self.imageViews = [NSMutableArray arrayWithArray:@[]];
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = @"";
+    if (section == 0)
+        title = @"Geofencing Beacons";
+    else if (section == 1)
+        title = @"Other Beacons";
+        
+    return title;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSUInteger numRows = 0;
     
-    for (CLBeacon *beacon in [Singleton instance].beacons)
+    if (section == 0)
     {
-        int index = (int)[[Singleton instance].beacons indexOfObject:beacon];
-        index += 1;
+        if ([Singleton instance].geoBeacons.count == 0)
+            numRows = 1;
+        else
+            numRows = [Singleton instance].geoBeacons.count;
+    }
+    else if (section == 1)
+    {
+//        if ([Singleton instance].beacons.count == 0)
+//            numRows = 1;
+//        else
+            numRows = [Singleton instance].beacons.count;
+    }
+    
+    return numRows;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+    
+    if (cell == nil)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"MyIdentifier"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:10.0];
+        cell.textLabel.lineBreakMode = NSLineBreakByWordWrapping; // Pre-iOS6 use UILineBreakModeWordWrap
+        cell.textLabel.numberOfLines = 4;  // 0 means no max.
+    }
+    
+    if (indexPath.section == 0)
+    {
+        CLBeacon *beacon = (CLBeacon *)[[Singleton instance].geoBeacons objectAtIndex:indexPath.row];
         
+        NSString *beaconName = @"Placeholder";
         
-        UIImage *orig_beaconImage = [UIImage imageNamed:@"beacon.png"];
-        
-        // scaling set to 2.0 makes the image 1/2 the size.
-        self.beaconImage =
-        [UIImage imageWithCGImage:[orig_beaconImage CGImage]
-                            scale:(orig_beaconImage.scale * 2.0)
-                      orientation:(orig_beaconImage.imageOrientation)];
-        
-        CGRect immediateImageFrame = CGRectMake(150, 150 + index*40, 30, 30);
-        
-        UIImageView *immediateImageView = [[UIImageView alloc]initWithFrame:immediateImageFrame];
-        immediateImageView.image = self.beaconImage;
-        
-        CGRect nearImageFrame = CGRectMake(110, (210 + index *40), 30, 30);
-        
-        UIImageView *nearImageView = [[UIImageView alloc]initWithFrame:nearImageFrame];
-        nearImageView.image = self.beaconImage;
-        
-        CGRect farImageFrame = CGRectMake(25, 300, 30, 30);
-        
-        UIImageView *farImageView = [[UIImageView alloc]initWithFrame:farImageFrame];
-        farImageView.image = self.beaconImage;
-        
-        
-        
-        switch (beacon.proximity)
+        if(beacon.major.intValue==19712)
         {
-            case CLProximityFar:
-                //proximityLabel = @"Far";
-                [self.view addSubview:farImageView];
-                [self.imageViews addObject:farImageView];
-                
-                break;
-                
-            case CLProximityNear:
-                //proximityLabel = @"Near";
-                [self.view addSubview:nearImageView];
-                [self.imageViews addObject:nearImageView];
-                
-                break;
-            case CLProximityImmediate:
-                [self.view addSubview:immediateImageView];
-                [self.imageViews addObject:immediateImageView];
-                //proximityLabel = @"Immediate";
-                break;
-            case CLProximityUnknown:
-                //proximityLabel = @"Unknown";
-                break;
+            beaconName=@"Mint Green";
         }
-    }
-}
-
-- (void)updateBeacons
-{
-    for (UIImageView *imageView in self.imageViews)
-    {
-        [imageView performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO];
-    }
-    
-    self.imageViews = [NSMutableArray arrayWithArray:@[]];
-    
-    for (CLBeacon *beacon in [Singleton instance].beacons)
-    {
-        int index = (int)[[Singleton instance].beacons indexOfObject:beacon];
-        index += 1;
-        
-        
-        UIImage *orig_beaconImage = [UIImage imageNamed:@"beacon.png"];
-        
-        // scaling set to 2.0 makes the image 1/2 the size.
-        self.beaconImage =
-        [UIImage imageWithCGImage:[orig_beaconImage CGImage]
-                            scale:(orig_beaconImage.scale * 2.0)
-                      orientation:(orig_beaconImage.imageOrientation)];
-        
-        CGRect immediateImageFrame = CGRectMake(150, 150 + index*40, 30, 30);
-        
-        UIImageView *immediateImageView = [[UIImageView alloc]initWithFrame:immediateImageFrame];
-        immediateImageView.image = self.beaconImage;
-        
-        CGRect nearImageFrame = CGRectMake(110, (210 + index *40), 30, 30);
-        
-        UIImageView *nearImageView = [[UIImageView alloc]initWithFrame:nearImageFrame];
-        nearImageView.image = self.beaconImage;
-        
-        CGRect farImageFrame = CGRectMake(25, 300, 30, 30);
-        
-        UIImageView *farImageView = [[UIImageView alloc]initWithFrame:farImageFrame];
-        farImageView.image = self.beaconImage;
-        
-        
-        
-        switch (beacon.proximity)
+        else if(beacon.major.intValue==28989)
         {
-            case CLProximityFar:
-                //proximityLabel = @"Far";
-                [self.view addSubview:farImageView];
-                [self.imageViews addObject:farImageView];
-                
-                break;
-                
-            case CLProximityNear:
-                //proximityLabel = @"Near";
-                [self.view addSubview:nearImageView];
-                [self.imageViews addObject:nearImageView];
-                
-                break;
-            case CLProximityImmediate:
-                [self.view addSubview:immediateImageView];
-                [self.imageViews addObject:immediateImageView];
-                //proximityLabel = @"Immediate";
-                break;
-            case CLProximityUnknown:
-                //proximityLabel = @"Unknown";
-                break;
+            beaconName=@"Ice Blue";
         }
+        else if(beacon.major.intValue==55115)
+        {
+            beaconName=@"Blue Berry";
+        }
+        
+        cell.textLabel.text = beaconName;
     }
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-    for (UIImageView *imageView in self.imageViews)
+    else if (indexPath.section == 1)
     {
-        [imageView performSelectorOnMainThread:@selector(removeFromSuperview) withObject:nil waitUntilDone:NO];
+        CLBeacon *beacon = (CLBeacon *)[[Singleton instance].beacons objectAtIndex:indexPath.row];
+        
+        
+        NSString *beaconName = @"Placeholder";
+        
+        if(beacon.major.intValue==19712)
+        {
+            beaconName=@"Mint Green";
+        }
+        else if(beacon.major.intValue==28989)
+        {
+            beaconName=@"Ice Blue";
+        }
+        else if(beacon.major.intValue==55115)
+        {
+            beaconName=@"Blue Berry";
+        }
+        
+        cell.textLabel.text = beaconName;
     }
     
+    return cell;
+    
 }
-
 
 
 - (void)didReceiveMemoryWarning
