@@ -87,6 +87,7 @@
 		C57EAF531A952A3B00F58E2D /* CDSArenaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSArenaView.m; sourceTree = "<group>"; };
 		C57EAF551A952A7D00F58E2D /* UIColor+Interpolation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Interpolation.h"; sourceTree = "<group>"; };
 		C57EAF561A952A7D00F58E2D /* UIColor+Interpolation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Interpolation.m"; sourceTree = "<group>"; };
+		C57EAF581A9943CF00F58E2D /* micro-location.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "micro-location.pch"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1B89D1BA1A8952D60082F9CF /* Info.plist */,
+				C57EAF581A9943CF00F58E2D /* micro-location.pch */,
 				1B89D1BB1A8952D60082F9CF /* main.m */,
 			);
 			name = "Supporting Files";
@@ -503,6 +505,7 @@
 			baseConfigurationReference = 068B4E85A6E29D88B3C75EAF /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -514,6 +517,7 @@
 			baseConfigurationReference = 3791C88D5548CD0FD8C82D63 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

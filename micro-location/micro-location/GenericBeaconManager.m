@@ -11,7 +11,8 @@
 #import "DDLog.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
-//#import <CocoaLumberjack.h>
+#import "DDLog.h"
+
 @interface GenericBeaconManager () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSString* beaconRegionId;
@@ -69,7 +70,7 @@
 
 
 - (void)locationManager:(CLLocationManager *)manager rangingBeaconsDidFailForRegion:(CLBeaconRegion *)region withError:(NSError *)error {
-   // DDLogError(@"[%@] Ranging failed: %@", self.class, [error localizedDescription]);
+//    DDLogError(@"[%@] Ranging failed: %@", self.class, [error localizedDescription]);
 }
 
 

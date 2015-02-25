@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "Singleton.h"
 
-@interface AppDelegate : UIResponder <CLLocationManagerDelegate>//,UITabBarControllerDelegate,UIApplicationDelegate>
+@interface AppDelegate : UIResponder <CLLocationManagerDelegate, UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) CLLocationManager *locationManager;

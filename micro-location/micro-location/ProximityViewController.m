@@ -242,14 +242,14 @@
     
     cell.textLabel.text = proximityLabel;
     
-    int e=beacon.rssi;
-    double ret = 0.0003351 * exp(0.1103220*-e);
-    
-    ret *= 1.75;
+//    int e = beacon.rssi;
+//    double ret = 0.0003351 * exp(0.1103220*-e);
+//    
+//    ret *= 1.75;
 
-    /* int e=(int)beacon.rssi;
+     int e=(int)beacon.rssi;
     double d= (e+55.0)/(-26.4432);
-    double result=pow(10,d);*/
+    double result=pow(10,d);
     
     NSString *beaconName = @"Placeholder";
     
@@ -267,7 +267,7 @@
     }
     
     NSString *detailLabel = [NSString stringWithFormat:@"%@, RSSI: %d, Dist(m): %f",
-                                                    beaconName, (int)beacon.rssi, ret ];
+                                                    beaconName, (int)beacon.rssi, result ];
     
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10.0];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping; // Pre-iOS6 use UILineBreakModeWordWrap
