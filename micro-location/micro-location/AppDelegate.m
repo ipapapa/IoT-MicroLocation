@@ -9,13 +9,17 @@
 #import "AppDelegate.h"
 #import "ProximityViewController.h"
 #import "Singleton.h"
+#import "AFNetworking.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
+
 #import <CoreLocation/CoreLocation.h>
-#import <CoreBluetooth/CoreBluetooth.h>
+
 
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) NSUUID *beaconUUID;
 
 @end
 
@@ -25,13 +29,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
-  //  NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
     
     NSString *regionIdentifier = @"12345";
-    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:beaconUUID identifier:regionIdentifier];
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.beaconUUID identifier:regionIdentifier];
     
     switch ([CLLocationManager authorizationStatus])
     {
@@ -107,7 +111,31 @@
     
     [Singleton instance].beacons = beacons;
     [[Singleton instance].tableView reloadData];
-    [self postBeaconUpdateNotification];
+    
+    NSString *urlString = @"10.10.10.10:8080/microlocation";
+    
+    for (CLBeacon *beacon in [Singleton instance].beacons)
+    {
+        NSString *uuid = [NSString stringWithFormat:@"%@",self.beaconUUID];
+        NSNumber *major = beacon.major;
+        NSNumber *minor = beacon.minor;
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        
+        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
+        
+        [manager POST:urlString parameters:params
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSLog(@"JSON: %@", responseObject);
+         }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             NSLog(@"Error: %@", error);
+         }];
+    }
     
     if(beacons.count > 0)
     {
@@ -143,12 +171,6 @@
     
     NSLog(@"%@", message);
     //[self sendLocalNotificationWithMessage:message];
-}
-
-- (void)postBeaconUpdateNotification //post notification method and logic
-{
-    NSString *notificationName = @"UpdateBeaconsNotification";
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

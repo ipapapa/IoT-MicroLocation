@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
                                 <rect key="frame" x="0.0" y="20" width="600" height="140"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70U-Nd-joO" customClass="CDSArenaView">
@@ -93,20 +93,7 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="cbb-z5-PSF">
-                                <rect key="frame" x="113" y="0.0" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="375" id="bL2-k1-8cR"/>
-                                    <constraint firstAttribute="width" constant="375" id="ggo-pd-az1"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" red="0.9647059440612793" green="0.97254908084869385" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="cbb-z5-PSF" secondAttribute="centerX" id="F1z-gW-cDX"/>
-                            <constraint firstItem="cbb-z5-PSF" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="ebS-9L-vL7"/>
-                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Geofencing" image="second" id="cPa-gy-q4n"/>
                 </viewController>
