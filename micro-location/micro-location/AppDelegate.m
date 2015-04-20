@@ -14,7 +14,7 @@
 #import "DDTTYLogger.h"
 
 #import <CoreLocation/CoreLocation.h>
-
+#import <CoreBluetooth/CoreBluetooth.h>
 
 
 @interface AppDelegate ()
