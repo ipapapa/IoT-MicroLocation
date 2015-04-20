@@ -9,13 +9,18 @@
 #import "AppDelegate.h"
 #import "ProximityViewController.h"
 #import "Singleton.h"
+#import "iBeacon.h"
+#import "AFNetworking.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
+
 #import <CoreLocation/CoreLocation.h>
 #import <CoreBluetooth/CoreBluetooth.h>
 
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) NSUUID *beaconUUID;
 
 @end
 
@@ -25,13 +30,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
-  //  NSUUID *beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
     
     NSString *regionIdentifier = @"12345";
-    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:beaconUUID identifier:regionIdentifier];
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.beaconUUID identifier:regionIdentifier];
     
     switch ([CLLocationManager authorizationStatus])
     {
@@ -55,6 +60,9 @@
             break;
     }
     
+    [Singleton instance];
+    [Singleton instance].knownBeacons = [NSMutableArray array];
+    
     self.locationManager = [[CLLocationManager alloc] init];
     
     if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
@@ -67,9 +75,6 @@
     
     [self.locationManager startRangingBeaconsInRegion:beaconRegion];
     [self.locationManager startUpdatingLocation];
-    
-    [Singleton instance];
-    
     
     return YES;
 }
@@ -103,11 +108,71 @@
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
     NSString *message = @"";
-    
+    BOOL isKnownBeacon = false;
     
     [Singleton instance].beacons = beacons;
     [[Singleton instance].tableView reloadData];
-    [self postBeaconUpdateNotification];
+    [[Singleton instance].geoTableView reloadData];
+    
+    NSString *urlString = @"10.10.10.10:8080/microlocation";
+    
+    for (CLBeacon *beacon in [Singleton instance].beacons)
+    {
+        NSString *uuid = [NSString stringWithFormat:@"%@",beacon.proximityUUID];
+        NSString *major = [beacon.major stringValue];
+        NSString *minor = [beacon.minor stringValue];
+        
+        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
+        GetBeaconService *beaconService = [GetBeaconService sharedClient];
+        beaconService.mGetBeaconServiceDelegate = self;
+        
+        if ([Singleton instance].knownBeacons.count == 0)
+        {
+            if (beaconService)
+            {
+                NSError *error = [beaconService getBeaconWithUUID:params];
+            }
+        }
+        else
+        {
+            for (iBeacon *knownBeacon in [Singleton instance].knownBeacons)
+            {
+                if ([knownBeacon.major isEqualToString:major] && [knownBeacon.minor isEqualToString:minor])
+                {
+                    isKnownBeacon = true;
+                }
+            }
+            
+            if (!isKnownBeacon)
+            {
+                if (beaconService)
+                {
+                    NSError *error = [beaconService getBeaconWithUUID:params];
+                }
+            }
+        }
+    }
+    
+        NSString *uuid = [NSString stringWithFormat:@"%@",self.beaconUUID];
+        NSNumber *major = beacon.major;
+        NSNumber *minor = beacon.minor;
+        
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+        
+        
+        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
+        
+        [manager POST:urlString parameters:params
+              success:^(AFHTTPRequestOperation *operation, id responseObject)
+         {
+             NSLog(@"JSON: %@", responseObject);
+         }
+              failure:^(AFHTTPRequestOperation *operation, NSError *error)
+         {
+             NSLog(@"Error: %@", error);
+         }];
+    }
     
     if(beacons.count > 0)
     {
@@ -145,10 +210,40 @@
     //[self sendLocalNotificationWithMessage:message];
 }
 
-- (void)postBeaconUpdateNotification //post notification method and logic
+- (void)getBeaconReturnedSuccessfully:(NSDictionary *)response
 {
-    NSString *notificationName = @"UpdateBeaconsNotification";
-    [[NSNotificationCenter defaultCenter] postNotificationName:notificationName object:nil];
+    NSLog(@"Response: %@", response);
+    BOOL isKnownBeacon = false;
+    
+    iBeacon *sourcedBeacon = [[iBeacon alloc]initWithDict:response];
+    
+    if ([Singleton instance].knownBeacons.count == 0)
+    {
+        [[Singleton instance].knownBeacons addObject:sourcedBeacon];
+    }
+    else
+    {
+        for (iBeacon *knownBeacon in [Singleton instance].knownBeacons)
+        {
+            if ([knownBeacon.major isEqualToString:sourcedBeacon.major] &&
+                [knownBeacon.minor isEqualToString:sourcedBeacon.minor])
+            {
+                isKnownBeacon = true;
+            }
+        }
+        
+        if (!isKnownBeacon)
+        {
+            [[Singleton instance].knownBeacons addObject:sourcedBeacon];
+        }
+        
+        NSLog(@"Known Beacons: %lu", (unsigned long)[Singleton instance].knownBeacons.count);
+    }
+}
+
+- (void)getBeaconFailedWithError:(NSError *)error
+{
+    NSLog(@"Failure: %@", error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -414,7 +414,7 @@
     //    NSLog(@"x %f",xval);
     //    NSLog(@"y %f",yval);
     //    NSLog(@"y %f",yval);
-    NSLog(@"final result %@",triPt);
+    //NSLog(@"final result %@",triPt);
     
     
     

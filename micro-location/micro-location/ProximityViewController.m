@@ -242,32 +242,32 @@
     
     cell.textLabel.text = proximityLabel;
     
-//    int e = beacon.rssi;
-//    double ret = 0.0003351 * exp(0.1103220*-e);
-//    
-//    ret *= 1.75;
+    int e = (int)beacon.rssi;
+    double ret = 0.0003351 * exp(0.1103220*-e);
+    
+    ret *= 1.75;
 
-     int e=(int)beacon.rssi;
-    double d= (e+55.0)/(-26.4432);
-    double result=pow(10,d);
+    //int e=(int)beacon.rssi;
+    //double d= (e+55.0)/(-26.4432);
+    //double result=pow(10,d);
     
     NSString *beaconName = @"Placeholder";
     
-    if(beacon.minor.intValue==1)
+    if(beacon.minor.intValue==22924)
     {
-        beaconName=@"Beacon 1";
+        beaconName=@"Mint Green";
     }
-    else if(beacon.minor.intValue==2)
+    else if(beacon.minor.intValue==28556)
     {
-        beaconName=@"Beacon 2";
+        beaconName=@"Ice Blue";
     }
-    else if(beacon.minor.intValue==3)
+    else if(beacon.minor.intValue==56175)
     {
-        beaconName=@"Beacon 3";
+        beaconName=@"Blue Berry";
     }
     
     NSString *detailLabel = [NSString stringWithFormat:@"%@, RSSI: %d, Dist(m): %f",
-                                                    beaconName, (int)beacon.rssi, result ];
+                                                    beaconName, (int)beacon.rssi, ret ];
     
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:10.0];
     cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping; // Pre-iOS6 use UILineBreakModeWordWrap

@@ -1,4 +1,5 @@
 PODS:
+  - AFNetworking (1.3.4)
   - CDSParticleFilter (0.5)
   - CocoaLumberjack (1.9.2):
     - CocoaLumberjack/Extensions (= 1.9.2)
@@ -7,10 +8,12 @@ PODS:
     - CocoaLumberjack/Core
 
 DEPENDENCIES:
+  - AFNetworking (~> 1.3.3)
   - CDSParticleFilter
   - CocoaLumberjack
 
 SPEC CHECKSUMS:
+  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
   CDSParticleFilter: 2e07df84ac9e7d10d61f999523716fc157bdd391
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
 
