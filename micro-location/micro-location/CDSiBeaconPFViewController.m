@@ -20,9 +20,9 @@
 
 #define PROXIMITY_UUID [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]
 // Define the arena (Measurements in meters)
-#define PXPERMETER (320.0/6.0)
-#define ARENAWIDTH 6.0//5.851 //4.0//7.0
-#define ARENAHEIGHT 6.0//10.24//7.0
+#define PXPERMETER (320.0/4.0)
+#define ARENAWIDTH 4.0//7.0
+#define ARENAHEIGHT 5.0
 
 // Define landmark locations and identification
 #if USELANDMARKSETONE
@@ -31,23 +31,23 @@
 #define LANDMARKSMAJOR 1
 #define LANDMARK1COLOR [UIColor greenColor]
 #define LANDMARK1MINOR 1
-#define LANDMARK1X 0.4
-#define LANDMARK1Y 0.2
+#define LANDMARK1X 1.0
+#define LANDMARK1Y 0.4
 #define LANDMARK2COLOR [UIColor purpleColor]
 #define LANDMARK2MINOR 2
-#define LANDMARK2X 3.6
-#define LANDMARK2Y 0.2
+#define LANDMARK2X 3.3
+#define LANDMARK2Y 0.4
 #define LANDMARK3COLOR [UIColor blueColor]
 #define LANDMARK3MINOR 3
 #define LANDMARK3X 2.0
-#define LANDMARK3Y 3.0
+#define LANDMARK3Y 2.5
 
 #endif
 
 // Filter parameters
 #define PARTICLECOUNT 1000//500
-#define MEASUREMENTINTERVAL 0.0005//0.5
-#define MEASUREMENTSIGMA 0.4//2.0
+#define MEASUREMENTINTERVAL 0.002//0.5
+#define MEASUREMENTSIGMA 0.04//2.0
 #define NOISESIGMA 0.1//0.1
 
 #pragma mark -
@@ -414,7 +414,7 @@
     //    NSLog(@"x %f",xval);
     //    NSLog(@"y %f",yval);
     //    NSLog(@"y %f",yval);
-    NSLog(@"final result %@",triPt);
+    //NSLog(@"final result %@",triPt);
     
     
     

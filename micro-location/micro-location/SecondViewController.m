@@ -9,6 +9,7 @@
 #import "SecondViewController.h"
 #import "Singleton.h"
 #import "AFNetworking.h"
+#import "iBeacon.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface SecondViewController ()
@@ -35,6 +36,36 @@
     [self.view addSubview:[Singleton instance].geoTableView];
 }
 
+- (NSMutableArray *)createGeoBeaconsArray
+{
+    NSMutableArray *geoBeaconsArray = [NSMutableArray array];
+    
+    for (iBeacon *beacon in [Singleton instance].knownBeacons)
+    {
+        if ([beacon.usecase isEqualToString:@"GEO"])
+        {
+            [geoBeaconsArray addObject:beacon];
+        }
+    }
+    
+    return geoBeaconsArray;
+}
+
+- (NSMutableArray *)createOtherBeaconsArray
+{
+    NSMutableArray *otherBeaconsArray = [NSMutableArray array];
+    
+    for (iBeacon *beacon in [Singleton instance].knownBeacons)
+    {
+        if (![beacon.usecase isEqualToString:@"GEO"])
+        {
+            [otherBeaconsArray addObject:beacon];
+        }
+    }
+    
+    return otherBeaconsArray;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 2;
@@ -57,17 +88,24 @@
     
     if (section == 0)
     {
-        if ([Singleton instance].geoBeacons.count == 0)
+        if ([Singleton instance].knownBeacons.count == 0)
             numRows = 1;
         else
-            numRows = [Singleton instance].geoBeacons.count;
+        {
+            NSMutableArray *geoBeaconsArray = [self createGeoBeaconsArray];
+            numRows = geoBeaconsArray.count;
+        }
+        numRows = [Singleton instance].geoBeacons.count;
     }
     else if (section == 1)
     {
-//        if ([Singleton instance].beacons.count == 0)
-//            numRows = 1;
-//        else
-            numRows = [Singleton instance].beacons.count;
+        if ([Singleton instance].knownBeacons.count == 0)
+            numRows = 1;
+        else
+		{
+			NSMutableArray *otherBeaconsArray = [self createOtherBeaconsArray];
+			numRows = otherBeaconsArray.count;
+		}
     }
     
     return numRows;
@@ -75,7 +113,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
 }
 
 
@@ -92,50 +130,36 @@
         cell.textLabel.numberOfLines = 4;  // 0 means no max.
     }
     
+    NSMutableArray *geoBeaconsArray = [self createGeoBeaconsArray];
+    NSMutableArray *otherBeaconsArray = [self createOtherBeaconsArray];
+    NSString *beaconName = @"No beacons of this kind were found.";
+    
     if (indexPath.section == 0)
     {
-        CLBeacon *beacon = (CLBeacon *)[[Singleton instance].geoBeacons objectAtIndex:indexPath.row];
-        
-        NSString *beaconName = @"Placeholder";
-        
-        if(beacon.major.intValue==19712)
+        if (geoBeaconsArray.count > 0)
         {
-            beaconName=@"Mint Green";
+            iBeacon *beacon = (iBeacon *)[geoBeaconsArray objectAtIndex:indexPath.row];
+            beaconName = beacon.name;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Major: %@ | Minor: %@", beacon.major, beacon.minor];
+            
+            if ([beacon.name isEqualToString:@"TV"])
+            {
+                //Call Raspberry Pi Script
+            }
         }
-        else if(beacon.major.intValue==28989)
-        {
-            beaconName=@"Ice Blue";
-        }
-        else if(beacon.major.intValue==55115)
-        {
-            beaconName=@"Blue Berry";
-        }
-        
         cell.textLabel.text = beaconName;
+        
     }
     else if (indexPath.section == 1)
     {
-        CLBeacon *beacon = (CLBeacon *)[[Singleton instance].beacons objectAtIndex:indexPath.row];
-        
-        
-        NSString *beaconName = @"Placeholder";
-        
-        if(beacon.major.intValue==19712)
+        if (otherBeaconsArray.count > 0)
         {
-            beaconName=@"Mint Green";
+            iBeacon *beacon = (iBeacon *)[otherBeaconsArray objectAtIndex:indexPath.row];
+            beaconName = beacon.name;
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"Major: %@ | Minor: %@", beacon.major, beacon.minor];
         }
-        else if(beacon.major.intValue==28989)
-        {
-            beaconName=@"Ice Blue";
-        }
-        else if(beacon.major.intValue==55115)
-        {
-            beaconName=@"Blue Berry";
-        }
-        
         cell.textLabel.text = beaconName;
-    }
-    
+    }   
     return cell;
     
 }
