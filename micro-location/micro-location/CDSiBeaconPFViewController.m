@@ -20,9 +20,9 @@
 
 #define PROXIMITY_UUID [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]
 // Define the arena (Measurements in meters)
-#define PXPERMETER (320.0/6.0)
-#define ARENAWIDTH 6.0//5.851 //4.0//7.0
-#define ARENAHEIGHT 6.0//10.24//7.0
+#define PXPERMETER (320.0/1.0)
+#define ARENAWIDTH 1.0//5.851 //4.0//7.0
+#define ARENAHEIGHT 1.0//10.24//7.0
 
 // Define landmark locations and identification
 #if USELANDMARKSETONE
@@ -30,24 +30,27 @@
 //#define PROXIMITY_UUID
 #define LANDMARKSMAJOR 1
 #define LANDMARK1COLOR [UIColor greenColor]
-#define LANDMARK1MINOR 1
-#define LANDMARK1X 0.4
+#define LANDMARK1MINOR 4
+#define LANDMARK1X 0.2
 #define LANDMARK1Y 0.2
 #define LANDMARK2COLOR [UIColor purpleColor]
-#define LANDMARK2MINOR 2
-#define LANDMARK2X 3.6
+#define LANDMARK2MINOR 5
+#define LANDMARK2X 0.8
 #define LANDMARK2Y 0.2
 #define LANDMARK3COLOR [UIColor blueColor]
-#define LANDMARK3MINOR 3
-#define LANDMARK3X 2.0
-#define LANDMARK3Y 3.0
-
+#define LANDMARK3MINOR 6
+#define LANDMARK3X 0.4
+#define LANDMARK3Y 0.8
+//#define LANDMARK4COLOR [UIColor redColor]
+//#define LANDMARK4MINOR 7
+//#define LANDMARK4X 0.8
+//#define LANDMARK4Y 0.8
 #endif
 
 // Filter parameters
-#define PARTICLECOUNT 1000//500
-#define MEASUREMENTINTERVAL 0.0005//0.5
-#define MEASUREMENTSIGMA 0.4//2.0
+#define PARTICLECOUNT 500//500
+#define MEASUREMENTINTERVAL 0.005//0.5
+#define MEASUREMENTSIGMA 0.04//2.0
 #define NOISESIGMA 0.1//0.1
 
 #pragma mark -
@@ -119,6 +122,10 @@
                                                               x:LANDMARK3X
                                                               y:LANDMARK3Y
                                                           color:LANDMARK3COLOR]
+//                           [CDSBeaconLandmark landmarkWithIdent:[CDSBeaconLandmark identFromMajor:LANDMARKSMAJOR minor:LANDMARK4MINOR]
+//                                                              x:LANDMARK4X
+//                                                              y:LANDMARK4Y
+//                                                          color:LANDMARK4COLOR]
                            ];
         self.arenaView.landmarks = self.landmarks;
         
