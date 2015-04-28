@@ -3,6 +3,7 @@
 #First find out the IP address of the weemo device. Then using the script type ./wemo.sh on/off to turn the switch on and off.
 # Usage: wemo IP_ADDRESS ON/OFF
 
+#add static IP here
 IP=$1
 RUN=`echo $2 | tr '[a-z]' '[A-Z]'`
 DPORT=0
