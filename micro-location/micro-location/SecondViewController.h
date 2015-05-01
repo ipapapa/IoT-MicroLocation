@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WemoScriptService.h"
 
-@interface SecondViewController : UIViewController
+@interface SecondViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, WemoScriptServiceDelegate>
 
+@property (strong) NSArray *beacons;
 
 @end
+
 

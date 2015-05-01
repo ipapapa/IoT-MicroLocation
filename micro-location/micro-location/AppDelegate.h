@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "Singleton.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+#import "GetBeaconService.h"
+
+@interface AppDelegate : UIResponder <CLLocationManagerDelegate, UIApplicationDelegate, GetBeaconServiceDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property CLProximity lastProximity;
 @end
 

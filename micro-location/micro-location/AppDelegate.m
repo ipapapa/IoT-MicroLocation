@@ -7,17 +7,186 @@
 //
 
 #import "AppDelegate.h"
+#import "ProximityViewController.h"
+#import "Singleton.h"
+#import "iBeacon.h"
+#import "AFNetworking.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
+
+#import <CoreLocation/CoreLocation.h>
+#import <CoreBluetooth/CoreBluetooth.h>
+
 
 @interface AppDelegate ()
+
+@property (nonatomic, strong) NSUUID *beaconUUID;
 
 @end
 
 @implementation AppDelegate
 
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    NSString *regionIdentifier = @"12345";
+    CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.beaconUUID identifier:regionIdentifier];
+    
+    switch ([CLLocationManager authorizationStatus])
+    {
+        case kCLAuthorizationStatusAuthorizedAlways:
+            NSLog(@"Authorized Always");
+            break;
+        case kCLAuthorizationStatusAuthorizedWhenInUse:
+            NSLog(@"Authorized when in use");
+            break;
+        case kCLAuthorizationStatusDenied:
+            NSLog(@"Denied");
+            break;
+        case kCLAuthorizationStatusNotDetermined:
+            NSLog(@"Not determined");
+            break;
+        case kCLAuthorizationStatusRestricted:
+            NSLog(@"Restricted");
+            break;
+            
+        default:
+            break;
+    }
+    
+    [Singleton instance];
+    [Singleton instance].knownBeacons = [NSMutableArray array];
+    [Singleton instance].hasCalledWemoScript = false;
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    if([self.locationManager respondsToSelector:@selector(requestAlwaysAuthorization)])
+    {
+        [self.locationManager requestAlwaysAuthorization];
+    }
+    self.locationManager.delegate = self;
+    self.locationManager.pausesLocationUpdatesAutomatically = NO;
+    [self.locationManager startMonitoringForRegion:beaconRegion];
+    
+    [self.locationManager startRangingBeaconsInRegion:beaconRegion];
+    [self.locationManager startUpdatingLocation];
+    
     return YES;
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region
+{
+    [manager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
+    [self.locationManager startUpdatingLocation];
+    
+    NSLog(@"You entered the region.");
+    [self sendLocalNotificationWithMessage:@"You entered the region."];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region
+{
+    [manager stopRangingBeaconsInRegion:(CLBeaconRegion *)region];
+    [self.locationManager stopUpdatingLocation];
+    
+    NSLog(@"You exited the region.");
+    [self sendLocalNotificationWithMessage:@"You exited the region."];
+}
+
+-(void)sendLocalNotificationWithMessage:(NSString*)message
+{
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = message;
+    [[UIApplication sharedApplication] scheduleLocalNotification:notification];
+}
+
+
+-(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
+{
+    BOOL isKnownBeacon = false;
+    
+    [Singleton instance].beacons = beacons;
+    [[Singleton instance].tableView reloadData];
+    [[Singleton instance].geoTableView reloadData];
+    
+    for (CLBeacon *beacon in [Singleton instance].beacons)
+    {
+        NSString *uuid = [NSString stringWithFormat:@"%@",beacon.proximityUUID];
+        NSString *major = [beacon.major stringValue];
+        NSString *minor = [beacon.minor stringValue];
+        
+        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
+        GetBeaconService *beaconService = [GetBeaconService sharedClient];
+        beaconService.mGetBeaconServiceDelegate = self;
+        
+        if ([Singleton instance].knownBeacons.count == 0)
+        {
+            if (beaconService)
+            {
+                NSError *error = [beaconService getBeaconWithUUID:params];
+            }
+        }
+        else
+        {
+            for (iBeacon *knownBeacon in [Singleton instance].knownBeacons)
+            {
+                if ([knownBeacon.major isEqualToString:major] && [knownBeacon.minor isEqualToString:minor])
+                {
+                    isKnownBeacon = true;
+                }
+            }
+            
+            if (!isKnownBeacon)
+            {
+                if (beaconService)
+                {
+                    NSError *error = [beaconService getBeaconWithUUID:params];
+                }
+            }
+        }
+    }
+}
+
+
+- (void)getBeaconReturnedSuccessfully:(NSDictionary *)response
+{
+    NSLog(@"Response: %@", response);
+    BOOL isKnownBeacon = false;
+    
+    iBeacon *sourcedBeacon = [[iBeacon alloc]initWithDict:response];
+    
+    if ([Singleton instance].knownBeacons.count == 0)
+    {
+        [[Singleton instance].knownBeacons addObject:sourcedBeacon];
+    }
+    else
+    {
+        for (iBeacon *knownBeacon in [Singleton instance].knownBeacons)
+        {
+            if ([knownBeacon.major isEqualToString:sourcedBeacon.major] &&
+                [knownBeacon.minor isEqualToString:sourcedBeacon.minor])
+            {
+                isKnownBeacon = true;
+            }
+        }
+        
+        if (!isKnownBeacon)
+        {
+            [[Singleton instance].knownBeacons addObject:sourcedBeacon];
+        }
+        
+        NSLog(@"Known Beacons: %lu", (unsigned long)[Singleton instance].knownBeacons.count);
+    }
+}
+
+- (void)getBeaconFailedWithError:(NSError *)error
+{
+    NSLog(@"Failure: %@", error);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -43,3 +212,4 @@
 }
 
 @end
+
