@@ -62,6 +62,7 @@
     
     [Singleton instance];
     [Singleton instance].knownBeacons = [NSMutableArray array];
+    [Singleton instance].hasCalledWemoScript = false;
     
     self.locationManager = [[CLLocationManager alloc] init];
     
@@ -107,14 +108,11 @@
 
 -(void)locationManager:(CLLocationManager *)manager didRangeBeacons:(NSArray *)beacons inRegion:(CLBeaconRegion *)region
 {
-    NSString *message = @"";
     BOOL isKnownBeacon = false;
     
     [Singleton instance].beacons = beacons;
     [[Singleton instance].tableView reloadData];
     [[Singleton instance].geoTableView reloadData];
-    
-    NSString *urlString = @"10.10.10.10:8080/microlocation";
     
     for (CLBeacon *beacon in [Singleton instance].beacons)
     {
@@ -152,63 +150,8 @@
             }
         }
     }
-    
-        NSString *uuid = [NSString stringWithFormat:@"%@",self.beaconUUID];
-        NSNumber *major = beacon.major;
-        NSNumber *minor = beacon.minor;
-        
-        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-        
-        
-        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
-        
-        [manager POST:urlString parameters:params
-              success:^(AFHTTPRequestOperation *operation, id responseObject)
-         {
-             NSLog(@"JSON: %@", responseObject);
-         }
-              failure:^(AFHTTPRequestOperation *operation, NSError *error)
-         {
-             NSLog(@"Error: %@", error);
-         }];
-    }
-    
-    if(beacons.count > 0)
-    {
-        CLBeacon *nearestBeacon = beacons.firstObject;
-        
-        if(nearestBeacon.proximity == self.lastProximity || nearestBeacon.proximity == CLProximityUnknown)
-        {
-            return;
-        }
-        self.lastProximity = nearestBeacon.proximity;
-        
-        switch(nearestBeacon.proximity)
-        {
-            case CLProximityFar:
-                message = @"You are far away from the beacon";
-                break;
-            case CLProximityNear:
-                message = @"You are near the beacon";
-                break;
-            case CLProximityImmediate:
-                message = @"You are in the immediate proximity of the beacon";
-                break;
-            case CLProximityUnknown:
-                return;
-        }
-    }
-    else
-    {
-        message = @"No beacons are nearby";
-    }
-    
-    
-    
-    NSLog(@"%@", message);
-    //[self sendLocalNotificationWithMessage:message];
 }
+
 
 - (void)getBeaconReturnedSuccessfully:(NSDictionary *)response
 {

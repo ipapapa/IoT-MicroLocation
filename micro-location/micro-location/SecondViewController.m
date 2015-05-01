@@ -95,7 +95,6 @@
             NSMutableArray *geoBeaconsArray = [self createGeoBeaconsArray];
             numRows = geoBeaconsArray.count;
         }
-        numRows = [Singleton instance].geoBeacons.count;
     }
     else if (section == 1)
     {
@@ -136,15 +135,20 @@
     
     if (indexPath.section == 0)
     {
+        
         if (geoBeaconsArray.count > 0)
         {
             iBeacon *beacon = (iBeacon *)[geoBeaconsArray objectAtIndex:indexPath.row];
             beaconName = beacon.name;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"Major: %@ | Minor: %@", beacon.major, beacon.minor];
             
-            if ([beacon.name isEqualToString:@"TV"])
+            if ([beacon.name isEqualToString:@"TV"] && ![Singleton instance].hasCalledWemoScript)
             {
-                //Call Raspberry Pi Script
+                WemoScriptService *wemoService = [WemoScriptService sharedClient];
+                wemoService.mWemoScriptServiceDelegate = self;
+                
+                NSError *error = [wemoService runWemoScript];
+                [Singleton instance].hasCalledWemoScript = true;
             }
         }
         cell.textLabel.text = beaconName;
@@ -164,6 +168,16 @@
     
 }
 
+-(void)wemoScriptRanSuccessfully
+{
+    //Currently unnecessary to do anything here
+    //Maybe add a field in the geo table?
+}
+
+-(void)wemoScriptRanWithError:(NSError *)error
+{
+    NSLog(@"Error: %@", error);
+}
 
 - (void)didReceiveMemoryWarning
 {
