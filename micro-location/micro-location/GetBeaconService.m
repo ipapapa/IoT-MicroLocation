@@ -29,7 +29,7 @@
     static GetBeaconService* _sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.0.0.7:8080"]];
+        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.184.1.242:8080"]];
     });
     
     return _sharedClient;
@@ -37,11 +37,6 @@
 
 -(NSError*) getBeaconWithUUID:(NSDictionary *)uuid
 {
-//    if(!uuid)
-//    {
-//        return [NSError errorWithCode:TRRShopNullParameterError andMessage:@"LoginServiceClient:loginWithCredentials-- missing creds"];
-//    }
-    
     NSString* postPath = @"microlocation/BeaconController";
     [self postPath:postPath
         parameters:uuid
