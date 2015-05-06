@@ -13,7 +13,6 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,9 +27,22 @@ public class WemoController extends HttpServlet
 		super();
 	}
 	
-	protected void doGet (HttpServletRequest request, 
+	boolean turnOn;
+	
+	protected void doPost (HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException
 	{		
+		String onOrOff = request.getParameter("onoroff");
+		
+		if (onOrOff == "on")
+		{
+			turnOn = true;
+		}
+		else
+		{
+			turnOn = false;
+		}
+		
 		try
 		{
 			System.out.println("Execute Wemo Script");
@@ -71,12 +83,20 @@ public class WemoController extends HttpServlet
 		return "";
 	}
 	 
-	}
+}
 	
 	public String executeWemoScript() throws IOException, InterruptedException 
 	{
-		
-		String command = "/Users/ianscotthamilton/Documents/apache-tomcat-8.0.11/webapps/microlocation/Scripts/wemo.sh 128.210.137.31 on";
+		String command = "";
+		if (turnOn == true)
+		{
+			command = "/usr/share/tomcat8/webapps/microlocation/Scripts/wemo.sh 128.210.137.31 on";
+		}
+		else if (turnOn == false)
+		{
+			command = "/usr/share/tomcat8/webapps/microlocation/Scripts/wemo.sh 128.210.137.31 off";
+		}
+			
 		Boolean waitForResponse = true;
 		String response = "";
 		 

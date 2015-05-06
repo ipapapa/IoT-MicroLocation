@@ -31,7 +31,7 @@ public class BeaconAuthenticator
     	try 
     	{
     		connection = DriverManager
-    		.getConnection("jdbc:mysql://localhost:3306/microlocation", "root", "password");
+    		.getConnection("jdbc:mysql://localhost:3306/microlocation_aws", "root", "");
     	} 
     	catch (SQLException e) 
     	{
@@ -48,11 +48,6 @@ public class BeaconAuthenticator
     	{
     		System.out.println("Failed to make connection!");
     	}
-	}
-	
-	public void connectToMongoDB()
-	{
-		
 	}
 	
 	public String[] authenticateBeacon(String uuid, String major, String minor)
