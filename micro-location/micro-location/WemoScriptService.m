@@ -28,18 +28,17 @@
     static WemoScriptService* _sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://10.184.1.242:8080"]];
+        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://default-environment-tvmbb2aymn.elasticbeanstalk.com"]];
     });
     
     return _sharedClient;
 }
 
-- (NSError *)runWemoScript
+- (NSError *)runWemoScriptwithParams:(NSDictionary *)params
 {
-    NSString *getPath = @"/microlocation/WemoController";
+    NSString *postPath = @"WemoController";
     
-    [self getPath:getPath
-       parameters:nil
+    [self postPath:postPath parameters:params
           success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          

@@ -142,13 +142,37 @@
             beaconName = beacon.name;
             cell.detailTextLabel.text = [NSString stringWithFormat:@"Major: %@ | Minor: %@", beacon.major, beacon.minor];
             
-            if ([beacon.name isEqualToString:@"TV"] && ![Singleton instance].hasCalledWemoScript)
+            CLBeacon *thisCLBeacon = nil;
+            for (CLBeacon *clbeacon in [Singleton instance].beacons)
             {
-                WemoScriptService *wemoService = [WemoScriptService sharedClient];
-                wemoService.mWemoScriptServiceDelegate = self;
+                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor])
+                {
+                    thisCLBeacon = clbeacon;
+                }
+            }
+            //CLBeacon *clbeacon = (CLBeacon *)[Singleton instance].beacons objectAtIndex:<#(NSUInteger)#>]
+            
+            WemoScriptService *wemoService = [WemoScriptService sharedClient];
+            wemoService.mWemoScriptServiceDelegate = self;
+            
+            NSString *onOffString = @"";
+            NSDictionary *params = @ {};
+            
+            if ([beacon.name isEqualToString:@"TV"] && ![Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity == CLProximityImmediate)
+            {
+                onOffString = @"on";
+                params = @ {@"onoroff" : onOffString};
                 
-                NSError *error = [wemoService runWemoScript];
+                NSError *error = [wemoService runWemoScriptwithParams:params];
                 [Singleton instance].hasCalledWemoScript = true;
+            }
+            else if ([beacon.name isEqualToString:@"TV"] && [Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity != CLProximityImmediate && thisCLBeacon.proximity != CLProximityNear)
+            {
+                onOffString = @"off";
+                params = @ {@"onoroff" : onOffString};
+                
+                NSError *error = [wemoService runWemoScriptwithParams:params];
+                [Singleton instance].hasCalledWemoScript = false;
             }
         }
         cell.textLabel.text = beaconName;
