@@ -1,2 +1,12 @@
 # IoT-MicroLocation
-Internet of Things project for Microlocation, Geofencing and iBeacons
+The following is an end-to-end Internet of Things  project that was carried out as part of an independent study at Department of Computer and Information Technology, Purdue University under the supervision of Dr. Ioannis Papapanagiotou. In this project, we used the gimbal ibeacons that run the proprietary Apple ibeacon protocol. Our goal of the project was to implement an end to end location aware solution. 
+An iPhone application was developed by our team that utilized the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacon (signals) from the ibeacons (BLE enabled devices). The application has 3 major tabs. 
+
+Tab 1 is for micro-location purposes i.e. it uses a combination of beacons to estimate the position of the user with a targeted accuracy of as high as 10 cm. For micro-location purposes, we implemented the particle filtering algorithm that is a recursive bayesan method for calculating some unknown quantity using a known quantity. The mobile phone used the Received Signal Strength Indicator (RSSI) of the beacons to estimate the relevant distance between the phone on the beacons using a log normal shadowing model (widely used for positiong purposes). The beacons can be placed in fixed positions and then through n-point trilateration, the user's position is to be estimated. 
+
+Tab 2 is for geofencing purposes. Geofencing is the process of establishing a virtual fence around any object or entity (called Point of Interest (POI)). Any user that enters or exits this geofence would alert the POI and the POI can then act accordingly by interacting with the user. In our case, the beacons were installed on certain devices such as the micro-waves or TVs in our lab for creating the geofence around the devices. When the user would be in the geofence of the entity, the device would turn on. Ths whole system workd in the following order: a) The mobile phone would received the UUID beacon and forward that to the server. The server would check the UUID and find out that the user has entered the geofence of say a 'microwave oven'. The server would send the signal to a Belkin Switch to power on the micro-wave. Once the user would leave the geofence, the Belkin Switch should be turned off. 
+
+Tab 3 was for proximity purposes. The RSSI values from the beacons were used to approximate the distance between the user and the device. This was supposed to facilitate the user in finding out its distance between a specific entity and the user. For  example, a user who wants to find out how far the printer is; can use the proxmity tab to get the relevant information. 
+
+
+
