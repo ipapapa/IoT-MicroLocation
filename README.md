@@ -52,7 +52,6 @@ In the Amazon Dashboard, navigate back to the Elastic Beanstalk dashboard. Creat
 
 If you choose to use an auto-scaling group to manage load balancing, know that stopping the instance without removing it from the auto-scaling group will actually terminate the instance and require you to do the previous steps all over again.
 
-
 # iOS application (everything within the microlocation folder)
 
 The first thing that might need to change is the second line of AppDelegate.m which declares your UUID. This will be unique to your beacons and so it should be altered to reflect your UUID. The next two changes will be in the two service classes (GetBeaconService.m and WemoScriptService.m). Within these two classes under the 
