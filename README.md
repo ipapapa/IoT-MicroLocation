@@ -54,8 +54,7 @@ If you choose to use an auto-scaling group to manage load balancing, know that s
 
 # iOS application (everything within the microlocation folder)
 
-The first thing that might need to change is the second line of AppDelegate.m which declares your UUID. This will be unique to your beacons and so it should be altered to reflect your UUID. The next two changes will be in the two service classes (GetBeaconService.m and WemoScriptService.m). Within these two classes under the 
-+ (WemoScriptService *)sharedClient method, there is an initWithBaseURL line that takes a string with the base URL of the service call. Replace this line in both service classes listed above with the url of your Elastic Beanstalk instance. These lines should be the only things that need to change within the iOS application.
+The first thing that might need to change is the second line of AppDelegate.m which declares your UUID. This will be unique to your beacons and so it should be altered to reflect your UUID. The next two changes will be in the two service classes (GetBeaconService.m and WemoScriptService.m). Within these two classes under the + (WemoScriptService *)sharedClient method, there is an initWithBaseURL line that takes a string with the base URL of the service call. Replace this line in both service classes listed above with the url of your Elastic Beanstalk instance. These lines should be the only things that need to change within the iOS application.
 
 
 
