@@ -1,5 +1,5 @@
 # IoT-MicroLocation
-The following is an end-to-end Internet of Things (IoT) project currently undergoing at the Department of Computer and Information Technology, Purdue University. For more information, you may contact: Prof. [Ioannis Papapanagiotou](ipapapan@purdue.edu). The goal of this project is deploy an Indoor Localization (Micro-Location) and Geofencing IoT service on the Cloud.
+The following is an end-to-end Internet of Things (IoT) project currently undergoing at the Department of Computer and Information Technology, Purdue University. For more information, you may contact: Prof. [Ioannis Papapanagiotou](). The goal of this project is deploy an Indoor Localization (Micro-Location) and Geofencing IoT service on the Cloud.
 
 ![IoT-MicroLocation Flow](http://ianscotthamilton.github.io/microlocation_flow.png)
 
