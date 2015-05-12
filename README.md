@@ -1,13 +1,14 @@
 # IoT-MicroLocation
-The following is an end-to-end Internet of Things  project that was carried out as part of an independent study at Department of Computer and Information Technology, Purdue University under the supervision of Dr. Ioannis Papapanagiotou. In this project, we used the gimbal ibeacons that run the proprietary Apple ibeacon protocol. Our goal of the project was to implement an end to end location aware solution as shown in the image below.
+The following is an end-to-end Internet of Things (IoT) project currently undergoing at the Department of Computer and Information Technology, Purdue University. For more information, you may contact: Prof. [Ioannis Papapanagiotou](ipapapan@purdue.edu). The goal of this project is deploy an Indoor Localization (Micro-Location) and Geofencing IoT service on the Cloud.
 
 ![IoT-MicroLocation Flow](http://ianscotthamilton.github.io/microlocation_flow.png)
 
-An iPhone application that utilized the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacon (signals) from the ibeacons (BLE enabled devices) and a Java Tomcat Servlet with a MySQL database were developed by the team to implement our solution. The iOS application initally ranges the beacons for the supplied UUID and then sends their information (uuid, major, minor) to the server. The server uses the sent information to query the database, and returns information about the specific beacon to the iOS app. The iOS app uses this information, along with a beacon's proximity to determine whether it should call a script on the server to do something such as turn on an applicance plugged in with a Wemo switch. In order to use the code found on this repository to create your own iBeacons application, follow the guide below.
+The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacons (signals) from the ibeacons (BLE enabled devices). A Java Tomcat Servlet with a MySQL database can be deployed on Amazon's AWS. The iOS application ranges the beacons for the supplied UUID and then sends the corresponding information (uuid, major, minor) to the server. The server uses the sent information to query the database, and returns information about the specific beacon to the iOS app. The iOS app uses this information, along with a beacon's proximity to determine whether it should call a script on the server to perform an action, such as turn on an appliance plugged in with a Wemo switch. In order to use the code found on this repository to create your own iBeacons application, follow the guide below.
 
 There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
-# Java application (the project folder is the micro-location folder inside the java-server folder)
+# Java application 
+(the project folder is the micro-location folder inside the java-server folder)
 
 There are only two parts of the Java application that will change based on your environment and that is the IP address associated with your IoT device (in our case a Wemo switch) and the mysql database information in the BeaconAuthenticator class. 
 
@@ -54,7 +55,8 @@ In the Amazon Dashboard, navigate back to the Elastic Beanstalk dashboard. Creat
 
 If you choose to use an auto-scaling group to manage load balancing, know that stopping the instance without removing it from the auto-scaling group will actually terminate the instance and require you to do the previous steps all over again.
 
-# iOS application (everything within the microlocation folder)
+# iOS application 
+(everything within the microlocation folder)
 
 The first thing that might need to change is the second line of AppDelegate.m which declares your UUID. This will be unique to your beacons and so it should be altered to reflect your UUID. The next two changes will be in the two service classes (GetBeaconService.m and WemoScriptService.m). Within these two classes under the + (WemoScriptService *)sharedClient method, there is an initWithBaseURL line that takes a string with the base URL of the service call. Replace this line in both service classes listed above with the url of your Elastic Beanstalk instance. These lines should be the only things that need to change within the iOS application.
 
