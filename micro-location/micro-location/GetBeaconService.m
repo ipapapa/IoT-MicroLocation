@@ -29,7 +29,7 @@
     static GetBeaconService* _sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://default-environment-tvmbb2aymn.elasticbeanstalk.com"]];
+        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://microlocation.elasticbeanstalk.com"]];
     });
     
     return _sharedClient;

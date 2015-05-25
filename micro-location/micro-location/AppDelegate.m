@@ -30,8 +30,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
-    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
+    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
@@ -116,11 +116,18 @@
     
     for (CLBeacon *beacon in [Singleton instance].beacons)
     {
-        NSString *uuid = [NSString stringWithFormat:@"%@",beacon.proximityUUID];
+        //beacon.proximityUUID = "<_NSConcreteUUIDx .... > " followed by the actual UUID
+        //The array separates that string into two parts: everything up to the "> " is object 0 of the arry
+        //everything afterwards, i.e. the UUID is part 1
+        NSString *noFormatUUID = [NSString stringWithFormat:@"%@",beacon.proximityUUID];
+        NSArray *uuidFormatArray = [noFormatUUID componentsSeparatedByString:@"> "];
+        NSString *formatUUID = uuidFormatArray[1];
+    
+        
         NSString *major = [beacon.major stringValue];
         NSString *minor = [beacon.minor stringValue];
         
-        NSDictionary *params = @ {@"uuid" :uuid, @"major" :major, @"minor" :minor };
+        NSDictionary *params = @ {@"uuid" :formatUUID, @"major" :major, @"minor" :minor };
         GetBeaconService *beaconService = [GetBeaconService sharedClient];
         beaconService.mGetBeaconServiceDelegate = self;
         
