@@ -17,7 +17,7 @@
 
 @interface WemoScriptService : AFHTTPClient
 +(WemoScriptService*) sharedClient;
-- (NSError *)runWemoScriptwithParams:(NSDictionary *)params
+- (NSError *)runWemoScriptwithParams:(NSDictionary *)params;
 
 @property (nonatomic, weak) id <WemoScriptServiceDelegate> mWemoScriptServiceDelegate;
 

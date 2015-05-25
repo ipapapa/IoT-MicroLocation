@@ -158,7 +158,7 @@
             NSString *onOffString = @"";
             NSDictionary *params = @ {};
             
-            if ([beacon.name isEqualToString:@"TV"] && ![Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity == CLProximityImmediate)
+            if ([beacon.name isEqualToString:@"tv"] && ![Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity == CLProximityImmediate)
             {
                 onOffString = @"on";
                 params = @ {@"onoroff" : onOffString};
@@ -166,7 +166,7 @@
                 NSError *error = [wemoService runWemoScriptwithParams:params];
                 [Singleton instance].hasCalledWemoScript = true;
             }
-            else if ([beacon.name isEqualToString:@"TV"] && [Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity != CLProximityImmediate && thisCLBeacon.proximity != CLProximityNear)
+            else if ([beacon.name isEqualToString:@"tv"] && [Singleton instance].hasCalledWemoScript && thisCLBeacon.proximity != CLProximityImmediate && thisCLBeacon.proximity != CLProximityNear)
             {
                 onOffString = @"off";
                 params = @ {@"onoroff" : onOffString};
