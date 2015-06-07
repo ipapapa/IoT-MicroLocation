@@ -27,14 +27,14 @@ public class WemoController extends HttpServlet
 		super();
 	}
 	
-	boolean turnOn;
+	Boolean turnOn;
 	
 	protected void doPost (HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException
 	{		
 		String onOrOff = request.getParameter("onoroff");
 		
-		if (onOrOff == "on")
+		if (onOrOff.equals("on"))
 		{
 			turnOn = true;
 		}
@@ -88,11 +88,11 @@ public class WemoController extends HttpServlet
 	public String executeWemoScript() throws IOException, InterruptedException 
 	{
 		String command = "";
-		if (turnOn == true)
+		if (turnOn.equals(true))
 		{
 			command = "/usr/share/tomcat8/webapps/microlocation/Scripts/wemo.sh 128.210.137.31 on";
 		}
-		else if (turnOn == false)
+		else if (turnOn.equals(false))
 		{
 			command = "/usr/share/tomcat8/webapps/microlocation/Scripts/wemo.sh 128.210.137.31 off";
 		}

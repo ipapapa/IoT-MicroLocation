@@ -27,8 +27,8 @@ public class BeaconController extends HttpServlet
 			HttpServletResponse response) throws ServletException, IOException
 	{	
 		String[] results = new String[5];
-		String nsuuid = request.getParameter("uuid");
-		String uuid = nsuuid.substring(31,67);
+		String uuid = request.getParameter("uuid");
+		//String uuid = nsuuid.substring(31,67);
 		String major = request.getParameter("major");
 		String minor = request.getParameter("minor");
 		
