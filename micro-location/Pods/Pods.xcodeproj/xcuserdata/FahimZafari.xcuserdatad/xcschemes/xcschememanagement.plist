@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-CDSParticleFilter.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1F8F3631AE7E406F1B09086D</key>
+		<key>117DB78C09FB40696677CE0F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A9733CD21C59166491D548B9</key>
+		<key>364B61ED5CD26A9760664239</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B47F66C95C52FF357D6B0F38</key>
+		<key>46E1207D1AD4B5E452054A0B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A3C65D9B5E62F6E16C4DC9AA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

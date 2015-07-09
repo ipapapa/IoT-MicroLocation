@@ -1,87 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Micro-location-->
-        <scene sceneID="hNz-n2-bh7">
-            <objects>
-                <viewController id="9pv-A4-QxB" customClass="CDSiBeaconPFViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
-                        <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="dp9-0W-EFI">
-                                <rect key="frame" x="0.0" y="20" width="600" height="140"/>
-                            </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70U-Nd-joO" customClass="CDSArenaView">
-                                <rect key="frame" x="0.0" y="175" width="600" height="375"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rmU-P1-1h9">
-                                <rect key="frame" x="0.0" y="79" width="600" height="97"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeaconCell" textLabel="C4D-yo-Zyd" detailTextLabel="aiP-hs-4Nm" style="IBUITableViewCellStyleSubtitle" id="55m-vr-KGg">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="55m-vr-KGg" id="bsN-ZY-W3o">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C4D-yo-Zyd">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aiP-hs-4Nm">
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="9pv-A4-QxB" id="OtC-zh-Ich"/>
-                                    <outlet property="delegate" destination="9pv-A4-QxB" id="Cdp-8t-wmy"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.96078437566757202" green="0.96862751245498657" blue="0.87843143939971924" alpha="1" colorSpace="deviceRGB"/>
-                        <constraints>
-                            <constraint firstItem="dp9-0W-EFI" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="0mF-hZ-B0n"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="top" secondItem="tsR-hK-woN" secondAttribute="top" constant="175" id="4X9-q2-RTv"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="dp9-0W-EFI" secondAttribute="trailing" constant="-16" id="7vT-Eg-V0A"/>
-                            <constraint firstItem="rmU-P1-1h9" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="59" id="AOy-iK-iJO"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="CQX-Vp-Ldg"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rmU-P1-1h9" secondAttribute="trailing" constant="-16" id="M2p-SL-n1G"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="trailing" secondItem="tsR-hK-woN" secondAttribute="trailingMargin" constant="16" id="YAB-9G-py9"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="top" secondItem="rmU-P1-1h9" secondAttribute="bottom" constant="-1" id="ZFf-xv-A2a"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="bottom" secondItem="4ug-Mw-9AY" secondAttribute="top" constant="-1" id="eWP-bv-Q9e"/>
-                            <constraint firstItem="dp9-0W-EFI" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="mIB-Re-T2O"/>
-                            <constraint firstItem="70U-Nd-joO" firstAttribute="top" secondItem="dp9-0W-EFI" secondAttribute="bottom" constant="15" id="r9z-ld-Ae8"/>
-                            <constraint firstItem="rmU-P1-1h9" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-16" id="uTZ-Dg-ke6"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Micro-location" image="first" id="acW-dT-cKf"/>
-                    <connections>
-                        <outlet property="arenaView" destination="70U-Nd-joO" id="3ag-Lm-FwR"/>
-                        <outlet property="beaconTable" destination="rmU-P1-1h9" id="WOR-Ts-M7o"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="652" y="482"/>
-        </scene>
         <!--Geofencing-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
@@ -93,7 +16,7 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.9647059440612793" green="0.97254908084869385" blue="0.90196084976196289" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.94509810209274292" green="0.17647059261798859" blue="0.14117647707462311" alpha="1" colorSpace="deviceRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Geofencing" image="second" id="cPa-gy-q4n"/>
                 </viewController>
@@ -115,13 +38,14 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg_proximity.png" translatesAutoresizingMaskIntoConstraints="NO" id="XAm-V0-P2D">
                                 <rect key="frame" x="16" y="20" width="568" height="375"/>
+                                <color key="backgroundColor" red="0.99215692281723022" green="0.9803922176361084" blue="0.97647064924240112" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="375" id="2G9-hM-M2C"/>
                                     <constraint firstAttribute="width" constant="375" id="f1l-wt-Vyl"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.9647059440612793" green="0.96862751245498657" blue="0.88627457618713379" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.94509810209274292" green="0.14509804546833038" blue="0.13725490868091583" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstItem="XAm-V0-P2D" firstAttribute="top" secondItem="OlY-Lj-l26" secondAttribute="top" constant="20" id="24z-5W-Mqs"/>
                             <constraint firstAttribute="centerX" secondItem="XAm-V0-P2D" secondAttribute="centerX" id="irA-un-MAJ"/>
@@ -141,13 +65,10 @@
                         <viewControllerLayoutGuide type="top" id="8GB-Sx-x4o"/>
                         <viewControllerLayoutGuide type="bottom" id="QCF-k8-ZhW"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="GYW-ya-CgQ">
+                    <view key="view" tag="1" contentMode="scaleToFill" id="GYW-ya-CgQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="purdue_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="FwI-WA-P3p">
-                                <rect key="frame" x="0.0" y="20" width="600" height="140"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Ioannis Papapanagiotou - Advisor/Architect" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IGC-Pi-i2F">
                                 <rect key="frame" x="133" y="281" width="334" height="21"/>
                                 <constraints>
@@ -184,7 +105,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" misplaced="YES" text="Team" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-hj-glW">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" misplaced="YES" text="Team" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Abt-hj-glW">
                                 <rect key="frame" x="191" y="217" width="219" height="56"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="36"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -199,18 +120,22 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="kD6-wf-UMv">
+                                <rect key="frame" x="0.0" y="20" width="600" height="128"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.9647059440612793" green="0.96862751245498657" blue="0.89019614458084106" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Abt-hj-glW" secondAttribute="centerX" id="Eob-3O-t0K"/>
+                            <constraint firstItem="Abt-hj-glW" firstAttribute="top" secondItem="kD6-wf-UMv" secondAttribute="bottom" constant="69" id="NW3-nz-Z2P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kD6-wf-UMv" secondAttribute="trailing" constant="-16" id="Saz-1I-Tej"/>
                             <constraint firstAttribute="centerX" secondItem="JOR-42-ihY" secondAttribute="centerX" id="U1s-BK-dxC"/>
                             <constraint firstAttribute="centerX" secondItem="DHV-xN-BRs" secondAttribute="centerX" id="WsL-RR-O1P"/>
+                            <constraint firstItem="kD6-wf-UMv" firstAttribute="leading" secondItem="GYW-ya-CgQ" secondAttribute="leadingMargin" constant="-16" id="WuW-2X-jyO"/>
                             <constraint firstAttribute="centerX" secondItem="U33-9Z-g7P" secondAttribute="centerX" id="YgU-um-qkL"/>
                             <constraint firstAttribute="centerX" secondItem="O7q-9n-3Gk" secondAttribute="centerX" id="ZxC-60-sWo"/>
-                            <constraint firstItem="FwI-WA-P3p" firstAttribute="top" secondItem="8GB-Sx-x4o" secondAttribute="bottom" id="gDQ-KR-Rik"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FwI-WA-P3p" secondAttribute="trailing" constant="-16" id="tJl-p0-IWU"/>
                             <constraint firstAttribute="centerX" secondItem="IGC-Pi-i2F" secondAttribute="centerX" id="ttr-8y-SDe"/>
-                            <constraint firstItem="FwI-WA-P3p" firstAttribute="leading" secondItem="GYW-ya-CgQ" secondAttribute="leadingMargin" constant="-16" id="yLO-Kp-0SV"/>
+                            <constraint firstItem="kD6-wf-UMv" firstAttribute="top" secondItem="8GB-Sx-x4o" secondAttribute="bottom" id="xba-PI-GyX"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Team" image="second" id="MwH-8q-4Dk"/>
@@ -230,10 +155,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
+                        <segue destination="0PC-HU-rnG" kind="relationship" relationship="viewControllers" id="YwX-ut-a6k"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="cM3-9Y-Acb" kind="relationship" relationship="viewControllers" id="Vwk-Cz-9oT"/>
-                        <segue destination="0PC-HU-rnG" kind="relationship" relationship="viewControllers" id="YwX-ut-a6k"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -242,9 +166,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Image" width="488" height="80"/>
         <image name="bg_proximity.png" width="1100" height="1100"/>
         <image name="first" width="30" height="30"/>
-        <image name="purdue_logo.png" width="400" height="208"/>
         <image name="second" width="30" height="30"/>
     </resources>
+    <color key="tintColor" red="0.65098041296005249" green="0.91764712333679199" blue="0.61960786581039429" alpha="1" colorSpace="deviceRGB"/>
 </document>
