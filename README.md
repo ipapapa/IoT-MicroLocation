@@ -1,5 +1,5 @@
 # IoT-MicroLocation
-The following is an end-to-end Internet of Things (IoT) project for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project started at Purdue University by the team of Dr. Ioannis Papapanagiotou - ipapapan@purdue.edu.
+An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project started at Purdue University by the team of Dr. Ioannis Papapanagiotou - ipapapan@purdue.edu.
 
 # Readme
 
