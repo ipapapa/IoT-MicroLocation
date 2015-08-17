@@ -1,5 +1,13 @@
 # IoT-MicroLocation
-The following is an end-to-end Internet of Things (IoT) project currently undergoing at the Department of Computer and Information Technology, Purdue University. For more information, you may contact: Prof. Ioannis Papapanagiotou - ipapapan@purdue.edu. The goal of this project is deploy an Indoor Localization (Micro-Location) and Geofencing IoT service on the Cloud using Apple's iBeacons.
+The following is an end-to-end Internet of Things (IoT) project for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services.. The project started at Purdue University by the team of Dr. Ioannis Papapanagiotou - ipapapan@purdue.edu.
+
+# Wiki
+
+Below you may find information about the Java server application, Amazon AWS installation, and the iOS application
+
+The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further information about additional components that can be added to the project.
+
+# Technical Information
 
 ![IoT-MicroLocation Flow](http://ianscotthamilton.github.io/microlocation_flow.png)
 
@@ -7,7 +15,7 @@ The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of 
 
 There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
-# Java application 
+## Java application 
 (the project folder is the micro-location folder inside the java-server folder)
 
 There are only two parts of the Java application that will change based on your environment and that is the IP address associated with your IoT device (in our case a Wemo switch) and the mysql database information in the BeaconAuthenticator class. 
@@ -19,7 +27,7 @@ connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/microlocat
 
 In anticipation of the next step, once the server application is completely updated, open the project in Eclipse. Then go to File > Export and choose Web and then War. Follow the prompts and if you know what server you are building for choose it and then finish the prompt. This should have created a .war file wherever you chose. This is the file that you will use to deploy your application on AWS.
 
-# Amazon AWS Elastic Beanstalk EC2 instance
+## Amazon AWS Elastic Beanstalk EC2 instance
 
 This is the most time consuming part of this process. This is because you need to create the instance, open the correct ports, install mysql, and finally create and populate the database within your instance.
 Log into your Amazon AWS account. In the dashboard select Elastic Beanstalk under the “Deployment & Management” section. Follow the steps to create and launch a new instance and if you don’t already have one, create and associate a key pair. 
@@ -55,7 +63,7 @@ In the Amazon Dashboard, navigate back to the Elastic Beanstalk dashboard. Creat
 
 If you choose to use an auto-scaling group to manage load balancing, know that stopping the instance without removing it from the auto-scaling group will actually terminate the instance and require you to do the previous steps all over again.
 
-# iOS application 
+## iOS application 
 (everything within the microlocation folder)
 
 The first thing that might need to change is the second line of AppDelegate.m which declares your UUID. This will be unique to your beacons and so it should be altered to reflect your UUID. The next two changes will be in the two service classes (GetBeaconService.m and WemoScriptService.m). Within these two classes under the + (WemoScriptService *)sharedClient method, there is an initWithBaseURL line that takes a string with the base URL of the service call. Replace this line in both service classes listed above with the url of your Elastic Beanstalk instance. Also, since we have used cocoapods in the application, you need to install the pods in our application as well. For that you have to open up the terminal, go to the directory where your application project is located (You can use cd (path) to change the directory). Once you get to the specific directory, type pod install. This will install the podfiles required to compile the project. 
