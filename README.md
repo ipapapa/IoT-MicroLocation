@@ -24,11 +24,11 @@ The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of 
 There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
 ## Java application 
-(the project folder is the micro-location folder inside the java-server folder)
+(the project folder is the micro-location folder inside the java-server folder. Also, the logincontroller currently in the project has no use and is going to be included in the future versions. ) 
 
 There are only two parts of the Java application that will change based on your environment and that is the IP address associated with your IoT device (in our case a Wemo switch) and the mysql database information in the BeaconAuthenticator class. 
 
-Open in the project in an IDE or open WemoController.java in a text editor and scroll to lines 93 and 97 which are inside the executeWemoScript() method. On these two lines a string is defined that points to the location of your script and that path is followed by an IP address and either the word on or off. The only part of these two lines that should need to be changed is the IP address. This should be changed to the IP address of your connected Wemo switch.
+Open in the project in an IDE or open WemoController.java in a text editor and scroll to lines 93 and 97 which are inside the executeWemoScript() method. On these two lines a string is defined that points to the location of your script and that path is followed by an IP address and either the word on or off. The only part of these two lines that should need to be changed is the IP address. This should be changed to the IP address of your connected Wemo switch. 
 
 Next open BeaconAuthenticator.java in whatever editor you like and scroll to line 34 in the method connectToSQLDatabase(). The current line reads: 
 connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/microlocation_aws", "root", “”); You should replace microlocation_aws with the name of the database you are going to create in the next step. Root signifies that you are logging in as the root user and the following empty quotes are for the password. If you left the default blank password then it doesn’t need to change, however if you created a password, you will need to enter it inside those quotations. localhost can actually be left because when this is exported and deployed on the Elastic Beanstalk instance, the database will be on the same instance, therefore it is the localhost to which you want to connect.
@@ -52,7 +52,7 @@ Once the service is started, enter the mysql command line with the following com
 
 To create your database, execute the following command: CREATE DATABASE database_name;
 
-Now that your database has been created, you will want to access and populate it with your data. The easiest way to do this is to connect through SSH via a GUI application. The application I am using is Sequel Pro. Open the application, choose the SSH tab, and fill in the following information
+Now that your database has been created, you will want to access and populate it with your data.  The easiest way to do this is to connect through SSH via a GUI application. The application I am using is Sequel Pro. Open the application, choose the SSH tab, and fill in the following information
 	Name: database_name
 	MySQL Host: 127.0.0.1 (This assigns it to the localhost of the instance being ssh’d into)
 	Username: root
@@ -65,7 +65,7 @@ Now that your database has been created, you will want to access and populate it
 	SSH Key: Click the key icon and select your .pem file
 	SSH Port: 22
 
-Test connection can be used to make sure it works. If it is successful, you can use Add to Favorites so that you don’t have to enter the information every time you connect. (If you haven’t configured a static (elastic) IP in AWS, the SSH Host name could change though). Finally click Connect and you will be able to create tables using the Query tab. Once your table(s) have been created, you can create the columns in the Structure tab, and then populate the columns with your data in the Content tab.
+Test connection can be used to make sure it works. If it is successful, you can use Add to Favorites so that you don’t have to enter the information every time you connect. (If you haven’t configured a static (elastic) IP in AWS, the SSH Host name could change though). Finally click Connect and you will be able to create tables using the Query tab. Once your table(s) have been created, you can create the columns in the Structure tab, and then populate the columns with your data in the Content tab. The components that your table would contain are in 5 columns as specified below (uuid VARCHAR(40), major VARCHAR(20), minor VARCHAR(20), name VARCHAR(40), usecase VARCHAR(80)) with minor being the primary key.
 
 In the Amazon Dashboard, navigate back to the Elastic Beanstalk dashboard. Create an Elastic Beanstalk environment and once it has loaded and is running (Health status is green). Click the Upload and Deploy button and a menu will appear. Click Choose File and select the .war file you created at the end of the Java application step. Give it a version label and choose Deploy. This will create a public URL that runs your application.
 
