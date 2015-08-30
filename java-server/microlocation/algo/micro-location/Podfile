@@ -1,6 +1,0 @@
-platform :ios, "8.1"
-
-pod 'CDSParticleFilter'
-pod 'CocoaLumberjack'
-pod 'AFNetworking',  '~> 1.3.3'
-
