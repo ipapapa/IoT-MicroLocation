@@ -1,3 +1,8 @@
+/*
+ * The Beacon class has a constructor Beacon.
+ * The functions are getUUID, getMajor, getMinor, getName, getUseCase
+ * The functions return the UUID, Major, Minor, Name and UseCase
+ */
 package microlocation.models;
 
 public class Beacon 
