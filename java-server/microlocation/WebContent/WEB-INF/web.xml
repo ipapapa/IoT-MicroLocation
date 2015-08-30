@@ -21,27 +21,7 @@
     <servlet-name>WemoController</servlet-name>
     <url-pattern>/WemoController</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>WemoController2</display-name>
-    <servlet-name>WemoController2</servlet-name>
-    <servlet-class>microlocation.controllers.WemoController2</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WemoController2</servlet-name>
-    <url-pattern>/WemoController2</url-pattern>
-  </servlet-mapping>
-  
-    <servlet>
-    <description></description>
-    <display-name>WemoController3</display-name>
-    <servlet-name>WemoController3</servlet-name>
-    <servlet-class>microlocation.controllers.WemoController3</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WemoController3</servlet-name>
-    <url-pattern>/WemoController3</url-pattern>
-  </servlet-mapping>
+
   
   <listener>
   <listener-class>
