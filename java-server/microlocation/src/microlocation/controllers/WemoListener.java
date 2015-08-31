@@ -47,14 +47,16 @@ public class WemoListener implements ServletContextListener{
 
 	
 	//private MyThread t = null;
-	private ExecutorService ex;
+	private ExecutorService ex1;
+	private ExecutorService ex2;
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
 		// TODO Auto-generated method stub
 		System.out.println("I am starting");
-		ex = Executors.newSingleThreadExecutor();
-		ex.submit(new MyThread());
-		
+		ex1 = Executors.newSingleThreadExecutor();
+		ex2 = Executors.newSingleThreadExecutor();
+		ex1.submit(new MyThread());
+		ex2.submit(new MyThread1());
 	}
 
 	@Override
@@ -68,28 +70,31 @@ public class WemoListener implements ServletContextListener{
 
 
 class MyThread implements Runnable{
-	//public int x = 0;
+	
 	public void run(){
 		Random rand = new Random();		
 		while(true){
-			int value = rand.nextInt(1000)%3+1;
-
+	//		int value = rand.nextInt(1000)%3+1;
+int value=1;
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 	try {
-		
-		sendPost("skill"+value);
-	} catch (Exception e) {
+			System.out.println("Thread 1");
+			sendPost("skill"+value);
+		} 
+	
+	catch (Exception e) 
+	{
 	
 		e.printStackTrace();
 	}
 	
-	//	i++;
+
 		}
 	}
 	private void sendPost(String alarm) throws Exception {
@@ -130,7 +135,81 @@ class MyThread implements Runnable{
 		//print result
 //		System.out.println(response.toString());
 
+	}}
+class MyThread1 implements Runnable{
+	
+	public void run(){
+		Random rand = new Random();		
+		while(true){
+	//		int value = rand.nextInt(1000)%3+1;
+int value=2;
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	try {
+			System.out.println("Thread 2");
+			sendPost1("skill"+value);
+		} 
+	
+	catch (Exception e) 
+	{
+	
+		e.printStackTrace();
 	}
 	
+
+		}
+	}
+	private void sendPost1(String alarm) throws Exception {
+
+		String url = "http://localhost:8080/microlocation/WemoController";
+		URL obj = new URL(url);
+		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+
+		//add reuqest header
+		con.setRequestMethod("POST");
+		//con.setRequestProperty("User-Agent", USER_AGENT);
+		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+
+		String urlParameters = "user="+alarm;
+		
+		// Send post request
+		con.setDoOutput(true);
+		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+		wr.writeBytes(urlParameters);
+		wr.flush();
+		wr.close();
+
+		int responseCode = con.getResponseCode();
+	//	System.out.println("\nSending 'POST' request to URL : " + url);
+	//	System.out.println("Post parameters : " + urlParameters);
+	//	System.out.println("Response Code : " + responseCode);
+
+		BufferedReader in = new BufferedReader(
+		        new InputStreamReader(con.getInputStream()));
+		String inputLine;
+		StringBuffer response = new StringBuffer();
+
+		while ((inputLine = in.readLine()) != null) {
+			response.append(inputLine);
+		}
+		in.close();
+		
+		//print result
+//		System.out.println(response.toString());
+
+	}}
 	
-}
+
+	
+	
+	
+
+	
+
+	
+	

@@ -280,7 +280,7 @@ public class WemoController extends HttpServlet
 		      Class.forName("com.mysql.jdbc.Driver");
 		      // Setup the connection with the DB
 		      connect = DriverManager
-		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "");//"MDWY!(&&");
+		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "MDWY!(&&");//"MDWY!(&&");
 
 		   }
 		catch (SQLException e) 
@@ -360,10 +360,10 @@ public class WemoController extends HttpServlet
     				break;
     			}
     		}
-		    result.close();
+		//    result.close();
 		    
-		    statement.close();
-		    connect.close();
+		//    statement.close();
+		//    connect.close();
     		
     	
     	}
