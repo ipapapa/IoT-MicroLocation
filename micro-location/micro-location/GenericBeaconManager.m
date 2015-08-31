@@ -58,11 +58,11 @@
     
     
     if ([region.identifier isEqualToString:self.beaconRegionId]) {
-        //        for (CLBeacon* beacon in beacons) {
-        //            beacon.rssi;
-        //            beacon.major;
-        //            beacon.minor;
-        //        }
+//                for (CLBeacon* beacon in beacons) {
+//                    beacon.rssi;
+//                    beacon.major;
+//                    beacon.minor;
+//                }
         
         [self.delegate rangedBeacons:beacons];
     }

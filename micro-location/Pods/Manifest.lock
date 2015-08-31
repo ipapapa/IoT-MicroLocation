@@ -13,8 +13,8 @@ DEPENDENCIES:
   - CocoaLumberjack
 
 SPEC CHECKSUMS:
-  AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
-  CDSParticleFilter: 2e07df84ac9e7d10d61f999523716fc157bdd391
-  CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  AFNetworking: cf8e418e16f0c9c7e5c3150d019a3c679d015018
+  CDSParticleFilter: cd5607ad00ff3d23fd569190982a2d786c2a5ca2
+  CocoaLumberjack: 628fca2e88ef06f7cf6817309aa405f325d9a6fa
 
 COCOAPODS: 0.35.0
