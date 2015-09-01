@@ -30,15 +30,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"]; //gimbal uuid
+    self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"F4913F46-75F4-9134-913F-4913F4913F49"];//9"]; //gimbal uuid // the beacon UUID is declared
     //self.beaconUUID = [[NSUUID alloc] initWithUUIDString:@"B9407F30-F5F8-466E-AFF9-25556B57FE6D"];  //estimote uuid
+
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
-    NSString *regionIdentifier = @"12345";
+    NSString *regionIdentifier = @"12345";  //region id that we have for the specific region we are monitoring, Apple allows monitoring about 20 regions simultaneously by an App.
     CLBeaconRegion *beaconRegion = [[CLBeaconRegion alloc] initWithProximityUUID:self.beaconUUID identifier:regionIdentifier];
     
-    switch ([CLLocationManager authorizationStatus])
+    switch ([CLLocationManager authorizationStatus]) // authorization status to be pedicted
     {
         case kCLAuthorizationStatusAuthorizedAlways:
             NSLog(@"Authorized Always");
@@ -116,26 +117,28 @@
     
     for (CLBeacon *beacon in [Singleton instance].beacons)
     {
-        //beacon.proximityUUID = "<_NSConcreteUUIDx .... > " followed by the actual UUID
-        //The array separates that string into two parts: everything up to the "> " is object 0 of the arry
-        //everything afterwards, i.e. the UUID is part 1
         NSString *noFormatUUID = [NSString stringWithFormat:@"%@",beacon.proximityUUID];
         NSArray *uuidFormatArray = [noFormatUUID componentsSeparatedByString:@"> "];
         NSString *formatUUID = uuidFormatArray[1];
-    
         
+      //  NSLog(@"%@",formatUUID);
+      //  NSLog(@"%@",noFormatUUID);
         NSString *major = [beacon.major stringValue];
         NSString *minor = [beacon.minor stringValue];
         
         NSDictionary *params = @ {@"uuid" :formatUUID, @"major" :major, @"minor" :minor };
+        NSString *deviceId=[[UIDevice currentDevice] model];
+        NSDictionary *params2 = @ {@"uuid" :formatUUID, @"major" :major, @"minor" :minor, @"deviceId":deviceId };
+      
         GetBeaconService *beaconService = [GetBeaconService sharedClient];
         beaconService.mGetBeaconServiceDelegate = self;
         
-        if ([Singleton instance].knownBeacons.count == 0)
+        if ([Singleton instance].knownBeacons.count == 0 )
         {
             if (beaconService)
             {
                 NSError *error = [beaconService getBeaconWithUUID:params];
+                // the function in GetBeaconService is called and the parameters are passed 
             }
         }
         else
@@ -162,7 +165,7 @@
 
 - (void)getBeaconReturnedSuccessfully:(NSDictionary *)response
 {
-    NSLog(@"Response: %@", response);
+   // NSLog(@"Response: %@", response);
     BOOL isKnownBeacon = false;
     
     iBeacon *sourcedBeacon = [[iBeacon alloc]initWithDict:response];
@@ -187,7 +190,7 @@
             [[Singleton instance].knownBeacons addObject:sourcedBeacon];
         }
         
-        NSLog(@"Known Beacons: %lu", (unsigned long)[Singleton instance].knownBeacons.count);
+     //   NSLog(@"Known Beacons: %lu", (unsigned long)[Singleton instance].knownBeacons.count);
     }
 }
 
