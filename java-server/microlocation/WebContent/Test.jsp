@@ -9,7 +9,7 @@
 </head>
 <body>
 <%-- <%= request.getParameter("beacon") %> --%>
-<% System.out.println((String)request.getAttribute("uuid")); 
+<% out.println((String)request.getAttribute("uuid")); 
 
 %> 
 </body>
