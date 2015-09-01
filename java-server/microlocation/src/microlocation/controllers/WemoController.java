@@ -6,6 +6,7 @@ import java.io.IOException;
 import sun.tools.jar.CommandLine;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,6 +21,7 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Properties;
 import java.util.Queue;
 
 import javax.servlet.ServletException;
@@ -239,7 +241,7 @@ public class WemoController extends HttpServlet
 		
 		
 	}
-	public void writeToDb(String id, String minor, String yes) throws ClassNotFoundException, SQLException
+	public void writeToDb(String id, String minor, String yes) throws ClassNotFoundException, SQLException, IOException
 	{
 		connectToSQLDatabase();
 		// preparedStatement = connect
@@ -254,7 +256,7 @@ public class WemoController extends HttpServlet
 	      connect.close();
 		
 	}
-	public void removeFromDb(String id, String minor, String no) throws SQLException
+	public void removeFromDb(String id, String minor, String no) throws SQLException, IOException
 	{
 		try {
 			connectToSQLDatabase();
@@ -273,14 +275,44 @@ public class WemoController extends HttpServlet
 	}
 	
 	
-	public void connectToSQLDatabase() throws ClassNotFoundException
+	public void connectToSQLDatabase() throws ClassNotFoundException, IOException
 	{
+		String user = "meow", password="meow";
 		try {
 		      // This will load the MySQL driver, each DB has its own driver
 		      Class.forName("com.mysql.jdbc.Driver");
+		      InputStream inputStream ; 
+		      try {
+					Properties prop = new Properties();
+					String propFileName = "log.properties";
+		 
+					inputStream = getClass().getClassLoader().getResourceAsStream(propFileName);
+		 
+					if (inputStream != null) {
+						prop.load(inputStream);
+					} else {
+						throw new FileNotFoundException("property file '" + propFileName + "' not found in the classpath");
+					}
+		 
+					Date time = new Date(System.currentTimeMillis());
+		 
+					// get the property value and print it out
+					 user = prop.getProperty("jdbc.username");
+					 password = prop.getProperty("jdbc.password");
+				//	String company2 = prop.getProperty("company2");
+				//	String company3 = prop.getProperty("company3");
+		 
+			//	System.out.println("The user id and password is "+user+" "+password);
+				} catch (Exception e) {
+					System.out.println("Exception: " + e);
+				} 
+		      
+		      
+		      
+		      
 		      // Setup the connection with the DB
 		      connect = DriverManager
-		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "MDWY!(&&");//"MDWY!(&&");
+		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", user,password);//"root", "MDWY!(&&");//"MDWY!(&&");
 
 		   }
 		catch (SQLException e) 
@@ -291,7 +323,7 @@ public class WemoController extends HttpServlet
     	}
 	}
 	
-	public void alarmInfo(String a, String b) throws SQLException
+	public void alarmInfo(String a, String b) throws SQLException, IOException
 	{
 		
 		String[] response = new String[2];
