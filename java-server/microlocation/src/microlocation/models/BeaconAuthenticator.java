@@ -1,12 +1,3 @@
-/*
- * Five different data members of type string.
- * A Boolean data type success initialized to be false
- * Connection data type declared to be null
- * There is a function used to connect to the SQL database (check function for comments)
- * The authenticateBeacon connects to SQL database to verify the UUID, major and minor value
- * along with the name and usecase of the beacons. Then the values after verification
- * are stored in the response array and returned back
- */
 package microlocation.models;
 
 import java.sql.*;
@@ -22,12 +13,11 @@ public class BeaconAuthenticator
 	Boolean success = false;
 	Connection connection = null;
 	
-	public void connectToSQLDatabase() // method to connect to SQL data base 
+	public void connectToSQLDatabase()
 	{
 		try 
     	{
-    		Class.forName("com.mysql.jdbc.Driver"); // forcing the class
-    		//that represents MySQLDriver to load and initialize
+    		Class.forName("com.mysql.jdbc.Driver");
     	} 
     	catch (ClassNotFoundException e) 
     	{
@@ -40,15 +30,8 @@ public class BeaconAuthenticator
      
     	try 
     	{
-    		//When the method getConnection is called, the DriverManager will 
-    		//attempt to locate a suitable driver from amongst those loaded at 
-    		//initialization and those loaded explicitly using the same class-loader 
-    		//as the current applet or application.
-    	//	connection = DriverManager
-    		//.getConnection("jdbc:mysql://localhost:3306/microlocation_aws", "root", "");
     		connection = DriverManager
-    	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "");
-    		
+    		.getConnection("jdbc:mysql://localhost:3306/microlocation_aws", "root", "");
     	} 
     	catch (SQLException e) 
     	{
@@ -68,43 +51,33 @@ public class BeaconAuthenticator
 	}
 	
 	public String[] authenticateBeacon(String uuid, String major, String minor)
-	//to authenticate beacons from database and then return
 	{
-		String[] response = new String[5]; // String array of 5 components
+		String[] response = new String[5];
 		
-		connectToSQLDatabase(); //connect to SQL database
+		connectToSQLDatabase();
     	
     	try
     	{
-     		String sql = "SELECT * FROM beacons WHERE (uuid = '"+uuid+
-     				"' AND major = '"+major+"' AND minor = '"+minor+"')"; //statement for
-     		//datbase i.e search within database
-     		PreparedStatement statement = connection.prepareStatement(sql); //sends the 
-     		//sql statement to the database that is to make the database search for
-     		// uuid major and minor
-    		ResultSet result = statement.executeQuery(sql); //stores the values obtained
-    		// as a result of database query
-    		while (result.next()) // loop runs as long as the result set has some data (rows)
+     		String sql = "SELECT * FROM beacons WHERE (uuid = '"+uuid+"' AND major = '"+major+"' AND minor = '"+minor+"')";
+     		PreparedStatement statement = connection.prepareStatement(sql);
+    		ResultSet result = statement.executeQuery(sql);
+    		while (result.next())
     		{
-    			p_uuid = result.getString(1); //(within a specific row, get the
-    			// column 1 value and set ur p_uuid to it and so on.
+    			p_uuid = result.getString(1);
     		    p_major = result.getString(2);
     		    p_minor = result.getString(3);
     		    name = result.getString(4);
     		    usecase = result.getString(5);
-    		   
     		    
 //    		    String newString1 = uuid + " " + result.getString(1);
 //    		    System.out.println(newString1);
     		    
     		    if((p_uuid.equalsIgnoreCase(uuid)) && (p_major.equalsIgnoreCase(major)) 
-    		    		&& (p_minor.equalsIgnoreCase(minor)))  //if there is data found in the
-    		    	//database or if it matches it
+    		    		&& (p_minor.equalsIgnoreCase(minor)))
     		    {
-    		    	success = true; //if it matches it then set the success=true
-    		    	response[0] = p_uuid; // response array stores the values
-    		    	response[1] = p_major; // the UUID and other values are stored in 
-    		    	//the response array and returned back.
+    		    	success = true;
+    		    	response[0] = p_uuid;
+    		    	response[1] = p_major;
     		    	response[2] = p_minor;
     		    	response[3] = name;
     		    	response[4] = usecase;
@@ -118,8 +91,6 @@ public class BeaconAuthenticator
     	{
     		e.printStackTrace();
     	}
-    
 		return response;
-
 	}
 }
