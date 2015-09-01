@@ -7,13 +7,13 @@
 <title>Microlocation Login</title>
 </head>
 <body>
-    <form action="WemoController" method="post">
-    <!--      Enter username : <input type="text" name="username"> <BR>-->
-        Enter password : <input type="text" name="onoroff"> <BR>
+    <form action="LoginController" method="post">
+        Enter username : <input type="text" name="username"> <BR>
+        Enter password : <input type="password" name="password"> <BR>
         <input type="submit" />
     </form>
     <br/>
-    <a href="http://localhost:8080/incareer/signup.jsp">Sign Up</a>
+    <a href="http://10.0.0.4:8080/incareer/signup.jsp">Sign Up</a>
 
 <!-- 		<form action="OccupationController" method="post">
 			<input type="submit" name="Get Occupations">
