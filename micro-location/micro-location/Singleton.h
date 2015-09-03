@@ -18,7 +18,10 @@
 @property (nonatomic, strong) NSMutableArray *geoBeacons;
 @property (nonatomic, strong) UITableView *geoTableView;
 @property (nonatomic) BOOL hasCalledWemoScript;
-
+@property (nonatomic) BOOL hasCalledWemoScript2;
+@property (nonatomic) BOOL hasCalledWemoScript3;
+@property (nonatomic) BOOL hasCalledWemoScript4;
+@property (nonatomic) BOOL hasCalledWemoScript5;
 + (Singleton *)instance;
 
 @end

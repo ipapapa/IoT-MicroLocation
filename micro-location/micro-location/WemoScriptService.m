@@ -7,6 +7,7 @@
 //
 
 #import "WemoScriptService.h"
+#import "SecondViewController.h"
 
 @implementation WemoScriptService
 @synthesize mWemoScriptServiceDelegate;
@@ -28,7 +29,9 @@
     static WemoScriptService* _sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-        _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://microlocation.elasticbeanstalk.com"]];
+       _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.104:8080/microlocation"]];// local
+       
+    //    _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://microlocation.elasticbeanstalk.com/"]]; // amazon aws
     });
     
     return _sharedClient;
@@ -36,6 +39,8 @@
 
 - (NSError *)runWemoScriptwithParams:(NSDictionary *)params
 {
+   
+       
     NSString *postPath = @"WemoController";
     
     [self postPath:postPath parameters:params
