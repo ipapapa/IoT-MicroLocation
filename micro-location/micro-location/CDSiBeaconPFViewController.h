@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "WemoScriptService2.h"
-@interface CDSiBeaconPFViewController : UIViewController<WemoScriptServiceDelegate2>
+
+@interface CDSiBeaconPFViewController : UIViewController
 
 @end

@@ -29,7 +29,7 @@
     static WemoScriptService* _sharedClient = nil;
     static dispatch_once_t oncePredicate;
     dispatch_once(&oncePredicate, ^{
-       _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://192.168.1.104:8080/microlocation"]];// local
+       _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://172.16.39.82:8080/microlocation"]];// local
        
     //    _sharedClient = [[self alloc] initWithBaseURL:[NSURL URLWithString:@"http://microlocation.elasticbeanstalk.com/"]]; // amazon aws
     });

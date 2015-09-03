@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSIndexPath *checkedPath;
 @property (nonatomic, strong) CLBeacon *checkedBeacon;
 @property int checkedBeaconMinorValue;
+
 @property int immediateIndex;
 @property int nearIndex;
 @property int farIndex;

@@ -29,7 +29,6 @@
 		1B89D1F71A895CDC0082F9CF /* bg_proximity.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89D1F51A895CDC0082F9CF /* bg_proximity.png */; };
 		1B89D1F91A895FFF0082F9CF /* purdue_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B89D1F81A895FFF0082F9CF /* purdue_logo.png */; };
 		1BD732561AB34BCA0036D9F6 /* GetBeaconService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BD732551AB34BCA0036D9F6 /* GetBeaconService.m */; };
-		C50485C51B5EB4A000C187CC /* WemoScriptService2.m in Sources */ = {isa = PBXBuildFile; fileRef = C50485C41B5EB4A000C187CC /* WemoScriptService2.m */; };
 		C57EAF4B1A95295600F58E2D /* GenericBeaconManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF4A1A95295500F58E2D /* GenericBeaconManager.m */; };
 		C57EAF4E1A9529A500F58E2D /* CDSiBeaconPFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF4D1A9529A500F58E2D /* CDSiBeaconPFViewController.m */; };
 		C57EAF511A9529F800F58E2D /* CDSBeaconLandmark.m in Sources */ = {isa = PBXBuildFile; fileRef = C57EAF501A9529F800F58E2D /* CDSBeaconLandmark.m */; };
@@ -86,8 +85,6 @@
 		1BD732551AB34BCA0036D9F6 /* GetBeaconService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBeaconService.m; sourceTree = "<group>"; };
 		3791C88D5548CD0FD8C82D63 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4C3A7E2C9016DAB252237329 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C50485C31B5EB4A000C187CC /* WemoScriptService2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WemoScriptService2.h; sourceTree = "<group>"; };
-		C50485C41B5EB4A000C187CC /* WemoScriptService2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WemoScriptService2.m; sourceTree = "<group>"; };
 		C57EAF481A95293700F58E2D /* BeaconManagerProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BeaconManagerProtocol.h; sourceTree = "<group>"; };
 		C57EAF491A95295500F58E2D /* GenericBeaconManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericBeaconManager.h; sourceTree = "<group>"; };
 		C57EAF4A1A95295500F58E2D /* GenericBeaconManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericBeaconManager.m; sourceTree = "<group>"; };
@@ -176,8 +173,6 @@
 				1BD732551AB34BCA0036D9F6 /* GetBeaconService.m */,
 				1B49A7481AF1D6650008FB7D /* WemoScriptService.h */,
 				1B49A7491AF1D6650008FB7D /* WemoScriptService.m */,
-				C50485C31B5EB4A000C187CC /* WemoScriptService2.h */,
-				C50485C41B5EB4A000C187CC /* WemoScriptService2.m */,
 				1B89D1C61A8952D60082F9CF /* Main.storyboard */,
 				1B89D1C91A8952D60082F9CF /* Images.xcassets */,
 				1B89D1CB1A8952D60082F9CF /* LaunchScreen.xib */,
@@ -299,7 +294,6 @@
 				TargetAttributes = {
 					1B89D1B51A8952D60082F9CF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = D2CAVZ7G8J;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -400,7 +394,6 @@
 				1B088F981AE02FEA00F2DF3E /* iBeacon.m in Sources */,
 				C57EAF571A952A7D00F58E2D /* UIColor+Interpolation.m in Sources */,
 				1B89D1BF1A8952D60082F9CF /* AppDelegate.m in Sources */,
-				C50485C51B5EB4A000C187CC /* WemoScriptService2.m in Sources */,
 				1B89D1C21A8952D60082F9CF /* FirstViewController.m in Sources */,
 				1B89D1BC1A8952D60082F9CF /* main.m in Sources */,
 				1B89D1EF1A8959E80082F9CF /* Singleton.m in Sources */,
@@ -483,7 +476,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -518,7 +511,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -531,13 +524,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -547,13 +537,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				INFOPLIST_FILE = "micro-location/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

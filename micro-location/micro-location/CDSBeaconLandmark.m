@@ -106,13 +106,13 @@
     // double ret = 0.0007109 * expf(0.1114483*-rssi);
     
 //     Based on measurement of Estimote beacons in open air, power = -8
-//    double ret = 0.0003351 * exp(0.1103220*-rssi);
-//     //double ret = 0.03351 * exp(0.1103220*-rssi);
-//    ret *= INTERFERENCEFUDGEFACTOR;
+    double ret = 0.0003351 * exp(0.1103220*-rssi);
+     //double ret = 0.03351 * exp(0.1103220*-rssi);
+    ret *= INTERFERENCEFUDGEFACTOR;
     
-    int e=(int)rssi;
-    double d= (e+55.0)/(-26.4432);
-    double ret=pow(10,d);
+//    int e=(int)rssi;
+//    double d= (e+55.0)/(-26.4432);
+//    double ret=pow(10,d);
 
     return ret;
 }

@@ -20,12 +20,6 @@
 @implementation SecondViewController
 BOOL artw1=true;
 BOOL artw2=true;
-BOOL artw3=true;
-BOOL artw4=true;
-BOOL immw1=false;
-BOOL immw2=false;
-BOOL immw3=true;
-BOOL immw4=true;
 
 - (void)viewDidLoad
 {
@@ -202,12 +196,6 @@ BOOL immw4=true;
             //test
             CLBeacon *thisCLBeaconartw1 = nil;
             CLBeacon *thisCLBeaconartw2 = nil;
-            CLBeacon *thisCLBeaconartw3 = nil;
-            CLBeacon *thisCLBeaconartw4 = nil;
-            CLBeacon *thisCLBeaconimmw1 = nil;
-            CLBeacon *thisCLBeaconimmw2 = nil;
-            CLBeacon *thisCLBeaconimmw3 = nil;
-            CLBeacon *thisCLBeaconimmw4 = nil;
             // NSArray *test=[Singleton instance].beacons;
             //  int size=[test count];
             
@@ -222,55 +210,14 @@ BOOL immw4=true;
                 }
                 if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"artw"] && [beacon.minor isEqualToString:@"2"] )
                 {
-                
+                    
                     thisCLBeaconartw2 = clbeacon;
-               
+                //    NSLog(@"Beacon 2 is %@ ",thisCLBeaconartw2);
                 }
-                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"artw"] && [beacon.minor isEqualToString:@"5"] )
-                {
-                    
-                    thisCLBeaconartw3 = clbeacon;
-                    
-                }
-                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"artw"] && [beacon.minor isEqualToString:@"8"] )
-                {
-                    
-                    thisCLBeaconartw4 = clbeacon;
-                    
-                }
-                
-            }
-            for (CLBeacon *clbeacon in [Singleton instance].beacons)
-            {
-               /* if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"immw"] && [beacon.minor isEqualToString:@"1"] )
-                {
-                    
-                    thisCLBeaconimmw1 = clbeacon;
-                    //        NSLog(@"Beacon 1 is %@ ",thisCLBeaconartw1);
-                }
-                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"immw"] && [beacon.minor isEqualToString:@"2"] )
-                {
-                    
-                    thisCLBeaconimmw2 = clbeacon;
-                    
-                }*/
-                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"immw"] && [beacon.minor isEqualToString:@"3"] )
-                {
-                    
-                    thisCLBeaconimmw3 = clbeacon;
-                    
-                }
-                if ([[clbeacon.major stringValue] isEqualToString:beacon.major] && [[clbeacon.minor stringValue] isEqualToString:beacon.minor] && [beacon.name isEqualToString:@"immw"] && [beacon.minor isEqualToString:@"4"] )
-                {
-                    
-                    thisCLBeaconimmw4 = clbeacon;
-                    
-                }
-                
                 
             }
 
-           if([beacon.minor isEqualToString:@"1"])
+            if([beacon.minor isEqualToString:@"1"])
             {
                 if((thisCLBeaconartw1.proximity == CLProximityImmediate || thisCLBeaconartw1.proximity==CLProximityNear))
                 {
@@ -292,74 +239,8 @@ BOOL immw4=true;
                     artw2=false;
                 }
             }
-            if([beacon.minor isEqualToString:@"5"])
-            {
-                if((thisCLBeaconartw3.proximity == CLProximityImmediate || thisCLBeaconartw3.proximity==CLProximityNear))
-                {
-                    artw3=true;
-                }
-                else if((thisCLBeaconartw3.proximity == CLProximityFar || thisCLBeaconartw3.proximity==CLProximityUnknown))
-                {
-                    artw3=false;
-                }
-            }
-            if([beacon.minor isEqualToString:@"8"])
-            {
-                if((thisCLBeaconartw4.proximity == CLProximityImmediate || thisCLBeaconartw4.proximity==CLProximityNear))
-                {
-                    artw4=true;
-                }
-                else if((thisCLBeaconartw4.proximity == CLProximityFar || thisCLBeaconartw4.proximity==CLProximityUnknown))
-                {
-                    artw4=false;
-                }
-            }
-            
-         /*   if([beacon.minor isEqualToString:@"1"])
-            {
-                if((thisCLBeaconimmw1.proximity == CLProximityImmediate || thisCLBeaconimmw1.proximity==CLProximityNear))
-                {
-                    immw1=true;
-                }
-                else if((thisCLBeaconimmw1.proximity == CLProximityFar || thisCLBeaconimmw1.proximity==CLProximityUnknown))
-                {
-                    immw1=false;
-                }
-            }
-            if([beacon.minor isEqualToString:@"2"])
-            {
-                if((thisCLBeaconimmw2.proximity == CLProximityImmediate || thisCLBeaconimmw2.proximity==CLProximityNear))
-                {
-                    immw2=true;
-                }
-                else if((thisCLBeaconimmw2.proximity == CLProximityFar || thisCLBeaconimmw2.proximity==CLProximityUnknown))
-                {
-                    immw2=false;
-                }
-            }*/
-            if([beacon.minor isEqualToString:@"3"])
-            {
-                if((thisCLBeaconimmw3.proximity == CLProximityImmediate || thisCLBeaconimmw3.proximity==CLProximityNear))
-                {
-                    immw3=true;
-                }
-                else if((thisCLBeaconimmw3.proximity == CLProximityFar || thisCLBeaconimmw3.proximity==CLProximityUnknown))
-                {
-                    immw3=false;
-                }
-            }
-            if([beacon.minor isEqualToString:@"4"])
-            {
-                if((thisCLBeaconimmw4.proximity == CLProximityImmediate || thisCLBeaconimmw4.proximity==CLProximityNear))
-                {
-                    immw4=true;
-                }
-                else if((thisCLBeaconimmw4.proximity == CLProximityFar || thisCLBeaconimmw4.proximity==CLProximityUnknown))
-                {
-                    immw4=false;
-                }
-            }
-   
+   //         NSLog(@"artw 2 is %d",artw2);
+    //         NSLog(@"artw 1 is %d",artw1);
 
             
             
@@ -374,7 +255,7 @@ BOOL immw4=true;
             NSDictionary *params2 = @ {};
             NSString *deviceId=[[UIDevice currentDevice] model];
             
-            if (([beacon.name isEqualToString:@"artw"] ) &&  ![Singleton instance].hasCalledWemoScript   && (artw1 || artw2||artw3||artw4))
+            if (([beacon.name isEqualToString:@"artw"] ) &&  ![Singleton instance].hasCalledWemoScript   && (artw1 || artw2))
             {
                 //if you are in immediate region the script of turning the switch on will be executed
                 onOffString = @"on";
@@ -389,7 +270,7 @@ BOOL immw4=true;
              //   usecase1=true;
                 
             }
-            else if (([beacon.name isEqualToString:@"artw"]) && [Singleton instance].hasCalledWemoScript &&  ((!artw1) && !(artw2)&& (!artw3) && (!artw4)))
+            else if (([beacon.name isEqualToString:@"artw"]) && [Singleton instance].hasCalledWemoScript &&  (!artw1) && !(artw2))
             {  //if you go in either far zone or unknown region the script of turning the switch off will be executed
                 
                 NSLog(@"Erase");
@@ -406,43 +287,43 @@ BOOL immw4=true;
                 
             }
             }
-            {
-                WemoScriptService *wemoService2 = [WemoScriptService sharedClient];
-                wemoService2.mWemoScriptServiceDelegate = self;
-                
-                NSString *onOffString = @"";
-                NSDictionary *params = @ {};
-                NSDictionary *params2 = @ {};
-                NSString *deviceId=[[UIDevice currentDevice] model];
-            
-            if (([beacon.name isEqualToString:@"immw"]  &&  ![Singleton instance].hasCalledWemoScript2   && (immw1||immw2||immw3||immw4)))
-            {
-                //if you are in immediate region the script of turning the switch on will be executed
-                onOffString = @"on";
-                params = @ {@"onoroff" : onOffString};
-                // params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"uuid" :beacon.uuid, @"major" :beacon.major, @"minor" :beacon.minor};//
-                params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"name":beacon.name};
-                NSLog(@"params are for immw %@",params);
-                // NSError *error =
-                [wemoService2 runWemoScriptwithParams:params2];//
-                     [Singleton instance].hasCalledWemoScript2 = true;
-              //  usecase2=true;
-                
-            }
-            else if (([beacon.name isEqualToString:@"immw"]) && [Singleton instance].hasCalledWemoScript2 && ((!immw1) && !(immw2)&&(!immw3)&&(!immw4)))
-            {  //if you go in either far zone or unknown region the script of turning the switch off will be executed
-                onOffString = @"off";
-                //   params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"uuid" :beacon.uuid, @"major" :beacon.major, @"minor" :beacon.minor}; //
-                params = @ {@"onoroff" : onOffString};
-                params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"name":beacon.name};
-                NSLog(@"params are for immw %@",params);
-                //   NSError *error =
-                [wemoService2 runWemoScriptwithParams:params2];
-                  [Singleton instance].hasCalledWemoScript2 = false;
-              //  usecase2=true;
-                
-            }
-            }
+//            {
+//                WemoScriptService *wemoService2 = [WemoScriptService sharedClient];
+//                wemoService2.mWemoScriptServiceDelegate = self;
+//                
+//                NSString *onOffString = @"";
+//                NSDictionary *params = @ {};
+//                NSDictionary *params2 = @ {};
+//                NSString *deviceId=[[UIDevice currentDevice] model];
+//            
+//            if (([beacon.name isEqualToString:@"immw"] /*|| [beacon.name isEqualToString:@"immw"] || [beacon.name isEqualToString:@"gmlb"]|| [beacon.name isEqualToString:@"vizw"]|| [beacon.name isEqualToString:@"cmnw"] */) &&  ![Singleton instance].hasCalledWemoScript2   && (thisCLBeacon.proximity == CLProximityImmediate || thisCLBeacon.proximity==CLProximityNear ))//|| thisCLBeacon.proximity==CLProximityFar))
+//            {
+//                //if you are in immediate region the script of turning the switch on will be executed
+//                onOffString = @"on";
+//                params = @ {@"onoroff" : onOffString};
+//                // params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"uuid" :beacon.uuid, @"major" :beacon.major, @"minor" :beacon.minor};//
+//                params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"name":beacon.name};
+//                NSLog(@"params are for immw %@",params);
+//                // NSError *error =
+//                [wemoService2 runWemoScriptwithParams:params2];//
+//                     [Singleton instance].hasCalledWemoScript2 = true;
+//              //  usecase2=true;
+//                
+//            }
+//            else if (([beacon.name isEqualToString:@"immw"]/*|| [beacon.name isEqualToString:@"immw"] || [beacon.name isEqualToString:@"gmlb"]|| [beacon.name isEqualToString:@"vizw"]|| [beacon.name isEqualToString:@"cmnw"]*/) && [Singleton instance].hasCalledWemoScript2 && (thisCLBeacon.proximity == CLProximityFar || thisCLBeacon.proximity==CLProximityUnknown))//&& thisCLBeacon.proximity != CLProximityImmediate && thisCLBeacon.proximity != CLProximityNear )//&& thisCLBeacon.proximity != CLProximityFar)
+//            {  //if you go in either far zone or unknown region the script of turning the switch off will be executed
+//                onOffString = @"off";
+//                //   params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"uuid" :beacon.uuid, @"major" :beacon.major, @"minor" :beacon.minor}; //
+//                params = @ {@"onoroff" : onOffString};
+//                params2 = @ {@"onoroff" : onOffString, @"deviceId":deviceId, @"name":beacon.name};
+//                NSLog(@"params are for immw %@",params);
+//                //   NSError *error =
+//                [wemoService2 runWemoScriptwithParams:params2];
+//                  [Singleton instance].hasCalledWemoScript2 = false;
+//              //  usecase2=true;
+//                
+//            }
+//            }
 //            {
 //                WemoScriptService *wemoService3 = [WemoScriptService sharedClient];
 //                wemoService3.mWemoScriptServiceDelegate = self;
