@@ -60,26 +60,7 @@ public class WemoController extends HttpServlet
 	private PreparedStatement preparedStatement = null;
 	private ResultSet resultSet = null;
 	
-	/*{new java.util.Timer().schedule( 
-	        new java.util.TimerTask() {
-	            @Override
-	            public void run() {
-	            	alarm1=true;
-	            	alarm2=true;
-	            	alarm3=true;
-	            	System.out.println("alarm 1 inside is "+alarm1);
-	        		System.out.println("alarm 2 inside is "+alarm2);
-	        		System.out.println("alarm 3  inside is "+alarm3);
-	                // your code here
-	            }
-	        }, 
-	        500 
-	        
-	);
-	System.out.println("alarm 1 is "+alarm1);
-	System.out.println("alarm 2 is "+alarm2);
-	System.out.println("alarm 3 is "+alarm3);
-	}*/
+	
 	
 	public WemoController()
 	{
@@ -98,17 +79,26 @@ public class WemoController extends HttpServlet
 	//	String id=request.getParameter("ID");
 	//	String minor=request.getParameter("minor");
 		String user1=request.getParameter("user");
-		//System.out.println("the user is "+user1 );
 		alarmType=user1;
+		
 		String id="1";
 		String minor="1";
+		String minorAlarm=request.getParameter("minorAlarm");
+	//	System.out.println("The minor Alarm is "+minorAlarm);
 		String zero="0";
-	//	String proximity=request.getParameter("onoroff");
-		String proximity="on";
+		String proximity=request.getParameter("onoroff");
+		
 		boolean yes ;
 		String one="1";
+	/*	try {
+			alarmInfo(alarmType,alarmBeaconMinor);
+		} catch (SQLException e) {
 		
-		if(proximity.equals("on"))
+			e.printStackTrace();
+		}*/
+		
+		//if(proximity.equals("on"))
+		if("on".equals(proximity))
 		{
 			yes=true;
 			if(yes)
@@ -122,7 +112,8 @@ public class WemoController extends HttpServlet
 			}
 		}
 		
-		else if (proximity.equals("off"))
+	//	else if (proximity.equals("off"))
+		 if("off".equals(proximity))
 		{
 			yes=false;
 			if(!yes)
@@ -137,103 +128,15 @@ public class WemoController extends HttpServlet
 				
 		}
 	
-	/*	new java.util.Timer().schedule( 
-		        new java.util.TimerTask() {
-		            @Override
-		            public void run() {
-		            	
-		            	alarm1=true;
-		          //  	alarm2=true;
-		          //  	alarm3=true;
-		            	System.out.println("alarm 1 inside is "+alarm1);
-		            	System.out.println("");
-		        	//	System.out.println("alarm 2 inside is "+alarm2);
-		        	//	System.out.println("alarm 3  inside is "+alarm3);
-		        		if(alarm1)
-		        		{
-		        			try {
-		        				alarmType="skill1";
-		        				alarmInfo(alarmType,alarmBeaconMinor);
-		        			} catch (SQLException e) {
-		        				// TODO Auto-generated catch block
-		        				e.printStackTrace();
-		        			}
-		        		}
-		                // your code here
-		            }
-		        }, 
-		        5000 
-		        
-		        
-		);System.out.println("alarm 1 outside is "+alarm1);
-		System.out.println("");
-		
-		new java.util.Timer().schedule( 
-		        new java.util.TimerTask() {
-		            @Override
-		            public void run() {
-		            	
-		          //  	alarm1=true;
-		            	alarm2=true;
-		          //  	alarm3=true;
-		            	System.out.println("alarm 2 inside is "+alarm2);
-		            	System.out.println("");
-		        	//	System.out.println("alarm 2 inside is "+alarm2);
-		        	//	System.out.println("alarm 3  inside is "+alarm3);
-		        		if(alarm2)
-		        		{
-		        			try {
-		        				alarmType="skill2";
-		        				alarmInfo(alarmType,alarmBeaconMinor);
-		        			} catch (SQLException e) {
-		        				// TODO Auto-generated catch block
-		        				e.printStackTrace();
-		        			}
-		        		}
-		                // your code here
-		            }
-		        }, 
-		        3000 
-		        
-		        
-		);
-		new java.util.Timer().schedule( 
-		        new java.util.TimerTask() {
-		            @Override
-		            public void run() {
-		            	
-		          //  	alarm1=true;
-		           // 	alarm2=true;
-		            	alarm3=true;
-		            	System.out.println("alarm 3 inside is "+alarm3);
-		            	System.out.println("");
-		        	//	System.out.println("alarm 2 inside is "+alarm2);
-		        	//	System.out.println("alarm 3  inside is "+alarm3);
-		        		if(alarm3)
-		        		{
-		        			try {
-		        				alarmType="skill3";
-		        				alarmInfo(alarmType,alarmBeaconMinor);
-		        			} catch (SQLException e) {
-		        				// TODO Auto-generated catch block
-		        				e.printStackTrace();
-		        			}
-		        		}
-		                // your code here
-		            }
-		        }, 
-		        4000 
-		    
-		);*/
-		
+	
 		
 	//	if(alarm)
 	//	{
 		
 			try {
-				alarmInfo(alarmType,alarmBeaconMinor);
+				alarmInfo(alarmType,minorAlarm);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			
 				e.printStackTrace();
 			}
 		//} 
@@ -244,9 +147,7 @@ public class WemoController extends HttpServlet
 	public void writeToDb(String id, String minor, String yes) throws ClassNotFoundException, SQLException, IOException
 	{
 		connectToSQLDatabase();
-		// preparedStatement = connect
-		       //   .prepareStatement("update into  microlocation_aws.iowa values (, ?, ?, ?, ? , ?, ?)");
-	//	String query="UPDATE microlocation_aws.iowa SET minor="+2+"proximity="+1+" WHERE (id="+1+")";	      
+		
 		 String query = "update iowa set minor = ? , proximity=? where id ="+id ;//?";
 		 
 		 preparedStatement = connect.prepareStatement(query);
@@ -261,7 +162,7 @@ public class WemoController extends HttpServlet
 		try {
 			connectToSQLDatabase();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -279,7 +180,7 @@ public class WemoController extends HttpServlet
 	{
 		String user = "meow", password="meow";
 		try {
-		      // This will load the MySQL driver, each DB has its own driver
+		     
 		      Class.forName("com.mysql.jdbc.Driver");
 		      InputStream inputStream ; 
 		      try {
@@ -310,7 +211,7 @@ public class WemoController extends HttpServlet
 		      
 		      
 		      
-		      // Setup the connection with the DB
+		     
 		      connect = DriverManager
 		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", user,password);//"root", "MDWY!(&&");//"MDWY!(&&");
 
@@ -319,7 +220,7 @@ public class WemoController extends HttpServlet
     	{
     		System.out.println("Connection Failed! Check output console");
     		e.printStackTrace();
-    		//return;
+    	
     	}
 	}
 	
@@ -330,14 +231,13 @@ public class WemoController extends HttpServlet
 		try {
 			connectToSQLDatabase();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		try
     	{
-     		String sql = "SELECT * FROM microlocation_aws.iowa WHERE (minor = '"+alarmBeaconMinor+"')";
-     			//	"' AND major = '"+major+"' AND minor = '"+minor+"')"; //statement for
-
+     		String sql = "SELECT * FROM microlocation_aws.iowa WHERE (minor = '"+b+"')";
+     			
      		PreparedStatement statement = connect.prepareStatement(sql); 
      		
     		ResultSet result = statement.executeQuery(sql); 
@@ -347,37 +247,39 @@ public class WemoController extends HttpServlet
     			nurseId=result.getString(1);
     			Minor=result.getString(2);
     			proximity=result.getString(3);
-    		//	System.out.println("The proximity is "+proximity);
-    		//	System.out.println("The minor is "+Minor+" the alarm beacon is "+alarmBeaconMinor);
-    		if(Minor.equals(alarmBeaconMinor))	
+    	
+    		if(Minor.equals(b))	
     		{
     			
-    			if(alarmType.equalsIgnoreCase("skill1"))// && (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    		//	if(alarmType.equalsIgnoreCase("skill1"))// && (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    			if("skill1".equals(alarmType))
     			{
     				alertType=result.getString(4);
     			//	System.out.println("The alert type for skill 1 is "+alertType);
     			}
-    			else if(alarmType.equalsIgnoreCase("skill2"))//&& (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    		//	else if(alarmType.equalsIgnoreCase("skill2"))//&& (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    			else if("skill2".equals(alarmType))
     			{
     				alertType=result.getString(5);
-    			//	System.out.println("The alert type for skill 2 is "+alertType);
+    			
     			}
-    			else if(alarmType.equalsIgnoreCase("skill3"))//&& (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    			//else if(alarmType.equalsIgnoreCase("skill3"))//&& (Minor.equalsIgnoreCase(alarmBeaconMinor)))
+    			else if("skill2".equals(alarmType))
     			{
     				alertType=result.getString(6);
-    			//	System.out.println("The alert type for skill 3 is "+alertType);
+    			
     			}
     		}
-    		 //   if ((alertType.equalsIgnoreCase("1")))
-    		  //  {
-    		    if((Minor.equalsIgnoreCase(alarmBeaconMinor))  &&(alertType.equalsIgnoreCase("1"))
-    		    		&& (proximity.equalsIgnoreCase("1")))  //if there is data found in the
-    		    	//database or if it matches it
+    		 
+    		    if((Minor.equalsIgnoreCase(b))  &&(alertType.equalsIgnoreCase("1"))
+    		    		&& (proximity.equalsIgnoreCase("1")))  
     		    {
     		    	success = true; 
     		    	response[0] = nurseId; 
-    		    	response[1] = alarmType; 
+    		    	//response[1] = alarmType; 
+    		    	response[1]=a;
     		    	System.out.println("Nurse id is "+response[0]+"\n");
+    		    	System.out.println("The beacon minor is "+b);
     	    		System.out.println("alarm Type is "+ response[1]+"\n");
     		   
     		    }//}

@@ -76,8 +76,9 @@ class MyThread implements Runnable{
 		while(true){
 	//		int value = rand.nextInt(1000)%3+1;
 int value=1;
+String minorAlarm="1";
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +86,7 @@ int value=1;
 		
 	try {
 			System.out.println("Thread 1");
-			sendPost("skill"+value);
+			sendPost("skill"+value,minorAlarm);
 		} 
 	
 	catch (Exception e) 
@@ -97,7 +98,7 @@ int value=1;
 
 		}
 	}
-	private void sendPost(String alarm) throws Exception {
+	private void sendPost(String alarm, String minorAlarm) throws Exception {
 
 		String url = "http://localhost:8080/microlocation/WemoController";
 		URL obj = new URL(url);
@@ -108,12 +109,14 @@ int value=1;
 		//con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-		String urlParameters = "user="+alarm;
+		String urlParameters = "user="+alarm+"&minorAlarm="+minorAlarm;
+		//String urlMinor="minorAlarm="+minorAlarm;
 		
 		// Send post request
 		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(urlParameters);
+		//wr.writeBytes(urlMinor);
 		wr.flush();
 		wr.close();
 
@@ -143,28 +146,29 @@ class MyThread1 implements Runnable{
 		while(true){
 	//		int value = rand.nextInt(1000)%3+1;
 int value=2;
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	try {
-			System.out.println("Thread 2");
-			sendPost1("skill"+value);
-		} 
-	
-	catch (Exception e) 
-	{
-	
-		e.printStackTrace();
-	}
-	
+String minorAlarm="2";
+try {
+	Thread.sleep(10000);
+} catch (InterruptedException e) {
+	// TODO Auto-generated catch block
+	e.printStackTrace();
+}
 
-		}
+try {
+	System.out.println("Thread 2");
+	sendPost1("skill"+value,minorAlarm);
+} 
+
+catch (Exception e) 
+{
+
+e.printStackTrace();
+}
+
+
+}
 	}
-	private void sendPost1(String alarm) throws Exception {
+	private void sendPost1(String alarm,String minorAlarm) throws Exception {
 
 		String url = "http://localhost:8080/microlocation/WemoController";
 		URL obj = new URL(url);
@@ -175,7 +179,7 @@ int value=2;
 		//con.setRequestProperty("User-Agent", USER_AGENT);
 		con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
 
-		String urlParameters = "user="+alarm;
+		String urlParameters = "user="+alarm+"&minorAlarm="+minorAlarm;
 		
 		// Send post request
 		con.setDoOutput(true);
