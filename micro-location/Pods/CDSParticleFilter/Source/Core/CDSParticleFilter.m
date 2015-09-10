@@ -82,6 +82,7 @@
     CDSParticleBase* searchParticle = [[CDSParticleBase alloc] init];
     NSRange searchRange = NSMakeRange(0, self.particles.count);
     for (CDSParticleBase* particle in self.particles) {
+            //Todd push test
         searchParticle.accumulatedWeight = (double)drand48();
         NSUInteger i = [self.particles indexOfObject:searchParticle
                                        inSortedRange:searchRange
