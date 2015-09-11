@@ -102,7 +102,7 @@ String minorAlarm="1";
 
 		//String url = "http://localhost:8080/microlocation/WemoController";
 		
-		String url = "http://localhost:8080/WemoController";
+		String url = "http://www-dev.icts.uiowa.edu/microlocation/WemoController";
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -173,7 +173,7 @@ e.printStackTrace();
 	private void sendPost1(String alarm,String minorAlarm) throws Exception {
 
 		//String url = "http://localhost:8080/microlocation/WemoController";
-		String url = "http://localhost:8080/WemoController";
+		String url = "http://www-dev.icts.uiowa.edu/microlocation/WemoController";
 		
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();

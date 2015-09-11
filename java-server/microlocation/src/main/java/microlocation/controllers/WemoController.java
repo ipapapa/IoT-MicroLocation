@@ -38,9 +38,7 @@ public class WemoController extends HttpServlet
 	boolean alarm3;
 	
 	private Connection connect = null;
-	private Statement statement = null;
 	private PreparedStatement preparedStatement = null;
-	private ResultSet resultSet = null;
 	
 	
 	

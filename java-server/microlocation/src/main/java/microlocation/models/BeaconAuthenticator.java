@@ -33,17 +33,7 @@ public class BeaconAuthenticator
 	
 	public void connectToSQLDatabase() // method to connect to SQL data base 
 	{
-		try 
-    	{
-    		Class.forName("com.mysql.jdbc.Driver"); // forcing the class
-    		//that represents MySQLDriver to load and initialize
-    	} 
-    	catch (ClassNotFoundException e) 
-    	{
-    		//System.out.println("Where is your MySQL JDBC Driver?");
-    		e.printStackTrace();
-    		//return;
-    	}
+		
     	
     	//System.out.println("MySQL JDBC Driver Registered!");
      
