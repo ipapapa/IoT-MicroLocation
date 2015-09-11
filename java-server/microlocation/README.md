@@ -17,6 +17,17 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 ## Build Instructions
 
     mvn clean install 
+    mvn jetty:run 
+    
+[Access Application Here](http://localhost:8080/)
+
+
+
+
+
+
+    
+    
 
 
 
