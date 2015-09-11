@@ -1,43 +1,25 @@
 package microlocation.controllers;
 
 
-import java.io.IOException;  
-
-import sun.tools.jar.CommandLine;
-
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.Writer;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.ListIterator;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
-import java.util.Queue;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.sql.*;
-
-import org.apache.commons.codec.binary.Base64;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import microlocation.models.BeaconAuthenticator;
+import javax.sql.DataSource;
 public class WemoController extends HttpServlet
 {
 	
@@ -68,6 +50,8 @@ public class WemoController extends HttpServlet
 	}
 	
 	Boolean turnOn;
+	
+	private final String  TABLE_NAME = "beacons";
 	
 	protected void doPost (HttpServletRequest request, 
 			HttpServletResponse response) throws ServletException, IOException
@@ -148,7 +132,7 @@ public class WemoController extends HttpServlet
 	{
 		connectToSQLDatabase();
 		
-		 String query = "update iowa set minor = ? , proximity=? where id ="+id ;//?";
+		 String query = "update " + TABLE_NAME + " set minor = ? , proximity=? where id ="+id ;//?";
 		 
 		 preparedStatement = connect.prepareStatement(query);
 		 preparedStatement .setString(1, minor);
@@ -166,7 +150,7 @@ public class WemoController extends HttpServlet
 			e.printStackTrace();
 		}
 		
-		 String query = "update iowa set minor = ? , proximity=? where id ="+id ;//?";
+		 String query = "update " + TABLE_NAME + " set minor = ? , proximity=? where id ="+id ;//?";
 		 
 		 preparedStatement = connect.prepareStatement(query);
 		 preparedStatement .setString(1, minor);
@@ -209,11 +193,16 @@ public class WemoController extends HttpServlet
 				} 
 		      
 		      
-		      
+		      Context initContext = new InitialContext();
+	    		Context envContext  = (Context)initContext.lookup("java:/comp/env");
+	    		DataSource ds = (DataSource)envContext.lookup("jdbc/microlocation");
+	    		
 		      
 		     
-		      connect = DriverManager
-		          	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", user,password);//"root", "MDWY!(&&");//"MDWY!(&&");
+		      connect = ds.getConnection(); 
+		    		  
+		    		  // DriverManager
+		          	    	//	.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", user,password);//"root", "MDWY!(&&");//"MDWY!(&&");
 
 		   }
 		catch (SQLException e) 
@@ -221,7 +210,10 @@ public class WemoController extends HttpServlet
     		System.out.println("Connection Failed! Check output console");
     		e.printStackTrace();
     	
-    	}
+    	} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void alarmInfo(String a, String b) throws SQLException, IOException
@@ -236,7 +228,8 @@ public class WemoController extends HttpServlet
 		}
 		try
     	{
-     		String sql = "SELECT * FROM microlocation_aws.iowa WHERE (minor = '"+b+"')";
+     		//String sql = "SELECT * FROM microlocation_aws.iowa WHERE (minor = '"+b+"')";
+			String sql = "SELECT * FROM " + TABLE_NAME + " WHERE (minor = '"+b+"')";
      			
      		PreparedStatement statement = connect.prepareStatement(sql); 
      		

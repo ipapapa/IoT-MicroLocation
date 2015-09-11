@@ -9,7 +9,16 @@
  */
 package microlocation.models;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class BeaconAuthenticator 
 {
@@ -40,14 +49,23 @@ public class BeaconAuthenticator
      
     	try 
     	{
+    		
+    		Context initContext = new InitialContext();
+    		Context envContext  = (Context)initContext.lookup("java:/comp/env");
+    		DataSource ds = (DataSource)envContext.lookup("jdbc/microlocation");
+    		
     		//When the method getConnection is called, the DriverManager will 
     		//attempt to locate a suitable driver from amongst those loaded at 
     		//initialization and those loaded explicitly using the same class-loader 
     		//as the current applet or application.
     	//	connection = DriverManager
     		//.getConnection("jdbc:mysql://localhost:3306/microlocation_aws", "root", "");
-    		connection = DriverManager
-    	    		.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "");
+    		//connection = DriverManager
+    	    	//	.getConnection("jdbc:mysql://127.0.0.1:3306/microlocation_aws", "root", "");
+    		
+    		//MOVED to Tomcat Context Data Source
+    		
+    		connection  = ds.getConnection();
     		
     	} 
     	catch (SQLException e) 
@@ -55,7 +73,10 @@ public class BeaconAuthenticator
     		System.out.println("Connection Failed! Check output console");
     		e.printStackTrace();
     		//return;
-    	}
+    	} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	
     	if (connection != null) 
     	{
