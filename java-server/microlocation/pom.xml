@@ -97,63 +97,6 @@
 			</plugins>
 	
 	</build>
-	<profiles>
-		<profile>
-			<id>hudson</id>
-			<build>
-				<filters>
-					<filter>${env.HOME}/config/${project.artifactId}.properties</filter>
-				</filters>
-				<resources>
-					<resource>
-						<filtering>true</filtering>
-						<directory>src/non-packaged-resources</directory>
-						<targetPath>${project.build.directory}/${project.artifactId}/META-INF/</targetPath>
-						<includes>
-							<include>*.xml</include>
-							<include>*.properties</include>
-						</includes>
-					</resource>
-					<resource>
-						<filtering>true</filtering>
-						<directory>src/main/resources</directory>
-					</resource>
-				</resources>
-				
-			<plugins>
-     </plugins>
-			</build>
-		</profile>
-		
-				<profile>
-			<id>local</id>
-			<build>
-				<filters>
-					<filter>src/main/resources/log.properties</filter>
-				</filters>
-				<resources>
-					<resource>
-						<filtering>true</filtering>
-						<directory>src/non-packaged-resources</directory>
-						<targetPath>${project.build.directory}/${project.artifactId}/META-INF/</targetPath>
-						<includes>
-							<include>*.xml</include>
-							<include>*.properties</include>
-						</includes>
-					</resource>
-					<resource>
-						<filtering>true</filtering>
-						<directory>src/main/resources</directory>
-					</resource>
-				</resources>
-				
-			<plugins>
-     </plugins>
-			</build>
-			
-		</profile>
-		
-	</profiles>
 	
 	
 </project>
