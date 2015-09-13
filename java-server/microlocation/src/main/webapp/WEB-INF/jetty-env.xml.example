@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Jetty/Configure//EN" "http://www.eclipse.org/jetty/configure.dtd">
+
+<Configure class="org.eclipse.jetty.webapp.WebAppContext">
+
+<New id="DSTest" class="org.eclipse.jetty.plus.jndi.Resource">
+   <Arg></Arg>
+   <Arg>jdbc/microlocation</Arg>
+   <Arg>
+      <New class="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource">
+         <Set name="Url">jdbc:mysql://localhost/microlocation</Set>
+         <Set name="User">USERNAME</Set>
+         <Set name="Password">PASSWORD</Set>
+      </New>
+   </Arg>
+  </New>
+  
+ </Configure>
