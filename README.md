@@ -24,9 +24,15 @@ The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of 
 There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
 ## Java application 
-(the project folder is the micro-location folder inside the java-server folder. Also, the logincontroller currently in the project has no use and is going to be included in the future versions. ) 
+(the project folder is the micro-location folder inside the java-server folder. Also, the logincontroller currently in the project has no use and is going to be included in the future versions.) 
 
 There are only two parts of the Java application that will change based on your environment and that is the IP address associated with your IoT device (in our case a Wemo switch) and the mysql database information in the BeaconAuthenticator class. 
+
+### Build Instructions
+
+    mvn clean install
+    mvn jetty:run
+
 
 Open in the project in an IDE or open WemoController.java in a text editor and scroll to lines 93 and 97 which are inside the executeWemoScript() method. On these two lines a string is defined that points to the location of your script and that path is followed by an IP address and either the word on or off. The only part of these two lines that should need to be changed is the IP address. This should be changed to the IP address of your connected Wemo switch. 
 
