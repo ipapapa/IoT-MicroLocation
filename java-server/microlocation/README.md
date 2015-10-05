@@ -16,6 +16,12 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 ## Build Instructions
 
+MicroLocation currently runs as a jetty web application.  It relies on jetty-env.xml for database connection configuration.
+
+You will need to copy the example (jetty-env.xml.example)[src/main/webapp/WEB-INF/jetty-env.xml.example] to jetty-env.xml, then update the username, password and url.
+
+Do not check this new file into your source code
+
     mvn clean install 
     mvn jetty:run 
     
