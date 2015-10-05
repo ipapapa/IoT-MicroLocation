@@ -1,5 +1,5 @@
 # IoT-MicroLocation
-An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project started at Purdue University by the team of Dr. Ioannis Papapanagiotou - ipapapan@purdue.edu.
+An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project is a collaboration effort of the teams from Purdue University and North Carolina State University advised by Dr. Ioannis Papapanagiotou - ipapapan@purdue.edu.
 
 # Readme
 
@@ -35,7 +35,8 @@ connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/microlocat
 
 In anticipation of the next step, once the server application is completely updated, open the project in Eclipse. Then go to File > Export and choose Web and then War. Follow the prompts and if you know what server you are building for choose it and then finish the prompt. This should have created a .war file wherever you chose. This is the file that you will use to deploy your application on AWS.
 
-## Amazon AWS Elastic Beanstalk EC2 instance
+## Setting up your IaaS
+### Amazon AWS Elastic Beanstalk EC2 instance
 
 This is the most time consuming part of this process. This is because you need to create the instance, open the correct ports, install mysql, and finally create and populate the database within your instance.
 Log into your Amazon AWS account. In the dashboard select Elastic Beanstalk under the “Deployment & Management” section. Follow the steps to create and launch a new instance and if you don’t already have one, create and associate a key pair. 
@@ -70,6 +71,8 @@ Test connection can be used to make sure it works. If it is successful, you can 
 In the Amazon Dashboard, navigate back to the Elastic Beanstalk dashboard. Create an Elastic Beanstalk environment and once it has loaded and is running (Health status is green). Click the Upload and Deploy button and a menu will appear. Click Choose File and select the .war file you created at the end of the Java application step. Give it a version label and choose Deploy. This will create a public URL that runs your application.
 
 If you choose to use an auto-scaling group to manage load balancing, know that stopping the instance without removing it from the auto-scaling group will actually terminate the instance and require you to do the previous steps all over again.
+
+### IBM Softlayer
 
 ## iOS application 
 (everything within the microlocation folder)
