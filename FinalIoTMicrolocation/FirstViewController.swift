@@ -6,6 +6,7 @@
 //  Copyright © 2015 NCSU. All rights reserved.
 //
 
+
 import UIKit
 import Alamofire
 import Foundation
@@ -18,7 +19,11 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var SeniorDesignLabMap: UIImageView!
     
     let locationManager = CLLocationManager()
-    let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "NCSUEstimoteiBeacons")
+    let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "F4913F46-75F4-9134-913F-4913F4913F49")!, identifier: "NCSUGimbaliBeacons")
+    
+     //Identifies the Gimbal UUID Beacon Region
+    
+   // let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "NCSUEstimoteiBeacons")
     
       //Identifies the Estimote UUID Beacon Region
     
@@ -39,7 +44,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         
         locationManager.startRangingBeaconsInRegion(region)
         
-        //Starts ranging Estimote iBeacons
+        //Starts ranging iBeacons
         
         self.tabBarController!.tabBar.barTintColor = UIColor .blackColor()
     
@@ -61,7 +66,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 
                 //Extracting beacon minor values to identify beacons individually and also rssi and placing them as parameters to POST to the Server for Microlocation Calculations!
                 
-                Alamofire.request(.POST, "http://10.139.67.124:8080/microlocation/WemoController3", parameters: beaconparameters)
+                Alamofire.request(.POST, "http://10.139.64.25:8080/microlocationServer/WemoController3", parameters: beaconparameters)
                     .responseJSON { response in
                         
                         //Once we make the post above to whatever URL we are interested in we come down here and here is the response from the server where the JSON Object is parsed

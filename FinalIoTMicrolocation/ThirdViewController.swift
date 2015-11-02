@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ThirdViewController.swift
 //  FinalIoTMicrolocation
 //
 //  Created by Ibrahim Darwish on 10/6/15.
@@ -10,12 +10,14 @@ import UIKit
 import Foundation
 import CoreLocation
 
-class SecondViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+
+
+class ThirdViewController: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate  {
     
+    @IBOutlet var bg_proximity: UIImageView!
     @IBOutlet var tableView: UITableView!
     
     var beacons: [CLBeacon]?
-    var lastProximity: CLProximity?
     let locationManager = CLLocationManager()
     let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "F4913F46-75F4-9134-913F-4913F4913F49")!, identifier: "NCSUGimbaliBeacons")
     
@@ -25,6 +27,10 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate, UITable
     
     //Identifies the Estimote UUID Beacon Region
     
+    var BeaconExists = false
+    var Beacon:UIImageView!
+    
+    // var i=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +50,10 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate, UITable
         
         self.tabBarController!.tabBar.barTintColor = UIColor .blackColor()
         
-        //Sets the tab of the SecondViewController to Black
+        //Sets the tab of the ThirdViewController to Black
+        
         
     }
-    
     
     func tableView(tableView: UITableView,
         numberOfRowsInSection section: Int) -> Int {
@@ -56,9 +62,8 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate, UITable
             } else {
                 return 0
             }
-    
-    //This function checks for the number of iBeacons in the room and populates the number of rows in the table based on this.
-    
+   
+        //This function checks for the number of iBeacons in the room and populates the number of rows in the table based on this.
     }
     
     func tableView(tableView: UITableView,
@@ -95,20 +100,64 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate, UITable
             
             return cell!
     
-    //This function populates the table with actual iBeacon data
+     //This function populates the table with actual iBeacon data
+            
     }
     
     
     
     
-    func locationManager(manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], inRegion region: CLBeaconRegion) {
-        
-        self.tableView.dataSource = self
-        self.beacons = beacons
-        self.tableView!.reloadData()
-        
-    //This function brings in the iBeacon data and sends it to be displayed on the table.
-        
+    
+    
+    
+    func locationManager(manager: CLLocationManager,
+        didRangeBeacons beacons: [CLBeacon],
+        inRegion region: CLBeaconRegion) {
+            
+            self.tableView.dataSource = self
+            self.beacons = beacons
+            self.tableView!.reloadData()
+           
+            //This part of the function brings in the iBeacon data and sends it to be displayed on the table.
+            
+            let proximity = beacons[0].proximity.rawValue
+            
+            var xPlot = CGFloat(0)
+            
+            if (proximity == 1){
+                
+                xPlot = 186
+            }
+                
+            else if (proximity == 2){
+                
+                xPlot = 232
+            }
+                
+                
+            else if (proximity == 3){
+                
+                xPlot = 308
+            }
+                
+            else if (proximity == 0){
+                self.Beacon.removeFromSuperview()
+            }
+            
+            
+            if self.BeaconExists {
+                self.Beacon.removeFromSuperview()
+            }
+            
+              //Below is the method that actually plots and above is the if Statement that checks whether or not the iBeacon's Location has been plotted and if it has then the old plot of the iBeacon's location is removed and a new one is generated in the new location of the iBeacon based on proximity.
+            
+            self.Beacon  = UIImageView(frame:CGRectMake(xPlot, 175, 15, 15));
+            self.Beacon.image = UIImage(named:"beacon.png")
+            self.view.addSubview(self.Beacon)
+            
+            
+            self.BeaconExists = true
+            
     }
     
     override func didReceiveMemoryWarning() {
@@ -117,3 +166,4 @@ class SecondViewController: UIViewController, CLLocationManagerDelegate, UITable
     }
     
 }
+

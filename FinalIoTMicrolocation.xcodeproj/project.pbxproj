@@ -15,6 +15,7 @@
 		4661249B1BC3ACD800BF0725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 466124991BC3ACD800BF0725 /* LaunchScreen.storyboard */; };
 		466124A61BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124A51BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift */; };
 		466124B11BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124B01BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift */; };
+		46947C341BD7103F009B143E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46947C331BD7103F009B143E /* ThirdViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		46AB061D1BC85BA600EB6822 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB061C1BC85BA600EB6822 /* CoreLocation.framework */; };
 		46AB061F1BC85BBE00EB6822 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB061E1BC85BBE00EB6822 /* CoreBluetooth.framework */; };
 		46AB06211BC85C5200EB6822 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB06201BC85C5200EB6822 /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 		466124AC1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalIoTMicrolocationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		466124B01BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalIoTMicrolocationUITests.swift; sourceTree = "<group>"; };
 		466124B21BC3ACD800BF0725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46947C331BD7103F009B143E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		46AB061C1BC85BA600EB6822 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		46AB061E1BC85BBE00EB6822 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		46AB06201BC85C5200EB6822 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -137,6 +139,7 @@
 				4661248E1BC3ACD800BF0725 /* AppDelegate.swift */,
 				466124901BC3ACD800BF0725 /* FirstViewController.swift */,
 				466124921BC3ACD800BF0725 /* SecondViewController.swift */,
+				46947C331BD7103F009B143E /* ThirdViewController.swift */,
 				466124941BC3ACD800BF0725 /* Main.storyboard */,
 				466124971BC3ACD800BF0725 /* Assets.xcassets */,
 				466124991BC3ACD800BF0725 /* LaunchScreen.storyboard */,
@@ -361,6 +364,7 @@
 			files = (
 				466124931BC3ACD800BF0725 /* SecondViewController.swift in Sources */,
 				4661248F1BC3ACD800BF0725 /* AppDelegate.swift in Sources */,
+				46947C341BD7103F009B143E /* ThirdViewController.swift in Sources */,
 				466124911BC3ACD800BF0725 /* FirstViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -505,6 +509,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -513,6 +518,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -522,6 +528,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
@@ -530,6 +537,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocation;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

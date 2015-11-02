@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalIoTMicrolocation/FirstViewController.swift"
-            timestampString = "466296773.432816"
+            timestampString = "468119616.348724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "FirstViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalIoTMicrolocation/FirstViewController.swift"
-            timestampString = "466296773.432816"
+            timestampString = "468119616.348724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalIoTMicrolocation/FirstViewController.swift"
-            timestampString = "466296773.432816"
+            timestampString = "468119616.348724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "locationManager(_:didRangeBeacons:inRegion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalIoTMicrolocation/FirstViewController.swift"
-            timestampString = "466296773.432816"
+            timestampString = "468119616.348724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "108"
+            endingLineNumber = "108"
             landmarkName = "locationManager(_:didRangeBeacons:inRegion:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,13 +74,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FinalIoTMicrolocation/FirstViewController.swift"
-            timestampString = "466296773.432816"
+            timestampString = "468119616.348724"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
             landmarkName = "FirstViewController"
             landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FinalIoTMicrolocation/SecondViewController.swift"
+            timestampString = "468124736.565308"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "SecondViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FinalIoTMicrolocation.SecondViewController.__deallocating_deinit"
+                  moduleName = "FinalIoTMicrolocation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ibrahimdarwish/Documents/XcodeProjects/FinalIoTMicrolocation/FinalIoTMicrolocation/SecondViewController.swift"
+                  timestampString = "468124736.758276"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FinalIoTMicrolocation.SecondViewController.init (FinalIoTMicrolocation.SecondViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; FinalIoTMicrolocation.SecondViewController"
+                  moduleName = "FinalIoTMicrolocation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ibrahimdarwish/Documents/XcodeProjects/FinalIoTMicrolocation/FinalIoTMicrolocation/SecondViewController.swift"
+                  timestampString = "468124736.776511"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FinalIoTMicrolocation.SecondViewController.init (FinalIoTMicrolocation.SecondViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Swift.Optional&lt;FinalIoTMicrolocation.SecondViewController&gt;"
+                  moduleName = "FinalIoTMicrolocation"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ibrahimdarwish/Documents/XcodeProjects/FinalIoTMicrolocation/FinalIoTMicrolocation/SecondViewController.swift"
+                  timestampString = "468124736.776931"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "64">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
