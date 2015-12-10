@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--Microlocation-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="FinalIoTMicrolocation" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,24 +16,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="SeniorDesignLabMap" translatesAutoresizingMaskIntoConstraints="NO" id="Oyx-fj-wHj">
-                                <rect key="frame" x="14" y="20" width="293" height="450"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FinalRoom" translatesAutoresizingMaskIntoConstraints="NO" id="2CA-MZ-rKc">
+                                <rect key="frame" x="6" y="37" width="307" height="366"/>
                                 <animations/>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.62651909719999999" green="0.011914761629999999" blue="0.049727125490000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
-                    <connections>
-                        <outlet property="SeniorDesignLabMap" destination="Oyx-fj-wHj" id="cI6-6a-Wx4"/>
-                    </connections>
+                    <tabBarItem key="tabBarItem" title="Microlocation" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="750" y="-320"/>
         </scene>
-        <!--Second-->
+        <!--Geofencing-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="FinalIoTMicrolocation" customModuleProvider="target" sceneMemberID="viewController">
@@ -54,7 +51,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.62651909719999999" green="0.011914761629999999" blue="0.049727125490000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Geofencing" image="second" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="tableView" destination="zA5-KU-nYb" id="i76-bW-cUn"/>
                     </connections>
@@ -84,7 +81,7 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Third-->
+        <!--Proximity-->
         <scene sceneID="EHC-IL-Li0">
             <objects>
                 <viewController id="gNX-Wk-Bcf" customClass="ThirdViewController" customModule="FinalIoTMicrolocation" customModuleProvider="target" sceneMemberID="viewController">
@@ -109,7 +106,7 @@
                         <animations/>
                         <color key="backgroundColor" red="0.62651909719999999" green="0.011914761629999999" blue="0.049727125490000003" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Third" image="first" id="NWF-Qn-7Pw"/>
+                    <tabBarItem key="tabBarItem" title="Proximity" image="first" id="NWF-Qn-7Pw"/>
                     <connections>
                         <outlet property="bg_proximity" destination="HXX-ip-4PO" id="ukJ-0n-7x8"/>
                         <outlet property="tableView" destination="bKD-HX-UfM" id="cus-5S-YRw"/>
@@ -121,7 +118,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SeniorDesignLabMap" width="317" height="523"/>
+        <image name="FinalRoom" width="476" height="625"/>
         <image name="bg_proximity" width="1100" height="1100"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>

@@ -16,20 +16,31 @@ import CoreLocation
 
 class FirstViewController: UIViewController, CLLocationManagerDelegate {
     
-    @IBOutlet var SeniorDesignLabMap: UIImageView!
+    
+ 
     
     let locationManager = CLLocationManager()
     let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "F4913F46-75F4-9134-913F-4913F4913F49")!, identifier: "NCSUGimbaliBeacons")
     
      //Identifies the Gimbal UUID Beacon Region
     
-   // let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "NCSUEstimoteiBeacons")
+    //let region = CLBeaconRegion(proximityUUID: NSUUID(UUIDString: "B9407F30-F5F8-466E-AFF9-25556B57FE6D")!, identifier: "NCSUEstimoteiBeacons")
     
       //Identifies the Estimote UUID Beacon Region
     
+    var xPlot = CGFloat(0)
+    var yPlot = CGFloat(0)
+  
+    var xPlotBlueDot = CGFloat(0)
+    var yPlotBlueDot = CGFloat(0)
+    
+    var BlackSquareExists = false
+    var createBlackSquare = false
+    var BlackSquare:UIImageView!
+    
     var BlueDotExists = false
+    var createBlueDot = false
     var BlueDot:UIImageView!
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +60,7 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
         self.tabBarController!.tabBar.barTintColor = UIColor .blackColor()
     
         //Sets the tab of the FirstViewController to Black
+ 
         
     }
     
@@ -64,14 +76,29 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                 let rssi = beacon.rssi.description
                 let beaconparameters: [String: AnyObject]! = ["minor": minor, "rssi": rssi]
                 
+                createBlueDot = false
+                createBlackSquare = false
                 //Extracting beacon minor values to identify beacons individually and also rssi and placing them as parameters to POST to the Server for Microlocation Calculations!
+            
+              
+                //  Alamofire.request(.POST, "http://10.139.193.13:8080/microlocationServer/interactiveRoom", parameters: beaconparameters)
                 
-                Alamofire.request(.POST, "http://10.139.64.25:8080/microlocationServer/WemoController3", parameters: beaconparameters)
+                // This is an example of the local microlocation server to send the iBeacon data
+                
+                Alamofire.request(.POST, "http://microlocationserver.mybluemix.net/interactiveRoom", parameters: beaconparameters)
+                    
+                    
+                 //This is an example of the IBM Bluemix server to send the iBeacon data
+
+              
                     .responseJSON { response in
                         
                         //Once we make the post above to whatever URL we are interested in we come down here and here is the response from the server where the JSON Object is parsed
                         
-                        if let JSON = response.result.value {
+                         print (beaconparameters)
+                         print(response.result.value)
+                        
+                         if let JSON = response.result.value {
                             
                             let xcoordinate = JSON.valueForKey("xcoordinate")!
                             let ycoordinate = JSON.valueForKey("ycoordinate")!
@@ -83,38 +110,125 @@ class FirstViewController: UIViewController, CLLocationManagerDelegate {
                            
                             //I have to make a couple of conversions to get Swift to accept my numbers for plotting
                             
-                            let xFloatFinal =   CGFloat(xFloat)
+                            let xFloatFinal = CGFloat(xFloat)
                             let yFloatFinal = CGFloat(yFloat)
-                            
-                            let xConversionFactor = CGFloat(280/6.12139)
-                            let yConversionFactor = CGFloat(400/9.3472)
-                            
-                            //Here I specified a conversion factor for each coordinate point to convert meters to points on an (x,y) coordinate system.
-                            
-                            let xPlot = ((xConversionFactor)*(xFloatFinal))+10
-                            let yPlot = ((yConversionFactor)*(yFloatFinal))+20
-                            
-                            //These are my final results at which the iPhone will plot onto a map of a room
-                            
-                            print("xConversionFactor",xConversionFactor)
-                            print("yConversionFactor", yConversionFactor)
-                            print("xFloat",xFloatFinal)
-                            print("yFloat",yFloatFinal)
-                            print("xPlot",xPlot)
-                            print("yPlot",yPlot)
+            
+                            if self.BlackSquareExists {
+                                self.BlackSquare.removeFromSuperview()
+                            }
                             
                             if self.BlueDotExists {
                                 self.BlueDot.removeFromSuperview()
                             }
-                           
-                            //Below is the method that actually plots and above is the if Statement that checks whether or not the User's Location has been plotted and if it has then the old plot of the User's location is removed and a new one is generated in the new location of the user.
                             
-                            self.BlueDot  = UIImageView(frame:CGRectMake(xPlot, yPlot, 15, 15));
+                            
+                            if xFloatFinal < 1 && xFloatFinal > 0 && yFloatFinal < 1 && yFloatFinal > 0 {
+                                
+                                self.xPlot = CGFloat(7)
+                                self.yPlot = CGFloat(221)
+                                self.createBlackSquare = true
+                                
+                                
+                            }
+                            
+                           
+                            if xFloatFinal < 2 && xFloatFinal > 1 && yFloatFinal < 1 && yFloatFinal > 0 {
+                                
+                                self.xPlot = CGFloat(108)
+                                self.yPlot = CGFloat(221)
+                                self.createBlackSquare = true
+                                
+                       
+                            
+                            }
+                            
+                            if xFloatFinal < 3 && xFloatFinal > 2 && yFloatFinal < 1 && yFloatFinal > 0 {
+                                
+                                self.xPlot = CGFloat(209)
+                                self.yPlot = CGFloat(221)
+                                self.createBlackSquare = true
+                                
+                               
+                            
+                            }
+                            
+                            if xFloatFinal < 1 && xFloatFinal > 0 && yFloatFinal < 2 && yFloatFinal > 1 {
+                                
+                                self.xPlot = CGFloat(7)
+                                self.yPlot = CGFloat(312)
+                                self.createBlackSquare = true
+                                
+                                
+                            }
+                            
+                            if xFloatFinal < 2 && xFloatFinal > 1 && yFloatFinal < 2 && yFloatFinal > 1 {
+                                
+                                self.xPlot = CGFloat(108)
+                                self.yPlot = CGFloat(312)
+                                self.createBlackSquare = true
+                                
+                           
+                            }
+                            
+                            if xFloatFinal < 3 && xFloatFinal > 2 && yFloatFinal < 2 && yFloatFinal > 1 {
+                                
+                                self.xPlot = CGFloat(209)
+                                self.yPlot = CGFloat(312)
+                                self.createBlackSquare = true
+                            
+                            }
+                            
+                      
+                            
+                            //The above if statements plots the user according to microlocation coordinates received from the server
+                            
+                            
+                            
+                            if xFloatFinal == 20 && yFloatFinal == 20 {
+                                
+                                self.xPlotBlueDot = CGFloat(70)
+                                self.yPlotBlueDot = CGFloat(100)
+                                self.createBlueDot = true
+                              
+                                // This plots the proximity location of a user in the upper left part of the screen where the interactive living room is located.
+                                
+                            }
+                            
+                            if xFloatFinal == 40 && yFloatFinal == 40 {
+                                
+                                self.xPlotBlueDot = CGFloat(236)
+                                self.yPlotBlueDot = CGFloat(87)
+                                self.createBlueDot = true
+                                
+                                // This plots the proximity location of a user in the upper right part of the screen where the smart desk is located
+                                
+                            }
+                          
+                             //Below is the method that actually plots and the if Statement that checks whether or not the User's Location has been plotted and if it has then the old plot of the User's location is removed and a new one is generated in the new location of the user.
+                            
+                            if(self.createBlackSquare){
+                                
+                            self.BlackSquare  = UIImageView(frame:CGRectMake(self.xPlot, self.yPlot, 102, 91));
+                            self.BlackSquare.image = UIImage(named:"second-1.png")
+                            self.view.addSubview(self.BlackSquare)
+                            self.BlackSquareExists = true
+                            
+                            }
+      
+                            
+                            //Below is the method that actually plots and the if Statement that checks whether or not the User's Location has been plotted and if it has then the old plot of the User's location is removed and a new one is generated in the new location of the user.
+                            
+                            
+                            if(self.createBlueDot){
+                            self.BlueDot  = UIImageView(frame:CGRectMake(self.xPlotBlueDot, self.yPlotBlueDot, 15, 15));
                             self.BlueDot.image = UIImage(named:"TrackingDot.png")
                             self.view.addSubview(self.BlueDot)
-                            
                             self.BlueDotExists = true
-                    
+                            
+                            }
+                            
+
+                            
                         }
                 }
             }
