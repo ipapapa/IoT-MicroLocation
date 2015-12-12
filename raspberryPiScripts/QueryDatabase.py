@@ -11,12 +11,21 @@ import os
 import signal
 
 #--------------------------------------------------------------------------------
-# Establishes the connection to the cloudant database
-# and checks the database for the values the devices
+# Establishes the connection to the cloudant database and checks the database for the values for the values of the "Things"
+
+if (len(sys.argv) != 3):
+    print 'Please include username and password'
+    print ' e.g python QueryDatabase.py username password'
+    sys.exit()
+
+
+username = sys.argv[1]
+password = sys.argv[2]
+cloudantURL = 'https://' + username + ':' + password +'@' + username + '.cloudant.com/microlocation/ThingsParameters'
 
 buffer = StringIO()  
 c = pycurl.Curl()
-c.setopt(c.URL, 'https://brz4lif:F0rgetme@brz4lif.cloudant.com/microlocation/ThingsParameters')
+c.setopt(c.URL, cloudantURL)
 c.setopt(c.WRITEDATA, buffer)
 wemo1ip = '10.139.196.244'
 wemo2ip = '10.139.198.253'
@@ -55,11 +64,10 @@ while True:
         Wemo2ON = False
         print "wemo2:OFF"
 #----------------------------------------------------------------------------------------------------------------
-        # this is where we are having trouble killing the video, it is playing even after the else statement?
-        # this section where we are playing a video  
+        # this section is where we are playing a video  
     if y['TV'] == "1" and TVON == False:    # if TV is 1, play the video
         subprocess.call('xset dpms force on', shell = True)
-        TV = subprocess.Popen(["omxplayer","-ohdmi", "/home/pi/IOT/video1.mp4"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        TV = subprocess.Popen(["omxplayer","-ohdmi", "./video1.mp4"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         TVON = True
         print "TURN TV ON"        
     elif y['TV'] == "0" and TVON == True:  # otherwise it "should" stop playing the video, the comments underneath are what we tried
@@ -74,7 +82,7 @@ while True:
         print "TURN TV OFF"
 #----------------------------------------------------------------------------------------------------------------------
     if y['Speakers'] == "1" and BTON == False: #if the bluetooth is 1 play the music on the speakers
-         BT = subprocess.Popen(["omxplayer","-olocal", "/home/pi/IOT/future.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+         BT = subprocess.Popen(["omxplayer","-olocal", "./future.mp3"], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
          BTON = True
          print "Speakers ON"
     elif y['Speakers'] == "0" and BTON == True:
