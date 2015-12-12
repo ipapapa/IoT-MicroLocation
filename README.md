@@ -18,9 +18,12 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 # Technical Summary
 
-![IoT-MicroLocation Flow](http://ianscotthamilton.github.io/microlocation_flow.png)
+![IoT-MicroLocation Flow](https://github.com/idarwish1/images/blob/master/projectflowchart.png)
 
-The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacons (signals) from the ibeacons (BLE enabled devices). A Java Tomcat Servlet with a MySQL database can be deployed on Amazon's AWS. The iOS application ranges the beacons for the supplied UUID and then sends the corresponding information (uuid, major, minor) to the server. The server uses the sent information to query the database, and returns information about the specific beacon to the iOS app. The iOS app uses this information, along with a beacon's proximity to determine whether it should call a script on the server to perform an action, such as turn on an appliance plugged in with a Wemo switch. In order to use the code found on this repository to create your own iBeacons application, follow the guide below.
+The iPhone application utilizes the CoreLocation framework of the iOS
+
+
+The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacons (signals) from the ibeacons (BLE enabled devices). A Java Tomcat Servlet with a MySQL database can be deployed on Amazon's AWS. The iOS application ranges the beacons for the supplied UUID and then sends the corresponding information (uuid, major, minor) to the server. The server uses the sent information to query the database, and returns information about the specific location to the iOS app. The iOS application then will plot the location on the map 
 
 There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
