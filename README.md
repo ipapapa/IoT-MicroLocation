@@ -75,6 +75,8 @@ If you choose to use an auto-scaling group to manage load balancing, know that s
 
 ### IBM Softlayer
 
+![Bluemix](https://www-304.ibm.com/connections/blogs/NordicMSP/resource/BLOGS_UPLOADED_IMAGES/IBM-BlueMix.jpg)
+
 ### iOS application 
 (everything within the iPhoneApp folder)
 
