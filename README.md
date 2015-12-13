@@ -39,14 +39,21 @@ For example: (B1 is a beacon minor value of 1)
 
 <img src="https://github.com/idarwish1/images/blob/master/beaconplacement.png" alt="alt text" width="" height="400">
 
-final Point[] landmarks = new Point[]{new Point(0.00d, 0.00d), new Point(3.00d,0.00d), 
+
+
+```java
+    final Point[] landmarks = new Point[]{new Point(0.00d, 0.00d), new Point(3.00d,0.00d), 
 new Point(0.00d,3.00d), new Point(3.00d,3.00d)};
+```
+
+
+
 
 Note: Feel free to use the provided FeetToMeter function within the Java functions if necessary
 
 
 ```java
-   // private iBeacon[] re = new iBeacon[4];
+    private iBeacon[] re = new iBeacon[4];
 ```
 
 
