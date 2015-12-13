@@ -25,6 +25,18 @@ The Microlocation system utilizes Bluetooth Low Energy (BLE) technology of iBeac
 
 ## Java application 
 
+### Getting Started (WemoController3 & interactiveRoom) 
+
+After successfully importing the Java project and running it on a local TomCat server or in the cloud on a BlueMix server, there are only a few parts of of the Java application that will change based on your environment. These will basically be how you always initialize your server to a new environment. 
+
+#### WemoController3:
+
+Open in the project in an IDE or open WemoController3.java in a text editor and scroll to line 105. Here we change the points of our landmarks (“beacons”). Insert the meter locations of the beacons within the room. On line 116, also change the array size of array variable ‘re’ to the amount of beacons the user has within the room. In lines 374, 378, 382, 386 also change the minor values of the beacons you are working with.
+
+For example: (B1 is a beacon minor value of 1)
+
+
+
 <img src="https://github.com/idarwish1/images/blob/master/beaconplacement.png" alt="alt text" width="" height="400">
 
 (the project folder is the micro-location folder inside the java-server folder. Also, the logincontroller currently in the project has no use and is going to be included in the future versions. ) 
