@@ -163,12 +163,19 @@ Raspberry Pi is the actuator for the “Internet of Things” system. The Raspbe
 Instructions:
 
 1.) Connect the WiFi Dongle to the Raspberry Pi
+
 2.) Turn on the Raspberry Pi
+
 3.) Download the QueryDatabase.py script
+
 4.) Download the WeMo.py script
+
 5.) Download the mp3 and mp4 files that you want to play
+
 6.) Put these files into a directory and ensure lines 70 and 85 (found in QueryDatabase.py) are correlating correctly with the names of the mp3 and mp4 files
+
 7.) Change wemo1ip and wemo2ip (lines 30 and 31 of QueryDatabase.py) to the current IP addresses of your WeMo switches
+
 8.) Run the QueryDatabase.py script with username and password of your Cloudant Database
 
 
