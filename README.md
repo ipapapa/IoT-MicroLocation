@@ -20,12 +20,8 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 ![IoT-MicroLocation Flow](https://github.com/idarwish1/images/blob/master/projectflowchart.png)
 
-The iPhone application utilizes the CoreLocation framework of the iOS
+The Microlocation system utilizes Bluetooth Low Energy (BLE) technology of iBeacons to locate a user. Multiple beacons are placed in a room and based on trilateration algorithms the user's mobile device can be located. The iBeacon packets broadcasted have the essential data of each beacon such as UUID, Proximity, RSSI, Major and Minor numbers embedded into the payload of each packet. The iPhone receives this data and through a HTTP POSTs the mobile device puts this data into a JSON object and sends it to a server whether it be local (Tomcat) or in the cloud (Bluemix). The server is where the power house is where it processes the data coming through and based on RSSI values from multiple beacons coming in it will trilaterate the user's position and then run a particle filtering algorithm to make it more accurate. Once the user is located the server will reply back in the form of a JSON Response Object and the iPhone will do a iBeacon packet inspection to find the x and y coordinates that the server has calculated for the user's location. The iPhone plots this onto the map of the room and the user therefore will know where they are located. Now knowing the location of the user, the server simultaneously sends a signal to the cloudant database indicating that the user is nearby a device. The Raspberry Pi polls the Cloudant Database for the things that it knows about constantly until something changes in the database. Once a change has been made (i.e. a user is near or far from a device) the device state changes and turns on or off.
 
-
-The iPhone application utilizes the CoreLocation and CoreBluetooth Framework of the iOS to obtain the beacons (signals) from the ibeacons (BLE enabled devices). A Java Tomcat Servlet with a MySQL database can be deployed on Amazon's AWS. The iOS application ranges the beacons for the supplied UUID and then sends the corresponding information (uuid, major, minor) to the server. The server uses the sent information to query the database, and returns information about the specific location to the iOS app. The iOS application then will plot the location on the map 
-
-There are two different applications within the github repository, the Java servlet application and the iOS application. Both will require minor changes to work with your specific environment and those changes are detailed below. In addition to tweaking these two projects, this guide will finally show you how to create your database and deploy your server on AWS using its EC2 instance and Elastic Beanstalk.
 
 ## Java application 
 (the project folder is the micro-location folder inside the java-server folder. Also, the logincontroller currently in the project has no use and is going to be included in the future versions. ) 
@@ -85,15 +81,15 @@ If you choose to use an auto-scaling group to manage load balancing, know that s
 
 Since we have used cocoapods in the application, you need to install the pods in our application as well. For that you have to open up the terminal, go to the directory where your application project is located (You can use cd (path) to change the directory). Once you get to the specific directory, type pod install. This will install the podfiles required to compile the project. 
 
-<img src="https://github.com/idarwish1/images/blob/master/appiconscreen.png" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/appiconscreen.png" alt="alt text" width="" height="400">
 
-<img src="https://github.com/idarwish1/images/blob/master/splashscreen.PNG" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/splashscreen.PNG" alt="alt text" width="" height="400">
 
 #### Microlocation tab
 
-<img src="https://github.com/idarwish1/images/blob/master/microlocation.PNG" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/microlocation.PNG" alt="alt text" width="" height="400">
 
-<img src="https://github.com/idarwish1/images/blob/master/microlocationthings.png" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/microlocationthings.png" alt="alt text" width="" height="400">
 
 
 
@@ -101,14 +97,14 @@ In this tab the first thing we are observing in the code is the iBeacon UUID inf
 
 #### Geofencing tab
 
-<img src="https://github.com/idarwish1/images/blob/master/geofencing.PNG" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/geofencing.PNG" alt="alt text" width="" height="400">
 
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time. This is displayed to the user as they are around the iBeacon and moving around.
 
 
 #### Proximity tab
 
-<img src="https://github.com/idarwish1/images/blob/master/proximity.PNG" alt="alt text" width="" height="500">
+<img src="https://github.com/idarwish1/images/blob/master/proximity.PNG" alt="alt text" width="" height="400">
 
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time and moves on to plot the iBeacon location based on the proximity of the user's iPhone to the iBeacon.
 
