@@ -85,18 +85,28 @@ If you choose to use an auto-scaling group to manage load balancing, know that s
 
 Since we have used cocoapods in the application, you need to install the pods in our application as well. For that you have to open up the terminal, go to the directory where your application project is located (You can use cd (path) to change the directory). Once you get to the specific directory, type pod install. This will install the podfiles required to compile the project. 
 
+![appiconscreen](https://github.com/idarwish1/images/blob/master/appiconscreen.png)
+
+![splashscreen](https://github.com/idarwish1/images/blob/master/splashscreen.PNG)
+
 #### Microlocation tab
 
 ![Microlocation](https://github.com/idarwish1/images/blob/master/microlocation.PNG)
+
+![MicrolocationThings](https://github.com/idarwish1/images/blob/master/microlocationthings.png)
 
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It starts out by prompting the user on whether or not they allow their location to be tracked via location services. It then goes into the ranging of the beacons. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. Once beacons are detected the iPhone goes into the for loop and sends the iBeacon packets out to the server via the corresponding URL. Our app has utilized bluemix so the bluemix pathname for the data to be sent to is provided. Once the response object comes back in JSON, the app then parses the object for the necessary coordinates from the server to then plot in the proper space on the map of the room. The location is then removed and the loop starts back over again for the next user's location. 
 
 #### Geofencing tab
 
+![Geofencing](https://github.com/idarwish1/images/blob/master/geofencing.PNG)
+
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time. This is displayed to the user as they are around the iBeacon and moving around.
 
 
 #### Proximity tab
+
+![Proximity](https://github.com/idarwish1/images/blob/master/proximity.PNG)
 
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time and moves on to plot the iBeacon location based on the proximity of the user's iPhone to the iBeacon.
 
