@@ -77,6 +77,31 @@ To interact with CloudantDB, there are two changes that have to be made. In inte
 
 
 
+Bluemix™ is the latest cloud offering from IBM®. It enables organizations and developers to quickly and easily create, deploy, and manage applications on the cloud. Bluemix is an implementation of IBM's Open Cloud Architecture based on Cloud Foundry, an open source Platform as a Service (PaaS). Bluemix delivers enterprise-level services that can easily integrate with your cloud applications without you needing to know how to install or configure them. This article gives a high-level description of Cloud Foundry and Bluemix and outlines the features and services that were part of the open beta of Bluemix, which make it a compelling PaaS in the market today.
+
+Instructions:
+
+1.) Make a IBM Bluemix account
+
+2.) Create on a Space
+
+3.) Name your project
+
+4.) Create App
+
+5.) Specify whether you want to create a web or mobile application
+
+6.) Select the library, Liberty for Java
+
+7.) Choose a name for your app
+
+After you name your app, Bluemix will generate your project space onto a server for public use. Since we have a completed Java Application, we will be pushing our project to the cloud through Eclipse Luna IDE. Here are the instructions below to push your project to the cloud:
+
+
+
+
+
+
 
 
 ### iOS application 
