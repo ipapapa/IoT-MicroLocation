@@ -15,7 +15,7 @@ The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further i
 
 Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://people.engr.ncsu.edu/ipapapa/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
 
-<img src="https://github.com/idarwish1/images/blob/master/Architecture.png" alt="alt text" width="" height="400">
+<img src="https://github.com/idarwish1/images/blob/master/Architecture.png" alt="alt text" width="" height="350">
 
 
 # Technical Summary
