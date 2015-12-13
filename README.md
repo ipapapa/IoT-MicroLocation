@@ -87,6 +87,8 @@ Since we have used cocoapods in the application, you need to install the pods in
 
 #### Microlocation tab
 
+![Microlocation](https://github.com/idarwish1/images/blob/master/microlocation.PNG)
+
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It starts out by prompting the user on whether or not they allow their location to be tracked via location services. It then goes into the ranging of the beacons. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. Once beacons are detected the iPhone goes into the for loop and sends the iBeacon packets out to the server via the corresponding URL. Our app has utilized bluemix so the bluemix pathname for the data to be sent to is provided. Once the response object comes back in JSON, the app then parses the object for the necessary coordinates from the server to then plot in the proper space on the map of the room. The location is then removed and the loop starts back over again for the next user's location. 
 
 #### Geofencing tab
