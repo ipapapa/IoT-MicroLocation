@@ -97,12 +97,13 @@ Instructions:
 
 After you name your app, Bluemix will generate your project space onto a server for public use. Since we have a completed Java Application, we will be pushing our project to the cloud through Eclipse Luna IDE. Here are the instructions below to push your project to the cloud:
 
+<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions.png" alt="alt text" width="" height="400">
 
 
+After this, now in Eclipse Luna IDE do the following:
 
 
-
-
+<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions2.png" alt="alt text" width="" height="400">
 
 ### iOS application 
 (everything within the iPhoneApp folder)
