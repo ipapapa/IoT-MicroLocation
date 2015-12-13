@@ -44,7 +44,13 @@ new Point(0.00d,3.00d), new Point(3.00d,3.00d)};
 
 Note: Feel free to use the provided FeetToMeter function within the Java functions if necessary
 
-private iBeacon[] re = new iBeacon[4];
+
+```java
+   // private iBeacon[] re = new iBeacon[4];
+```
+
+
+
 
 For lines 374, 378, 382, 386 change the location of where the rssi value is stored within the iBeacon array to index of the landmarks array.
 
