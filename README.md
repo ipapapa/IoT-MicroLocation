@@ -4,7 +4,7 @@ An end-to-end Internet of Things (IoT) software package for Micro-Location, Prox
 
 # Readme
 
-Below you may find information about the Java server application, Amazon AWS installation, and the iOS application.
+Below you may find information about the Java server application, Bluemix installation, and the iOS application.
 
 The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further information about additional components that can be added to the project.
 
