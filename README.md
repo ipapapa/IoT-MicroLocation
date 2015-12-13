@@ -4,7 +4,7 @@ An end-to-end Internet of Things (IoT) software package for Micro-Location, Prox
 
 # Readme
 
-Below you may find information about the Java server application, Bluemix installation, and the iOS application.
+Below you may find information about the Java server application, Bluemix installation, the iOS application and the Raspberry Pi.
 
 The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further information about additional components that can be added to the project.
 
@@ -14,6 +14,8 @@ The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further i
 [Microlocation and Geofencing - Purdue University](http://www.youtube.com/watch?v=QCtc7z6PC70)
 
 Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://people.engr.ncsu.edu/ipapapa/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
+
+<img src="https://github.com/idarwish1/images/blob/master/OverallArchitecture.png" alt="alt text" width="" height="400">
 
 
 # Technical Summary
@@ -152,6 +154,22 @@ In this tab the first thing we are observing in the code is the iBeacon UUID inf
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time and moves on to plot the iBeacon location based on the proximity of the user's iPhone to the iBeacon.
 
 
+## Raspberry Pi
+
+<img src="https://github.com/idarwish1/images/blob/master/rpi1bplus.png" alt="alt text" width="" height="400">
+
+Raspberry Pi is the actuator for the “Internet of Things” system. The Raspberry Pi will initiate the devices once a user is in a specific location. It will be running a python script that will be continuously checking the database to see if the server has sent a flag indicating that the user is in a specific location.
+
+Instructions:
+
+1.) Connect the WiFi Dongle to the Raspberry Pi
+2.) Turn on the Raspberry Pi
+3.) Download the QueryDatabase.py script
+4.) Download the WeMo.py script
+5.) Download the mp3 and mp4 files that you want to play
+6.) Put these files into a directory and ensure lines 70 and 85 (found in QueryDatabase.py) are correlating correctly with the names of the mp3 and mp4 files
+7.) Change wemo1ip and wemo2ip (lines 30 and 31 of QueryDatabase.py) to the current IP addresses of your WeMo switches
+8.) Run the QueryDatabase.py script with username and password of your Cloudant Database
 
 
 
