@@ -43,7 +43,7 @@ For example: (B1 is a beacon minor value of 1)
 
 ```java
     final Point[] landmarks = new Point[]{new Point(0.00d, 0.00d), new Point(3.00d,0.00d), 
-new Point(0.00d,3.00d), new Point(3.00d,3.00d)};
+    new Point(0.00d,3.00d), new Point(3.00d,3.00d)};
 ```
 
 
