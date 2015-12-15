@@ -109,7 +109,7 @@ After you name your app, Bluemix will generate your project space onto a server 
 After this, now in Eclipse Luna IDE do the following:
 
 
-<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions2.png" alt="alt text" width="" height="300">
+<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions2.png" alt="alt text" width="" height="250">
 
 ### iOS application 
 (everything within the iPhoneApp folder)
