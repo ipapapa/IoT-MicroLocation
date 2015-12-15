@@ -118,9 +118,9 @@ After this, now in Eclipse Luna IDE do the following:
 
 Since we have used cocoapods in the application, you need to install the pods in our application as well. For that you have to open up the terminal, go to the directory where your application project is located (You can use cd (path) to change the directory). Once you get to the specific directory, type pod install. This will install the podfiles required to compile the project. 
 
-<img src="https://github.com/idarwish1/images/blob/master/appiconscreen.png" alt="alt text" width="" height="400">
+<img src="https://github.com/idarwish1/images/blob/master/appiconscreen.png" alt="alt text" width="" height="400"> <img src="https://github.com/idarwish1/images/blob/master/splashscreen.PNG" alt="alt text" width="" height="400">
 
-<img src="https://github.com/idarwish1/images/blob/master/splashscreen.PNG" alt="alt text" width="" height="400">
+
 
 
 
