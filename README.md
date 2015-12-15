@@ -185,9 +185,30 @@ Instructions:
 8.) Run the QueryDatabase.py script with username and password of your Cloudant Database
 
 
+## CloudantDB
+
+IBM Cloudant Database is what we used as our means of communication between devices. It allowed us to seamlessly integrate the Raspberry Pi into the system without direct communication to the Raspberry Pi. Through HTTP POSTs and HTTP GETs, our system became fully capable to do what we like to do.
+
+# Setting Up
+After you have created a Cloudant Account, you can start creating a database.
+
+To integrate easily into the Server code’s POSTs and Raspberry Pi code’s GETs, follow the following steps:
+
+1)	Click on the Database Tab
+
+2)	Click Create Database
+
+3)	Name the Database “microlocation”
+
+4)	Now, under All Documents, you can click the + sign where you can add new documents
+
+5)	Cloudant will generate a randomized name for your new document. Instead of this randomized name, change it to “ThingsParameters”
+
+6)	Now add entries for the “Things” you would like to interact with
 
 
+<img src="https://github.com/idarwish1/images/blob/master/CloudantDBPic.png" alt="alt text" width="" height="">
 
-
+Note: Current Server Code (interactiveRoom.java) and Raspberry Pi Code (QueryDatabase.py) use above entries to interact with “Things”. Before continuing make sure you add these entries into your Cloudant Document.
 
 
