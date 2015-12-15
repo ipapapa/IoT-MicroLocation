@@ -19,7 +19,7 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 [Design Day Demo and Project Overview - North Carolina State University](https://www.youtube.com/watch?v=3bmHBxyk1qc)
 
-<img src="https://github.com/idarwish1/images/blob/master/Architecture.png" alt="alt text" width="" height="350">
+<img src="https://github.com/idarwish1/images/blob/master/Architecture.png" alt="alt text" width="" height="300">
 
 
 # Technical Summary
