@@ -1,0 +1,634 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4661248F1BC3ACD800BF0725 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4661248E1BC3ACD800BF0725 /* AppDelegate.swift */; };
+		466124911BC3ACD800BF0725 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124901BC3ACD800BF0725 /* FirstViewController.swift */; };
+		466124931BC3ACD800BF0725 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124921BC3ACD800BF0725 /* SecondViewController.swift */; };
+		466124961BC3ACD800BF0725 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 466124941BC3ACD800BF0725 /* Main.storyboard */; };
+		466124981BC3ACD800BF0725 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 466124971BC3ACD800BF0725 /* Assets.xcassets */; };
+		4661249B1BC3ACD800BF0725 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 466124991BC3ACD800BF0725 /* LaunchScreen.storyboard */; };
+		466124A61BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124A51BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift */; };
+		466124B11BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466124B01BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift */; };
+		46947C341BD7103F009B143E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46947C331BD7103F009B143E /* ThirdViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		46AB061D1BC85BA600EB6822 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB061C1BC85BA600EB6822 /* CoreLocation.framework */; };
+		46AB061F1BC85BBE00EB6822 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB061E1BC85BBE00EB6822 /* CoreBluetooth.framework */; };
+		46AB06211BC85C5200EB6822 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB06201BC85C5200EB6822 /* CoreGraphics.framework */; };
+		46AB06231BC85C6800EB6822 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB06221BC85C6800EB6822 /* UIKit.framework */; };
+		46AB06251BC864D500EB6822 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46AB06241BC864D500EB6822 /* Alamofire.framework */; };
+		93DA2D63DE7DD082670C88F4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57ED1A632012F80CA60BB2A6 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		466124A21BC3ACD800BF0725 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466124831BC3ACD800BF0725 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4661248A1BC3ACD800BF0725;
+			remoteInfo = FinalIoTMicrolocation;
+		};
+		466124AD1BC3ACD800BF0725 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 466124831BC3ACD800BF0725 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4661248A1BC3ACD800BF0725;
+			remoteInfo = FinalIoTMicrolocation;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4661248B1BC3ACD800BF0725 /* FinalIoTMicrolocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalIoTMicrolocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4661248E1BC3ACD800BF0725 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		466124901BC3ACD800BF0725 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		466124921BC3ACD800BF0725 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		466124951BC3ACD800BF0725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		466124971BC3ACD800BF0725 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4661249A1BC3ACD800BF0725 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4661249C1BC3ACD800BF0725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		466124A11BC3ACD800BF0725 /* FinalIoTMicrolocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalIoTMicrolocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		466124A51BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalIoTMicrolocationTests.swift; sourceTree = "<group>"; };
+		466124A71BC3ACD800BF0725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		466124AC1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalIoTMicrolocationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		466124B01BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalIoTMicrolocationUITests.swift; sourceTree = "<group>"; };
+		466124B21BC3ACD800BF0725 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		46947C331BD7103F009B143E /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		46AB061C1BC85BA600EB6822 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		46AB061E1BC85BBE00EB6822 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		46AB06201BC85C5200EB6822 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		46AB06221BC85C6800EB6822 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		46AB06241BC864D500EB6822 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		57ED1A632012F80CA60BB2A6 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E299C791F47F9FC4E6814A0 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		85E2B81E3C2971BBA41EB2DE /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		466124881BC3ACD800BF0725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				46AB06251BC864D500EB6822 /* Alamofire.framework in Frameworks */,
+				46AB06231BC85C6800EB6822 /* UIKit.framework in Frameworks */,
+				46AB06211BC85C5200EB6822 /* CoreGraphics.framework in Frameworks */,
+				46AB061F1BC85BBE00EB6822 /* CoreBluetooth.framework in Frameworks */,
+				46AB061D1BC85BA600EB6822 /* CoreLocation.framework in Frameworks */,
+				93DA2D63DE7DD082670C88F4 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4661249E1BC3ACD800BF0725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466124A91BC3ACD800BF0725 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1A848EFDA986860A89633A0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				46AB06241BC864D500EB6822 /* Alamofire.framework */,
+				46AB06221BC85C6800EB6822 /* UIKit.framework */,
+				46AB06201BC85C5200EB6822 /* CoreGraphics.framework */,
+				46AB061E1BC85BBE00EB6822 /* CoreBluetooth.framework */,
+				46AB061C1BC85BA600EB6822 /* CoreLocation.framework */,
+				57ED1A632012F80CA60BB2A6 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		466124821BC3ACD800BF0725 = {
+			isa = PBXGroup;
+			children = (
+				4661248D1BC3ACD800BF0725 /* FinalIoTMicrolocation */,
+				466124A41BC3ACD800BF0725 /* FinalIoTMicrolocationTests */,
+				466124AF1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests */,
+				4661248C1BC3ACD800BF0725 /* Products */,
+				5EE0C131B7F1A08CFB7F576B /* Pods */,
+				1A848EFDA986860A89633A0A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4661248C1BC3ACD800BF0725 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4661248B1BC3ACD800BF0725 /* FinalIoTMicrolocation.app */,
+				466124A11BC3ACD800BF0725 /* FinalIoTMicrolocationTests.xctest */,
+				466124AC1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4661248D1BC3ACD800BF0725 /* FinalIoTMicrolocation */ = {
+			isa = PBXGroup;
+			children = (
+				4661248E1BC3ACD800BF0725 /* AppDelegate.swift */,
+				466124901BC3ACD800BF0725 /* FirstViewController.swift */,
+				466124921BC3ACD800BF0725 /* SecondViewController.swift */,
+				46947C331BD7103F009B143E /* ThirdViewController.swift */,
+				466124941BC3ACD800BF0725 /* Main.storyboard */,
+				466124971BC3ACD800BF0725 /* Assets.xcassets */,
+				466124991BC3ACD800BF0725 /* LaunchScreen.storyboard */,
+				4661249C1BC3ACD800BF0725 /* Info.plist */,
+			);
+			path = FinalIoTMicrolocation;
+			sourceTree = "<group>";
+		};
+		466124A41BC3ACD800BF0725 /* FinalIoTMicrolocationTests */ = {
+			isa = PBXGroup;
+			children = (
+				466124A51BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift */,
+				466124A71BC3ACD800BF0725 /* Info.plist */,
+			);
+			path = FinalIoTMicrolocationTests;
+			sourceTree = "<group>";
+		};
+		466124AF1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests */ = {
+			isa = PBXGroup;
+			children = (
+				466124B01BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift */,
+				466124B21BC3ACD800BF0725 /* Info.plist */,
+			);
+			path = FinalIoTMicrolocationUITests;
+			sourceTree = "<group>";
+		};
+		5EE0C131B7F1A08CFB7F576B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85E2B81E3C2971BBA41EB2DE /* Pods.debug.xcconfig */,
+				6E299C791F47F9FC4E6814A0 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4661248A1BC3ACD800BF0725 /* FinalIoTMicrolocation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466124B51BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocation" */;
+			buildPhases = (
+				E5F38CA91AA863108E8136F3 /* Check Pods Manifest.lock */,
+				466124871BC3ACD800BF0725 /* Sources */,
+				466124881BC3ACD800BF0725 /* Frameworks */,
+				466124891BC3ACD800BF0725 /* Resources */,
+				AFEF3E1ACBADA8D382900A0D /* Embed Pods Frameworks */,
+				12A3D6C7936A42FFD02D7323 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FinalIoTMicrolocation;
+			productName = FinalIoTMicrolocation;
+			productReference = 4661248B1BC3ACD800BF0725 /* FinalIoTMicrolocation.app */;
+			productType = "com.apple.product-type.application";
+		};
+		466124A01BC3ACD800BF0725 /* FinalIoTMicrolocationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466124B81BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocationTests" */;
+			buildPhases = (
+				4661249D1BC3ACD800BF0725 /* Sources */,
+				4661249E1BC3ACD800BF0725 /* Frameworks */,
+				4661249F1BC3ACD800BF0725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				466124A31BC3ACD800BF0725 /* PBXTargetDependency */,
+			);
+			name = FinalIoTMicrolocationTests;
+			productName = FinalIoTMicrolocationTests;
+			productReference = 466124A11BC3ACD800BF0725 /* FinalIoTMicrolocationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		466124AB1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 466124BB1BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocationUITests" */;
+			buildPhases = (
+				466124A81BC3ACD800BF0725 /* Sources */,
+				466124A91BC3ACD800BF0725 /* Frameworks */,
+				466124AA1BC3ACD800BF0725 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				466124AE1BC3ACD800BF0725 /* PBXTargetDependency */,
+			);
+			name = FinalIoTMicrolocationUITests;
+			productName = FinalIoTMicrolocationUITests;
+			productReference = 466124AC1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		466124831BC3ACD800BF0725 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = NCSU;
+				TargetAttributes = {
+					4661248A1BC3ACD800BF0725 = {
+						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = AE42W35362;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
+					};
+					466124A01BC3ACD800BF0725 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 4661248A1BC3ACD800BF0725;
+					};
+					466124AB1BC3ACD800BF0725 = {
+						CreatedOnToolsVersion = 7.0.1;
+						TestTargetID = 4661248A1BC3ACD800BF0725;
+					};
+				};
+			};
+			buildConfigurationList = 466124861BC3ACD800BF0725 /* Build configuration list for PBXProject "FinalIoTMicrolocation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 466124821BC3ACD800BF0725;
+			productRefGroup = 4661248C1BC3ACD800BF0725 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4661248A1BC3ACD800BF0725 /* FinalIoTMicrolocation */,
+				466124A01BC3ACD800BF0725 /* FinalIoTMicrolocationTests */,
+				466124AB1BC3ACD800BF0725 /* FinalIoTMicrolocationUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		466124891BC3ACD800BF0725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4661249B1BC3ACD800BF0725 /* LaunchScreen.storyboard in Resources */,
+				466124981BC3ACD800BF0725 /* Assets.xcassets in Resources */,
+				466124961BC3ACD800BF0725 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4661249F1BC3ACD800BF0725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466124AA1BC3ACD800BF0725 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12A3D6C7936A42FFD02D7323 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFEF3E1ACBADA8D382900A0D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E5F38CA91AA863108E8136F3 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		466124871BC3ACD800BF0725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				466124931BC3ACD800BF0725 /* SecondViewController.swift in Sources */,
+				4661248F1BC3ACD800BF0725 /* AppDelegate.swift in Sources */,
+				46947C341BD7103F009B143E /* ThirdViewController.swift in Sources */,
+				466124911BC3ACD800BF0725 /* FirstViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4661249D1BC3ACD800BF0725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				466124A61BC3ACD800BF0725 /* FinalIoTMicrolocationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		466124A81BC3ACD800BF0725 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				466124B11BC3ACD800BF0725 /* FinalIoTMicrolocationUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		466124A31BC3ACD800BF0725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4661248A1BC3ACD800BF0725 /* FinalIoTMicrolocation */;
+			targetProxy = 466124A21BC3ACD800BF0725 /* PBXContainerItemProxy */;
+		};
+		466124AE1BC3ACD800BF0725 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4661248A1BC3ACD800BF0725 /* FinalIoTMicrolocation */;
+			targetProxy = 466124AD1BC3ACD800BF0725 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		466124941BC3ACD800BF0725 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				466124951BC3ACD800BF0725 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		466124991BC3ACD800BF0725 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4661249A1BC3ACD800BF0725 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		466124B31BC3ACD800BF0725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		466124B41BC3ACD800BF0725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		466124B61BC3ACD800BF0725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85E2B81E3C2971BBA41EB2DE /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = FinalIoTMicrolocation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		466124B71BC3ACD800BF0725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6E299C791F47F9FC4E6814A0 /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
+				INFOPLIST_FILE = FinalIoTMicrolocation/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocation;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		466124B91BC3ACD800BF0725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FinalIoTMicrolocationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalIoTMicrolocation.app/FinalIoTMicrolocation";
+			};
+			name = Debug;
+		};
+		466124BA1BC3ACD800BF0725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FinalIoTMicrolocationTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocationTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalIoTMicrolocation.app/FinalIoTMicrolocation";
+			};
+			name = Release;
+		};
+		466124BC1BC3ACD800BF0725 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FinalIoTMicrolocationUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FinalIoTMicrolocation;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		466124BD1BC3ACD800BF0725 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = FinalIoTMicrolocationUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = edu.ncsu.ece.FinalIoTMicrolocationUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FinalIoTMicrolocation;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		466124861BC3ACD800BF0725 /* Build configuration list for PBXProject "FinalIoTMicrolocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466124B31BC3ACD800BF0725 /* Debug */,
+				466124B41BC3ACD800BF0725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466124B51BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466124B61BC3ACD800BF0725 /* Debug */,
+				466124B71BC3ACD800BF0725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466124B81BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466124B91BC3ACD800BF0725 /* Debug */,
+				466124BA1BC3ACD800BF0725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		466124BB1BC3ACD800BF0725 /* Build configuration list for PBXNativeTarget "FinalIoTMicrolocationUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				466124BC1BC3ACD800BF0725 /* Debug */,
+				466124BD1BC3ACD800BF0725 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 466124831BC3ACD800BF0725 /* Project object */;
+}
