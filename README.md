@@ -21,7 +21,7 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 [Senior Design Group ECE NC State University - Internet of Things with iBeacons](https://www.youtube.com/watch?v=rZIDv4PnV2U)
 
-<img src="https://github.com/idarwish1/images/blob/master/Architecture.png" alt="alt text" width="" height="250">
+<img src="images/Architecture.png" alt="alt text" width="" height="250">
 
 
 # Technical Summary
@@ -45,7 +45,7 @@ For example: (B1 is a beacon minor value of 1)
 
 
 
-<img src="https://github.com/idarwish1/images/blob/master/beaconplacement.png" alt="alt text" width="" height="400">
+<img src="images/beaconplacement.png" alt="alt text" width="" height="400">
 
 
 
@@ -105,20 +105,20 @@ Instructions:
 
 After you name your app, Bluemix will generate your project space onto a server for public use. Since we have a completed Java Application, we will be pushing our project to the cloud through Eclipse Luna IDE. Here are the instructions below to push your project to the cloud:
 
-<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions.png" alt="alt text" width="" height="200">
+<img src="images/BluemixInstructions.png" alt="alt text" width="" height="200">
 
 
 After this, now in Eclipse Luna IDE do the following:
 
 
-<img src="https://github.com/idarwish1/images/blob/master/BluemixInstructions2.png" alt="alt text" width="" height="250">
+<img src="images/BluemixInstructions2.png" alt="alt text" width="" height="250">
 
 ### iOS application 
 (everything within the iPhoneApp folder)
 
 Since we have used cocoapods in the application, you need to install the pods in our application as well. For that you have to open up the terminal, go to the directory where your application project is located (You can use cd (path) to change the directory). Once you get to the specific directory, type pod install. This will install the podfiles required to compile the project. 
 
-<img src="https://github.com/idarwish1/images/blob/master/appiconscreen.png" alt="alt text" width="" height="400"> <img src="https://github.com/idarwish1/images/blob/master/splashscreen.PNG" alt="alt text" width="" height="400">
+<img src="images/appiconscreen.png" alt="alt text" width="" height="400"> <img src="images/splashscreen.PNG" alt="alt text" width="" height="400">
 
 
 
@@ -129,7 +129,7 @@ Since we have used cocoapods in the application, you need to install the pods in
 
 #### Microlocation tab
 
-<img src="https://github.com/idarwish1/images/blob/master/microlocation.PNG" alt="alt text" width="" height="400"> <img src="https://github.com/idarwish1/images/blob/master/microlocationthings.png" alt="alt text" width="" height="400">
+<img src="images/microlocation.PNG" alt="alt text" width="" height="400"> <img src="images/microlocationthings.png" alt="alt text" width="" height="400">
 
 
 
@@ -155,14 +155,14 @@ In this tab the first thing we are observing in the code is the iBeacon UUID inf
 #### Proximity tab
 
 
-<img src="https://github.com/idarwish1/images/blob/master/proximity.PNG" alt="alt text" width="" height="400">
+<img src="images/proximity.PNG" alt="alt text" width="" height="400">
 
 In this tab the first thing we are observing in the code is the iBeacon UUID information and can change depending on the beacons you have. It goes into the ranging of the beacons and then prompts the user on whether or not they allow their location to be tracked via location services. It then loads the table rows based on the number of beacons in the room which is displayed under the beacon proximity map. The code moves onto the locationManager() method to receive the beacon data that is being transmitted to the iPhone. The locationManager() method reloads the table each time it is called and updates the table data on the RSSI, accuracy, proximity and UUID in real time and moves on to plot the iBeacon location based on the proximity of the user's iPhone to the iBeacon.
 
 
 ## Raspberry Pi
 
-<img src="https://github.com/idarwish1/images/blob/master/rpi1bplus.png" alt="alt text" width="" height="400">
+<img src="images/rpi1bplus.png" alt="alt text" width="" height="400">
 
 Raspberry Pi is the actuator for the “Internet of Things” system. The Raspberry Pi will initiate the devices once a user is in a specific location. It will be running a python script that will be continuously checking the database to see if the server has sent a flag indicating that the user is in a specific location.
 
@@ -207,7 +207,7 @@ To integrate easily into the Server code’s POSTs and Raspberry Pi code’s GET
 6)	Now add entries for the “Things” you would like to interact with
 
 
-<img src="https://github.com/idarwish1/images/blob/master/CloudantDBPic.png" alt="alt text" width="" height="">
+<img src="images/CloudantDBPic.png" alt="alt text" width="" height="">
 
 Note: Current Server Code (interactiveRoom.java) and Raspberry Pi Code (QueryDatabase.py) use above entries to interact with “Things”. Before continuing make sure you add these entries into your Cloudant Document.
 
