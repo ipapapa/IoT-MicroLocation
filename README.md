@@ -129,9 +129,9 @@ Since we have used cocoapods in the application, you need to install the pods in
 
 #### Microlocation tab
 
-<img src="https://github.com/idarwish1/images/blob/master/microlocation.PNG" alt="alt text" width="" height="400">
+<img src="https://github.com/idarwish1/images/blob/master/microlocation.PNG" alt="alt text" width="" height="400"> <img src="https://github.com/idarwish1/images/blob/master/microlocationthings.png" alt="alt text" width="" height="400">
 
-<img src="https://github.com/idarwish1/images/blob/master/microlocationthings.png" alt="alt text" width="" height="400">
+
 
 
 
