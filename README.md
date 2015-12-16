@@ -1,5 +1,7 @@
-
 # IoT-MicroLocation
+
+[![GitHub license](http://dmlc.github.io/img/apache2.svg)](./License)
+
 An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project is a collaboration effort of the teams from Purdue University and North Carolina State University advised by Dr. Ioannis Papapanagiotou - ipapapa@ncsu.edu.
 
 # Readme
