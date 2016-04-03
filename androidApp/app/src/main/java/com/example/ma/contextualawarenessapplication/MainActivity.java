@@ -1,7 +1,6 @@
 package com.example.ma.contextualawarenessapplication;
 
 import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
      * Whether or not the activity is in two-pane mode, i.e. running on a tablet
      * device.
      */
+    private static final String TAG = "com.Xinghua";
     private boolean mTwoPane;
     private ListView mainView;
+    public static boolean BACKGROUND_ENABLED = false;
 
 
     @Override
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(itemPosition == 1){
                     //"Geofencing"
+                    startActivity(new Intent(MainActivity.this, GeofencingActivity.class));
 
                 }
                 else if(itemPosition == 2){
@@ -88,10 +90,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //=============================================================
-        Intent i = new Intent(this, BackgroundService.class);
-        startService(i);
+        if(!BACKGROUND_ENABLED) {
+            BACKGROUND_ENABLED = true;
+
+            Intent i = new Intent(this, BackgroundService.class);
+            startService(i);
+        }
 
     }
-
-
 }
