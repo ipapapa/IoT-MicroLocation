@@ -12,6 +12,13 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import org.altbeacon.beacon.BeaconConsumer;
+import org.altbeacon.beacon.BeaconManager;
+import org.altbeacon.beacon.BeaconParser;
+import org.altbeacon.beacon.Region;
+import org.altbeacon.beacon.powersave.BackgroundPowerSaver;
+import org.altbeacon.beacon.startup.RegionBootstrap;
+
 public class BackgroundService extends Service {
 
     private static final String TAG = "com.Xinghua";
@@ -24,18 +31,14 @@ public class BackgroundService extends Service {
     private static final int uniqueID = 12345;
 
 
+
     public BackgroundService() {
+
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG,"onStartCommand method called");
-
-        // build the notification
-        notification = new NotificationCompat.Builder(this);
-        // cancel the notification when user respond
-        notification.setAutoCancel(true);
-        notification.setSmallIcon(R.mipmap.ic_launcher);
 
         // create a new thread run at the background of the device
         Runnable r = new Runnable() {
@@ -52,19 +55,8 @@ public class BackgroundService extends Service {
                                 CountNumber++;
                                 myLog = "service is doing something: " + CountNumber;
                                 sendBroadcastMessage(myLog);
+                                sendNotification("Notification: " + CountNumber);
 
-                                //============================= Send the notification ==============================================================
-                                notification.setTicker("This is the ticker");
-                                notification.setWhen(System.currentTimeMillis());
-                                notification.setContentTitle("Here is the title");
-                                notification.setContentText("Notification" + CountNumber);
-                                Intent intent = new Intent(BackgroundService.this, MainActivity.class);
-                                PendingIntent pendingIntent = PendingIntent.getActivity(BackgroundService.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-                                notification.setContentIntent(pendingIntent);
-
-                                // Build notification and issues it
-                                NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                                nm.notify(uniqueID, notification.build());
                             }catch (Exception e){}
                         }
                     }
@@ -75,6 +67,8 @@ public class BackgroundService extends Service {
         // run the thread
         Thread myThread = new Thread(r);
         myThread.start();
+
+
         // restart the service if the service is closed somehow
         return Service.START_STICKY;
 
@@ -91,12 +85,34 @@ public class BackgroundService extends Service {
         return null;
     }
 
-    // send the information gor from the background to the main activity
-    private void sendBroadcastMessage(String string) {
-        if (string != null) {
+    // send the information got from the background to the main activity
+    private void sendBroadcastMessage(String message) {
+        if (message != null) {
             Intent intent = new Intent(ACTION_BROADCAST);
-            intent.putExtra(LOG_MESSAGE, string);
+            intent.putExtra(LOG_MESSAGE, message);
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         }
     }
+
+    // send the notification
+    private void sendNotification(String notify) {
+        // build the notification
+        notification = new NotificationCompat.Builder(this);
+        // cancel the notification when user respond
+        notification.setAutoCancel(true);
+        notification.setSmallIcon(R.mipmap.ic_launcher);
+        //============================= Send the notification ==============================================================
+        notification.setTicker("This is the ticker");
+        notification.setWhen(System.currentTimeMillis());
+        notification.setContentTitle("Here is the title");
+        notification.setContentText(notify);
+        Intent intent = new Intent(BackgroundService.this, MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(BackgroundService.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        notification.setContentIntent(pendingIntent);
+
+        // Build notification and issues it
+        NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        nm.notify(uniqueID, notification.build());
+    }
+
 }
