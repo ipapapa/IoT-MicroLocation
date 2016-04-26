@@ -39,7 +39,7 @@ public class DebugActivity extends AppCompatActivity{
                         //LayoutInflater inflater = getLayoutInflater();
                         //TextView textView = (TextView) inflater.inflate(R.layout.detail_log, viewGroup, false);
                         TextView textView = (TextView)findViewById(R.id.logMessage);
-                        if(textView != null) textView.setText(logMessage);
+                        if(textView != null) textView.append(logMessage+"\n");
                     }
                 }, new IntentFilter(BackgroundService.ACTION_BROADCAST)
         );
