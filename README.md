@@ -13,8 +13,6 @@ The Microlocation system utilizes Bluetooth Low Energy (BLE) technology of iBeac
 
 # Readme
 
-Below you may find information about the Java server application, Bluemix installation, the iOS application and the Raspberry Pi.
-
 The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further information about additional components that can be added to the project.
 
 ## Examples and Demos
