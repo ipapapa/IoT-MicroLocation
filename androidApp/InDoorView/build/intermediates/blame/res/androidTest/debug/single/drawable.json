@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_menu_overflow_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_btn_check_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_btn_check_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_menu_overflow_material.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_tab_indicator_material.xml",
@@ -68,12 +68,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\drawable\\design_fab_background.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_edit_text_material.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_edit_text_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ic_clear_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_clear_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_edit_text_material.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_edit_text_material.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\zxc.jpg",
@@ -112,12 +112,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_seekbar_track_material.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_ratingbar_small_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ratingbar_small_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\abc_seekbar_tick_mark_material.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\design_snackbar_background.xml",

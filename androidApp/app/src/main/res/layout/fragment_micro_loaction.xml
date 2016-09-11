@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.maxinghua.fragments.MicroLocationFragment">
-
-    <com.karonl.instance.InDoorView
-        android:id="@+id/surface"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
     <TextView
         android:id="@+id/frames"
@@ -27,4 +23,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="加载地图数据.."/>
+
+    <com.karonl.instance.InDoorView
+        android:id="@+id/surface"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_room_black_48dp_2x"
+        android:id="@+id/my_postion"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        android:background="@drawable/ic_room_black_48dp_2x"
+        android:elevation="0dp"
+        android:scaleX="0.5"
+        android:scaleY="0.5" />
+
 </RelativeLayout>

@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebViewFragment;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -19,6 +20,7 @@ import com.maxinghua.application.App;
 import com.maxinghua.fragments.DebugFragment;
 import com.maxinghua.fragments.GeofencingFragment;
 import com.maxinghua.fragments.MicroLocationFragment;
+import com.maxinghua.fragments.WebsiteFragment;
 
 import java.util.ArrayList;
 
@@ -127,13 +129,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         {
             case 0: {
                 actionBar.setTitle("Micro-Location");
-                Fragment fragment = (Fragment) new MicroLocationFragment();
+                Fragment fragment = new MicroLocationFragment();
                 fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
                 break;
             }
             case 1: {
                 actionBar.setTitle("Geofencing");
-                Fragment fragment = (Fragment) new GeofencingFragment();
+                Fragment fragment = new GeofencingFragment();
                 fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
                 break;
             }
@@ -143,6 +145,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
             case 3: {
                 actionBar.setTitle("Our Website");
+                Fragment fragment = new WebsiteFragment();
+                fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
                 break;
             }
             //Debug

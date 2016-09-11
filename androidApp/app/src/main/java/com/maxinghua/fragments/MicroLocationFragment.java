@@ -10,11 +10,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karonl.instance.Adapter.DataAdapter;
 import com.karonl.instance.InDoorView;
@@ -32,8 +36,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- */
+
 public class MicroLocationFragment extends Fragment {
 
     private TextView textview;
@@ -121,8 +124,6 @@ public class MicroLocationFragment extends Fragment {
 
         InDoorView view = (InDoorView) getActivity().findViewById(R.id.surface);
 
-
-
         //New thread to load the data
        Thread thread = new Thread(new Runnable() {
             @Override
@@ -180,6 +181,48 @@ public class MicroLocationFragment extends Fragment {
                 handler.obtainMessage(0,(int) number,0).sendToTarget();
             }
         });
+
+        // ================ My position spot =======================
+        final ImageButton myPosition = (ImageButton) getActivity().findViewById(R.id.my_postion);
+        DisplayMetrics dm=getResources().getDisplayMetrics();
+        final int screenWidth=dm.widthPixels;
+        final int screenHeight=dm.heightPixels-50;
+
+//        myPosition.setX(200);
+//        myPosition.setY(300);
+
+        myPosition.setOnTouchListener(new View.OnTouchListener() {
+            int lastX,lastY;
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int ea = event.getAction();
+                Log.i("TAG", "Touch:" + ea);
+
+                switch (ea) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        lastX = (int) event.getRawX();//Get raw X and Y for the motion event
+                        lastY = (int) event.getRawY();
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        int dx = (int) event.getRawX() - lastX;
+                        int dy = (int) event.getRawY() - lastY;
+
+                        v.setTranslationX(dx);
+                        v.setTranslationY(dy);
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
+                }
+
+                return false;
+            }
+
+
+        });
+
     }
 
     //information list

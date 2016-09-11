@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_cab_background_top_material.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_light.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_ic_search_api_material.xml",
@@ -80,12 +80,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_list_selector_holo_dark.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_dialog_material_background.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_btn_borderless_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_btn_borderless_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_dialog_material_background.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_dialog_material_background.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\debug\\drawable\\abc_list_selector_background_transition_holo_dark.xml",

@@ -9,7 +9,9 @@ import android.app.Service;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.RemoteException;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -30,7 +32,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
 
-public class BackgroundService extends Service implements BeaconConsumer {
+public class BackgroundService extends Service implements BeaconConsumer{
 
     private static final String TAG = "com.Xinghua";
 
@@ -51,6 +53,13 @@ public class BackgroundService extends Service implements BeaconConsumer {
 
     }
 
+//    public Handler mHandler = new Handler() {
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            sendBroadcastMessage(content);
+//        }
+//    };
+
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.i(TAG, "onStartCommand method called");
@@ -60,12 +69,35 @@ public class BackgroundService extends Service implements BeaconConsumer {
                 setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
         beaconManager.bind(this);
 
-
         // create a new thread run at the background of the device
         Runnable r = new Runnable() {
             @Override
             public void run() {
 
+//                try {
+//                    socket = new Socket(HOST, PORT);
+//                    in = new BufferedReader(new InputStreamReader(socket
+//                            .getInputStream()));
+//                    out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(
+//                            socket.getOutputStream())), true);
+//
+//                    while (true) {
+//                        if (!socket.isClosed()) {
+//                            if (socket.isConnected()) {
+//                                if (!socket.isInputShutdown()) {
+//                                    if ((content = in.readLine()) != null) {
+//                                        content += "\n";
+//                                        mHandler.sendMessage(mHandler.obtainMessage());
+//                                    } else {
+//
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
 //                // keep update notifications in background
 //                for ( int i = 0; i < 100; i++){
 //                    long futureTime = System.currentTimeMillis() + 5000;
@@ -124,21 +156,21 @@ public class BackgroundService extends Service implements BeaconConsumer {
                         if (beacon.toString().contains("11111111")) {
                             if (myBeaconState != 1) {
                                 myBeaconState = 1;
-                                sendNotification("Hello! The beacon is by your hand.");
+                                sendNotification("Shoes are only offered at black and blue colors in your sides.");
+                            }
+                        }
+                    } else if (beacon.getDistance() < 3) {
+                        if (beacon.toString().contains("11111111")) {
+                            if (myBeaconState != 3) {
+                                myBeaconState = 3;
+                                sendNotification("Fitted shirt is on sell, 20% off.");
                             }
                         }
                     } else if (beacon.getDistance() < 5) {
                         if (beacon.toString().contains("11111111")) {
                             if (myBeaconState != 5) {
                                 myBeaconState = 5;
-                                sendNotification("The beacon is 5 meters away from you now");
-                            }
-                        }
-                    } else if (beacon.getDistance() < 10) {
-                        if (beacon.toString().contains("11111111")) {
-                            if (myBeaconState != 10) {
-                                myBeaconState = 10;
-                                sendNotification("The beacon is 10 meters away from you now");
+                                sendNotification("Welcome to our store, discount inside.");
                             }
                         }
                     }
@@ -204,6 +236,7 @@ public class BackgroundService extends Service implements BeaconConsumer {
     public static String getLogMessage() {
         return LOG_MESSAGE;
     }
+
 
 
     /*

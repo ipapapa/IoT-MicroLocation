@@ -56,11 +56,11 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\anim\\design_snackbar_in.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim\\design_snackbar_in.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\anim\\design_fab_in.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim\\design_fab_in.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\anim\\design_snackbar_in.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim\\design_snackbar_in.xml"
     }
 ]

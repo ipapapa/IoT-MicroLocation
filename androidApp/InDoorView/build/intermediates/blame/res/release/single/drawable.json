@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_btn_check_material.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_clear_material.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_clear_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_btn_radio_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_btn_radio_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_clear_material.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_clear_material.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_cab_background_top_material.xml",
@@ -52,12 +52,12 @@
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_voice_search_api_material.xml"
     },
     {
-        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_spinner_textfield_background_material.xml",
-        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_spinner_textfield_background_material.xml"
-    },
-    {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_go_search_api_material.xml",
         "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_ic_go_search_api_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_spinner_textfield_background_material.xml",
+        "source": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\24.0.0\\res\\drawable\\abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "C:\\Users\\Ma\\Documents\\AndroidStudio\\ContexualAwarenessApplication\\InDoorView\\build\\intermediates\\res\\merged\\release\\drawable\\abc_ic_search_api_material.xml",
