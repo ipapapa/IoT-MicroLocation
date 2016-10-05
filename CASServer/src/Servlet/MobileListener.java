@@ -102,13 +102,13 @@ public class MobileListener extends HttpServlet {
 				
 				String intersec = null;
 				
-				if(D1< D2 && D1 < D3){
+				if(D1< D2 && D1 < D3 && D1 < 0.5){
 					intersec = "1/Shirts - Brooks Brothers -  20 % off" ;
 				}
-				else if(D2< D1 && D2 < D3){
+				else if(D2< D1 && D2 < D3 && D2 < 0.5){
 					intersec = "2/Shoes - Nike -  25 % off" ;
 				}
-				else if(D3< D2 && D3 < D1){
+				else if(D3< D2 && D3 < D1 && D3 < 0.5){
 					intersec = "3/Jeans - Levi's -  10 % off" ; 
 				}
 				else {
