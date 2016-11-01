@@ -18,12 +18,15 @@ import android.widget.ListView;
 
 import com.maxinghua.application.App;
 import com.maxinghua.fragments.DebugFragment;
+import com.maxinghua.fragments.DialogFragment;
 import com.maxinghua.fragments.GeofencingFragment;
+import com.maxinghua.fragments.LoginFragment;
 import com.maxinghua.fragments.MicroLocationFragment;
 import com.maxinghua.fragments.WebsiteFragment;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
     private DrawerLayout mDrawerLayout;
@@ -34,14 +37,27 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String mTitle;
     private ActionBar actionBar;
 
+    private Fragment microLocationFragment;
+    private Fragment dialogFragment;
+    private Fragment geofencingFragment;
+    private Fragment loginFragment;
+    private Fragment websiteFragment;
+    private Fragment debugFragment;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Fragment fragment = (Fragment) new MicroLocationFragment();
         FragmentManager fm = getFragmentManager();
-        fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+        microLocationFragment = new MicroLocationFragment();
+        geofencingFragment = new GeofencingFragment();
+        loginFragment = new LoginFragment();
+        websiteFragment = new WebsiteFragment();
+        debugFragment = new DebugFragment();
+        dialogFragment = new DialogFragment();
+        fm.beginTransaction().replace(R.id.content_frame, loginFragment).commit();
 
         final String log = ((App) getApplicationContext()).getLog();
 
@@ -61,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         menuLists = new ArrayList<String>();
         menuLists.add("Micro-Location");
         menuLists.add("Geofencing");
-        menuLists.add("Proximity");
+        menuLists.add("Login");
         menuLists.add("Our Website");
         menuLists.add("Debug-Panel");
 
@@ -91,7 +107,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
         };
         mDrawerLayout.setDrawerListener(mDrawerToggle);
-
     }
 
 
@@ -103,18 +118,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-//        super.onPostCreate(savedInstanceState);
-//        mDrawerToggle.syncState();
-//    }
-//
-//    @Override
-//    public void onConfigurationChanged(Configuration newConfig) {
-//        super.onConfigurationChanged(newConfig);
-//        mDrawerToggle.onConfigurationChanged(newConfig);
-//    }
-
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         // Show Alert
@@ -124,38 +127,53 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 //        System.out.println(position);
 
         FragmentManager fm = getFragmentManager();
-
         switch (position)
         {
             case 0: {
                 actionBar.setTitle("Micro-Location");
-                Fragment fragment = new MicroLocationFragment();
-                fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                boolean isLogin = ((App) getApplication().getApplicationContext()).isLogin();
+                if (isLogin) {
+
+                    fm.beginTransaction().replace(R.id.content_frame, microLocationFragment).commit();
+                }
+                else {
+                    fm.beginTransaction().remove(dialogFragment);
+                    dialogFragment = DialogFragment.newInstance("Not sign in yet?","Please use the login panel to sign in.");
+                    fm.beginTransaction().replace(R.id.content_frame, dialogFragment).commit();
+                }
                 break;
             }
             case 1: {
                 actionBar.setTitle("Geofencing");
-                Fragment fragment = new GeofencingFragment();
-                fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                fm.beginTransaction().replace(R.id.content_frame, geofencingFragment).commit();
                 break;
             }
             case 2: {
-                actionBar.setTitle("Proximity");
+                actionBar.setTitle("Login");
+                boolean isLogin = ((App) getApplication().getApplicationContext()).isLogin();
+                if (isLogin) {
+                    fm.beginTransaction().remove(dialogFragment);
+                    dialogFragment = DialogFragment.newInstance("Login Successful!","Welcome, #User Name");
+                    fm.beginTransaction().replace(R.id.content_frame, dialogFragment).commit();
+                }
+                else {
+
+                    fm.beginTransaction().replace(R.id.content_frame, loginFragment).commit();
+                }
                 break;
             }
             case 3: {
                 actionBar.setTitle("Our Website");
-                Fragment fragment = new WebsiteFragment();
-                fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                fm.beginTransaction().replace(R.id.content_frame, websiteFragment).commit();
                 break;
             }
             //Debug
             case 4: {
                 actionBar.setTitle("Debug Panel");
-                Fragment fragment = new DebugFragment();
-                fm.beginTransaction().replace(R.id.content_frame, fragment).commit();
+                fm.beginTransaction().replace(R.id.content_frame, debugFragment).commit();
                 break;
             }
         }
+        mDrawerLayout.closeDrawers();
     }
 }

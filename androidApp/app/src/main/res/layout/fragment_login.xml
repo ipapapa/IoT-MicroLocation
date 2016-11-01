@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.maxinghua.fragments.LoginFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/passwordFIeld"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/emailField"
+            android:hint="Password" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/emailField"
+            android:layout_marginBottom="43dp"
+            android:hint="Email"
+            android:layout_above="@+id/passwordFIeld"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:text="Login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:id="@+id/loginButton"
+            android:layout_below="@+id/passwordFIeld"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:text="Login to CAS Server"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView5"
+            android:textSize="24sp"
+            android:layout_above="@+id/emailField"
+            android:layout_alignStart="@+id/emailField"
+            android:layout_marginBottom="42dp" />
+    </RelativeLayout>
+
+</FrameLayout>

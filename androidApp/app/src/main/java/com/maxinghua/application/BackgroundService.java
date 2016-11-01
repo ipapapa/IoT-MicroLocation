@@ -27,6 +27,13 @@ import org.altbeacon.beacon.BeaconParser;
 import org.altbeacon.beacon.RangeNotifier;
 import org.altbeacon.beacon.Region;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
@@ -39,15 +46,22 @@ public class BackgroundService extends Service implements BeaconConsumer{
     private static final String ACTION_BROADCAST = BackgroundService.class.getName() + "Broadcast";
     private static final String LOG_MESSAGE = "LogMessage";
 
+    private static final String COORDINATE_MESSAGE = "CoordinateMessage";
+
     private static int CountNumber = 0;
     private static String myLog;
 
     NotificationCompat.Builder notification;
     private static final int uniqueID = 12345;
     private BeaconManager beaconManager;
-
+    double d1 = 0, d2 = 0, d3 = 0;
 
     private int myBeaconState = 0;
+
+    private URL url;
+    private URLConnection connection;
+
+    private DBHandler myDBHandler;
 
     public BackgroundService() {
 
@@ -69,11 +83,12 @@ public class BackgroundService extends Service implements BeaconConsumer{
                 setBeaconLayout("m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24,d:25-25"));
         beaconManager.bind(this);
 
+        myDBHandler = new DBHandler(this, null, null, 1);
         // create a new thread run at the background of the device
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-
+//        Runnable r = new Runnable() {
+//            @Override
+//            public void run() {
+//
 //                try {
 //                    socket = new Socket(HOST, PORT);
 //                    in = new BufferedReader(new InputStreamReader(socket
@@ -116,13 +131,13 @@ public class BackgroundService extends Service implements BeaconConsumer{
 //                        }
 //                    }
 //                }
-
-            }
-        };
-
-        // run the thread
-        Thread myThread = new Thread(r);
-        myThread.start();
+//
+//            }
+//        };
+//
+//        // run the thread
+//        Thread myThread = new Thread(r);
+//        myThread.start();
 
 
         // restart the service if the service is closed somehow
@@ -144,6 +159,8 @@ public class BackgroundService extends Service implements BeaconConsumer{
     }
 
 
+    String stringValue = "";
+
     @SuppressWarnings("deprecation")
     @Override
     public void onBeaconServiceConnect() {
@@ -151,33 +168,57 @@ public class BackgroundService extends Service implements BeaconConsumer{
             @Override
             public void didRangeBeaconsInRegion(Collection<Beacon> beacons, Region region) {
                 for (Beacon beacon : beacons) {
-
-                    if (beacon.getDistance() < 1) {
-                        if (beacon.toString().contains("11111111")) {
-                            if (myBeaconState != 1) {
-                                myBeaconState = 1;
-                                sendNotification("Shoes are only offered at black and blue colors in your sides.");
-                            }
-                        }
-                    } else if (beacon.getDistance() < 3) {
-                        if (beacon.toString().contains("11111111")) {
-                            if (myBeaconState != 3) {
-                                myBeaconState = 3;
-                                sendNotification("Fitted shirt is on sell, 20% off.");
-                            }
-                        }
-                    } else if (beacon.getDistance() < 5) {
-                        if (beacon.toString().contains("11111111")) {
-                            if (myBeaconState != 5) {
-                                myBeaconState = 5;
-                                sendNotification("Welcome to our store, discount inside.");
-                            }
-                        }
+                    if (beacon.toString().contains("57894")) {
+                        d1 = beacon.getDistance();
+                    } else if (beacon.toString().contains("41831")) {
+                        d2 = beacon.getDistance();
+                    } else if (beacon.toString().contains("23833")) {
+                        d3 = beacon.getDistance();
                     }
 
-                    sendBroadcastMessage(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
+                    try {
+                        url = new URL("http://52.24.73.201/CASServer/MobileListener");
+                        //url = new URL("http://10.0.2.2:8080/CASServer/MobileListener");
+                        connection = url.openConnection();
+                        connection.setDoOutput(true);
+                        OutputStreamWriter out = new OutputStreamWriter(connection.getOutputStream());
+                        out.write(d1 + "/" + d2 + "/" + d3);
+                        out.close();
+
+                        BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+
+                        String returnString="";
+                        while ((returnString = in.readLine()) != null)
+                        {
+                            stringValue = returnString;
+                        }
+                        in.close();
+                        Log.i(TAG, stringValue);
+
+                        String[] parseString = stringValue.split("/");
+
+                        sendNotification(parseString[1]);
+                        sendCoordinate(stringValue);
+
+                        //if(!stringValue.contains("none")){
+                        //    sendCoordinate(stringValue);
+                        //}
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    boolean exist = myDBHandler.beaconExist(beacon.getId1().toString(), beacon.getId2().toString(), beacon.getId3().toString());
+                    if(exist) {
+                        myDBHandler.updateRecord(beacon.getId1().toString(), beacon.getId2().toString(), beacon.getId3().toString(), beacon.getDistance(), beacon.getRssi());
+                    }
+                    else {
+                        myDBHandler.addRecord(beacon.getId1().toString(), beacon.getId2().toString(), beacon.getId3().toString(), beacon.getDistance(), beacon.getRssi());
+                    }
+                    //Log.i(TAG, d1 + "/" + d2 + "/" + d3);
+                    sendBroadcastMessage("Beacon received!");
+                    //sendBroadcastMessage(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
                     // Set the beacon information as the application log
-                    ((App) getApplicationContext()).setLog(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
+                    //((App) getApplicationContext()).setLog(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
                 }
             }
         });
@@ -188,6 +229,15 @@ public class BackgroundService extends Service implements BeaconConsumer{
         }
     }
 
+    private void sendCoordinate(String coordinate) {
+        if (coordinate != null) {
+            Intent intent = new Intent(ACTION_BROADCAST);
+            intent.putExtra(COORDINATE_MESSAGE, coordinate);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+            Log.i("SEND_BROADCAST", coordinate);
+        }
+        //sendBroadcastMessage("Coordinate/" + coordinate);
+    }
     // send the information got from the background to the main activity
     private void sendBroadcastMessage(String message) {
         if (message != null) {
@@ -237,7 +287,7 @@ public class BackgroundService extends Service implements BeaconConsumer{
         return LOG_MESSAGE;
     }
 
-
+    public static String getCoordinateMessage() { return COORDINATE_MESSAGE; }
 
     /*
     private void logToDisplay(final String line) {

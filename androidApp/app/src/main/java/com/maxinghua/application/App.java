@@ -13,6 +13,9 @@ public class App extends Application{
     private static boolean BACKGROUND_ENABLED = false;
 
 
+
+    private boolean login = false;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -24,31 +27,18 @@ public class App extends Application{
             Intent i = new Intent(this, BackgroundService.class);
             startService(i);
         }
-
-//        // create a loop to keep updating the logview
-//        Thread thread=new Thread(new Runnable()
-//        {
-//            @Override
-//            public void run()
-//            {
-//                int counter = 0;
-//                while (true) {
-//                    log = "Counting number: " + counter;
-//                    counter++;
-//
-//                    try{
-//                        Thread.sleep(1000);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//        thread.start();
     }
 
 
     //========================== Getters and Setters ========================================================================
+    public boolean isLogin() {
+        return login;
+    }
+
+    public void setLogin(boolean login) {
+        this.login = login;
+    }
+
     public String getLog() {
         return log;
     }
