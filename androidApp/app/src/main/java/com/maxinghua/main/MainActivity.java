@@ -16,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.facebook.CallbackManager;
+import com.facebook.login.widget.LoginButton;
 import com.maxinghua.application.App;
 import com.maxinghua.fragments.DebugFragment;
 import com.maxinghua.fragments.DialogFragment;
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private String mTitle;
     private ActionBar actionBar;
 
+
+
     private Fragment microLocationFragment;
     private Fragment dialogFragment;
     private Fragment geofencingFragment;
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         FragmentManager fm = getFragmentManager();

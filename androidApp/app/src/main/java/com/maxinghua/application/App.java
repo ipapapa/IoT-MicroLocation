@@ -2,6 +2,8 @@ package com.maxinghua.application;
 
 import android.app.Application;
 import android.content.Intent;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 
 /**
@@ -19,6 +21,9 @@ public class App extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        //Add Facebook SDK
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        AppEventsLogger.activateApp(this);
 
         //==============Start the background service===============================================
         if(!BACKGROUND_ENABLED) {

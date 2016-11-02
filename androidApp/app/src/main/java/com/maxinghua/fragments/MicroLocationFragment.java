@@ -55,9 +55,15 @@ public class MicroLocationFragment extends Fragment {
     List<PathUnit> unitList = new ArrayList<>();
 
     public float lastX,lastY;
+    public float unitX, unitY;
+    // distance between each beacon
+    private final float trangle_edge = 2;
 
     private TextView textView;
     private View view;
+    ImageButton myBeacon1;
+    ImageButton myBeacon2;
+    ImageButton myBeacon3;
 
     private DebugFragment.OnFragmentInteractionListener mListener;
     private Handler mHandler = new Handler();
@@ -107,6 +113,12 @@ public class MicroLocationFragment extends Fragment {
 
         InDoorView view = (InDoorView) getActivity().findViewById(R.id.surface);
 
+        myBeacon1 = (ImageButton) getActivity().findViewById(R.id.my_beacon1);
+        myBeacon2 = (ImageButton) getActivity().findViewById(R.id.my_beacon2);
+        myBeacon3 = (ImageButton) getActivity().findViewById(R.id.my_beacon3);
+        unitX = (myBeacon3.getX() - myBeacon2.getX()) / trangle_edge;
+        unitY = (myBeacon3.getY() - myBeacon1.getY()) / ((float) 1.732 * trangle_edge);
+
         //New thread to load the data
        Thread thread = new Thread(new Runnable() {
             @Override
@@ -118,7 +130,7 @@ public class MicroLocationFragment extends Fragment {
                 //Background Map
                 BitmapFactory.Options opt = new BitmapFactory.Options();
                 opt.inPreferredConfig = Bitmap.Config.RGB_565;
-                bmp = BitmapFactory.decodeResource(getResources(), R.drawable.zxc, opt);//Picture Resources
+                bmp = BitmapFactory.decodeResource(getResources(), R.drawable.map, opt);//Picture Resources
                 adapter.setBmp(bmp);//Set map
                 bmp = null;
                 getUnitList();
@@ -207,34 +219,74 @@ public class MicroLocationFragment extends Fragment {
                     @Override
                     public void onReceive(Context context, Intent intent) {
                         if (intent.hasExtra(BackgroundService.getCoordinateMessage())) {
-//                            lastX = myPosition.getX();
-//                            lastY = myPosition.getY();
-//
-//                            String coor = intent.getStringExtra(BackgroundService.getCoordinateMessage());
-//                            String[] parseString = coor.split("/");
-//                            float dx = Float.parseFloat(parseString[0]) * 300 - lastX;
-//                            float dy = Float.parseFloat(parseString[1]) * 300 - lastY;
-//                            myPosition.setTranslationX(dx);
-//                            myPosition.setTranslationY(dy);
-//
-//                            Log.i("RECEIVE_BROADCAST", "X:" + Float.parseFloat(parseString[0]) + "Y:" + Float.parseFloat(parseString[1]));
+                            lastX = myPosition.getX();
+                            lastY = myPosition.getY();
 
                             String coor = intent.getStringExtra(BackgroundService.getCoordinateMessage());
+                            // get the coordinates from the server
+                            // and transfer the coordinates unit from meters to pixels
                             String[] parseString = coor.split("/");
-
-                            if(parseString[0].equals("1")) {
-                                //move the position to 1
-
-                            } else if(parseString[0].equals("2")) {
-                                //move the position to 2
-
-                            } else if(parseString[0].equals("3")) {
-                                //move the position to 3
-
-                            } else if(parseString[0].equals("4")) {
-                                //move the position to 4
-
+                            float dx = Float.parseFloat(parseString[0]) * unitX - lastX;
+                            float dy = Float.parseFloat(parseString[1]) * unitY - lastY;
+//                            float dx = Float.parseFloat(parseString[0]) * 300 - lastX;
+//                            float dy = Float.parseFloat(parseString[1]) * 300 - lastY;
+                            // move the location
+                            myPosition.setTranslationX(dx);
+                            myPosition.setTranslationY(dy);
+                            float d1 = Float.parseFloat(parseString[2]);
+                            if(d1 > 1) {
+                                myBeacon1.setImageResource(R.drawable.beacon2);
                             }
+                            else if(d1 > 0.5) {
+                                myBeacon1.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon1.setImageResource(R.drawable.beacon1);
+                            }
+
+                            float d2 = Float.parseFloat(parseString[3]);
+                            if(d2 > 1) {
+                                myBeacon2.setImageResource(R.drawable.beacon2);
+                            }
+                            else if(d2 > 0.5) {
+                                myBeacon2.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon2.setImageResource(R.drawable.beacon1);
+                            }
+
+                            float d3 = Float.parseFloat(parseString[4]);
+                            if(d3 > 1) {
+                                myBeacon3.setImageResource(R.drawable.beacon2);
+                            }
+                            else if(d3 > 0.5) {
+                                myBeacon3.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon3.setImageResource(R.drawable.beacon1);
+                            }
+
+
+
+
+                            Log.i("RECEIVE_BROADCAST", "X:" + Float.parseFloat(parseString[0]) + "Y:" + Float.parseFloat(parseString[1]));
+
+//                            String coor = intent.getStringExtra(BackgroundService.getCoordinateMessage());
+//                            String[] parseString = coor.split("/");
+//
+//                            if(parseString[0].equals("1")) {
+//                                //move the position to 1
+//
+//                            } else if(parseString[0].equals("2")) {
+//                                //move the position to 2
+//
+//                            } else if(parseString[0].equals("3")) {
+//                                //move the position to 3
+//
+//                            } else if(parseString[0].equals("4")) {
+//                                //move the position to 4
+//
+//                            }
                         }
                         Log.i("LOG", "X:" + "Broadcast Received");
                     }

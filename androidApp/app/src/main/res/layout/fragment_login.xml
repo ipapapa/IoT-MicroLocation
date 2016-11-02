@@ -30,6 +30,7 @@
             android:hint="Email"
             android:layout_above="@+id/passwordFIeld"
             android:layout_centerHorizontal="true" />
+        //Facebook Button
 
         <Button
             android:text="Login"
@@ -49,6 +50,15 @@
             android:layout_above="@+id/emailField"
             android:layout_alignStart="@+id/emailField"
             android:layout_marginBottom="42dp" />
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/loginButton"
+            android:layout_alignEnd="@+id/textView5"
+            android:layout_marginTop="34dp" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -17,6 +17,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.maxinghua.main.R;
 
@@ -197,8 +198,10 @@ public class BackgroundService extends Service implements BeaconConsumer{
 
                         String[] parseString = stringValue.split("/");
 
-                        sendNotification(parseString[1]);
-                        sendCoordinate(stringValue);
+                        sendBroadcastMessage(parseString[0] + "/" + parseString[1] + "/" + d1 + "/" + d2 + "/" + d3);
+
+                        //sendNotification(parseString[1]);
+                        //sendCoordinate(stringValue);
 
                         //if(!stringValue.contains("none")){
                         //    sendCoordinate(stringValue);
@@ -215,7 +218,8 @@ public class BackgroundService extends Service implements BeaconConsumer{
                         myDBHandler.addRecord(beacon.getId1().toString(), beacon.getId2().toString(), beacon.getId3().toString(), beacon.getDistance(), beacon.getRssi());
                     }
                     //Log.i(TAG, d1 + "/" + d2 + "/" + d3);
-                    sendBroadcastMessage("Beacon received!");
+                    // send the broadcast: Coordinate X/Coordiante Y/Distance1/Distance2/Distance3
+
                     //sendBroadcastMessage(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
                     // Set the beacon information as the application log
                     //((App) getApplicationContext()).setLog(getCurrentTimeStamp() + " | Beacon " + beacon.toString() + " is about " + beacon.getDistance() + " meters away.");
