@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ContexualAwarenessApplication.iml" filepath="$PROJECT_DIR$/ContexualAwarenessApplication.iml" />
       <module fileurl="file://$PROJECT_DIR$/InDoorView/InDoorView.iml" filepath="$PROJECT_DIR$/InDoorView/InDoorView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidApp.iml" filepath="$PROJECT_DIR$/androidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

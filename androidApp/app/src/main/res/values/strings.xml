@@ -2,7 +2,7 @@
     <string name="app_name">Contexual Awareness Application</string>
     <string name="drawer_open">Drawer Open</string>
     <string name="drawer_close">Drawer Close</string>
-
+    <string name="facebook_app_id">210238376067664</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
