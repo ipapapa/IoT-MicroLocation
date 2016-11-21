@@ -68,31 +68,6 @@ public class GeofencingFragment extends Fragment {
                     }
                 }, new IntentFilter(BackgroundService.getActionBroadcast())
         );
-//        textView = (TextView) getActivity().findViewById(R.id.geofencingLog);
-//        // create a loop updating the debug message
-//        Thread thread=new Thread(new Runnable()
-//        {
-//            @Override
-//            public void run()
-//            {
-//                while (true) {
-//                    getActivity().runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            String s = ((App) getActivity().getApplicationContext()).getLog();
-//                            textView.append("\n" + s);
-//                        }
-//                    });
-//
-//                    try{
-//                        Thread.sleep(500);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        });
-//        thread.start();
     }
 
     @Override
