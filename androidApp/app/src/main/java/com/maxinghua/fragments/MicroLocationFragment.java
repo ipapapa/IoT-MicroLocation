@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PointF;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,19 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.karonl.instance.Adapter.DataAdapter;
 import com.karonl.instance.InDoorView;
 import com.karonl.instance.Unit.PathUnit;
 import com.maxinghua.application.BackgroundService;
 import com.maxinghua.errorhandle.ErrorHandler;
-import com.maxinghua.main.DataJson;
 import com.maxinghua.main.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -64,6 +57,12 @@ public class MicroLocationFragment extends Fragment {
     ImageButton myBeacon1;
     ImageButton myBeacon2;
     ImageButton myBeacon3;
+    private final float beacon1_x = 540;
+    private final float beacon1_y = 300;
+    private final float beacon2_x = 120;
+    private final float beacon2_y = 960;
+    private final float beacon3_x = 960;
+    private final float beacon3_y = 960;
 
     private DebugFragment.OnFragmentInteractionListener mListener;
     private Handler mHandler = new Handler();
@@ -116,8 +115,10 @@ public class MicroLocationFragment extends Fragment {
         myBeacon1 = (ImageButton) getActivity().findViewById(R.id.my_beacon1);
         myBeacon2 = (ImageButton) getActivity().findViewById(R.id.my_beacon2);
         myBeacon3 = (ImageButton) getActivity().findViewById(R.id.my_beacon3);
-        unitX = (myBeacon3.getX() - myBeacon2.getX()) / trangle_edge;
-        unitY = (myBeacon3.getY() - myBeacon1.getY()) / ((float) 1.732 * trangle_edge);
+
+
+        unitX = (beacon3_x - beacon2_x) / trangle_edge;
+        unitY = (beacon3_y - beacon1_y) / ((float) 1.732 * trangle_edge);
 
         //New thread to load the data
        Thread thread = new Thread(new Runnable() {
@@ -133,7 +134,9 @@ public class MicroLocationFragment extends Fragment {
                 bmp = BitmapFactory.decodeResource(getResources(), R.drawable.map, opt);//Picture Resources
                 adapter.setBmp(bmp);//Set map
                 bmp = null;
-                getUnitList();
+                //==============
+                //getUnitList();
+                //==============
                 adapter.setList(unitList);//set information list
                 adapter.refreshData();
                 getActivity().runOnUiThread(new Runnable() {
@@ -184,40 +187,80 @@ public class MicroLocationFragment extends Fragment {
         final int screenHeight=dm.heightPixels-50;
 
 
-//        myPosition.setOnTouchListener(new View.OnTouchListener() {
-//
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                int ea = event.getAction();
-//                Log.i("TAG", "Touch:" + ea);
-//
-//                switch (ea) {
-//                    case MotionEvent.ACTION_DOWN:
-//
-//                        lastX = event.getRawX();//Get raw X and Y for the motion event
-//                        lastY = event.getRawY();
-//                        break;
-//
-//                    case MotionEvent.ACTION_MOVE:
-//                        float dx = event.getRawX() - lastX;
-//                        float dy = event.getRawY() - lastY;
-//
-//                        v.setTranslationX(dx);
-//                        v.setTranslationY(dy);
-//
-//                        break;
-//                    case MotionEvent.ACTION_UP:
-//                        break;
-//                }
-//
-//                return false;
-//            }
-//        });
+        myPosition.setOnTouchListener(new View.OnTouchListener() {
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int ea = event.getAction();
+                Log.i("TAG", "Touch:" + ea);
+
+                switch (ea) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        lastX = event.getRawX();//Get raw X and Y for the motion event
+                        lastY = event.getRawY();
+                        break;
+
+                    case MotionEvent.ACTION_MOVE:
+                        float dx = event.getRawX() - lastX;
+                        float dy = event.getRawY() - lastY;
+
+                        v.setTranslationX(dx);
+                        v.setTranslationY(dy);
+                        Log.i("LOG", "X: " + event.getRawX() + " Y: " + event.getRawY());
+
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        break;
+                }
+
+                return false;
+            }
+        });
 
         LocalBroadcastManager.getInstance(getActivity().getApplicationContext()).registerReceiver(
                 new BroadcastReceiver() {
                     @Override
                     public void onReceive(Context context, Intent intent) {
+                        //receiving distance messages
+                        if (intent.hasExtra(BackgroundService.getDistanceMessage())) {
+                            //change beacon color based on distance
+                            String distances = intent.getStringExtra(BackgroundService.getDistanceMessage());
+                            String[] parseString = distances.split("/");
+                            float d1 = Float.parseFloat(parseString[0]);
+                            if(d1 > 2) {
+                                myBeacon1.setImageResource(R.drawable.beacon2);
+                            }
+                            else if(d1 > 1) {
+                                myBeacon1.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon1.setImageResource(R.drawable.beacon1);
+                            }
+
+                            float d2 = Float.parseFloat(parseString[1]);
+                            if(d2 > 2) {
+                                myBeacon2.setImageResource(R.drawable.beacon2);
+                            }
+                            else if(d2 > 1) {
+                                myBeacon2.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon2.setImageResource(R.drawable.beacon1);
+                            }
+
+                            float d3 = Float.parseFloat(parseString[2]);
+                            if(d3 > 2) {
+                                myBeacon3.setImageResource(R.drawable.beacon2);
+                            }
+                            else if(d3 > 1) {
+                                myBeacon3.setImageResource(R.drawable.beacon3);
+                            }
+                            else {
+                                myBeacon3.setImageResource(R.drawable.beacon1);
+                            }
+                        }
+                        //receiving coordinate messages
                         if (intent.hasExtra(BackgroundService.getCoordinateMessage())) {
                             lastX = myPosition.getX();
                             lastY = myPosition.getY();
@@ -225,49 +268,14 @@ public class MicroLocationFragment extends Fragment {
                             String coor = intent.getStringExtra(BackgroundService.getCoordinateMessage());
                             // get the coordinates from the server
                             // and transfer the coordinates unit from meters to pixels
+                            // Broadcast Message format: Coordinate X/Coordinate Y/distance 1/distance 2/distance 3
                             String[] parseString = coor.split("/");
                             float dx = Float.parseFloat(parseString[0]) * unitX - lastX;
                             float dy = Float.parseFloat(parseString[1]) * unitY - lastY;
-//                            float dx = Float.parseFloat(parseString[0]) * 300 - lastX;
-//                            float dy = Float.parseFloat(parseString[1]) * 300 - lastY;
+
                             // move the location
                             myPosition.setTranslationX(dx);
                             myPosition.setTranslationY(dy);
-                            float d1 = Float.parseFloat(parseString[2]);
-                            if(d1 > 1) {
-                                myBeacon1.setImageResource(R.drawable.beacon2);
-                            }
-                            else if(d1 > 0.5) {
-                                myBeacon1.setImageResource(R.drawable.beacon3);
-                            }
-                            else {
-                                myBeacon1.setImageResource(R.drawable.beacon1);
-                            }
-
-                            float d2 = Float.parseFloat(parseString[3]);
-                            if(d2 > 1) {
-                                myBeacon2.setImageResource(R.drawable.beacon2);
-                            }
-                            else if(d2 > 0.5) {
-                                myBeacon2.setImageResource(R.drawable.beacon3);
-                            }
-                            else {
-                                myBeacon2.setImageResource(R.drawable.beacon1);
-                            }
-
-                            float d3 = Float.parseFloat(parseString[4]);
-                            if(d3 > 1) {
-                                myBeacon3.setImageResource(R.drawable.beacon2);
-                            }
-                            else if(d3 > 0.5) {
-                                myBeacon3.setImageResource(R.drawable.beacon3);
-                            }
-                            else {
-                                myBeacon3.setImageResource(R.drawable.beacon1);
-                            }
-
-
-
 
                             Log.i("RECEIVE_BROADCAST", "X:" + Float.parseFloat(parseString[0]) + "Y:" + Float.parseFloat(parseString[1]));
 
@@ -292,40 +300,6 @@ public class MicroLocationFragment extends Fragment {
                     }
                 }, new IntentFilter(BackgroundService.getActionBroadcast())
         );
-
-    }
-
-    //information list
-    private void getUnitList(){
-        DataJson data = new DataJson();
-        for(int i = 0; i < data.size(); i++){
-            JSONObject jsonObject = data.getArray(i);
-            PathUnit unit = new PathUnit(getList(jsonObject));
-            try {
-                unit.setName(jsonObject.getString("name"));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            unitList.add(unit);
-        }
-    }
-
-    //Coordinate of list
-    private List<PointF> getList(JSONObject jsonObject){
-        float density = getResources().getDisplayMetrics().density;
-        List<PointF> pointList = new ArrayList<>();
-        JSONArray array;
-        try {
-            array = jsonObject.getJSONArray("area");
-            for(int r = 0; r < array.length(); r++){
-                float x = ((JSONObject)(array.get(r))).getInt("x");
-                float y = ((JSONObject)(array.get(r))).getInt("y");
-                pointList.add(new PointF( x * density, y * density));
-            }
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        return pointList;
     }
 
     /**

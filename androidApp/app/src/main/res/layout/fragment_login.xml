@@ -56,9 +56,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="31dp"
             android:layout_below="@+id/loginButton"
-            android:layout_alignEnd="@+id/textView5"
-            android:layout_marginTop="34dp" />
+            android:layout_centerHorizontal="true" />
     </RelativeLayout>
 
 </FrameLayout>

@@ -65,6 +65,30 @@ public class MobileListener extends HttpServlet {
 			while ((c = sin.read(input, count, input.length - count)) != -1) {
 				count += c;
 			}
+			
+			//the following are the email id and password combination.
+			//u_name and password should contain the value parsed. 
+//			String auth_res;
+//			if(u_name == "pmajith@ncsu.edu" && password == "11111") {
+//			auth_res = "Login Sucessfull" ;
+//			}
+//
+//			else if(u_name == "xma5@ncsu.edu" && password == "22222") {
+//			auth_res = "Login Sucessfull" ; 
+//			}
+//
+//			else if(u_name == "tmcrawfo@ncsu.edu" && password == "33333") {
+//			auth_res = "Login Sucessfull" ; 
+//			}
+//
+//			else if(u_name == "gpuz0@ncsu.edu" && password == "44444") {
+//			auth_res = "Login Sucessfull" ; 
+//			}
+//			else {
+//			auth_res = "Invalid Combination" ; 
+//			}
+			
+			
 			sin.close();
 
 			String receivedString = new String(input);
@@ -83,7 +107,9 @@ public class MobileListener extends HttpServlet {
 					
 					response.setStatus(HttpServletResponse.SC_OK);
 					OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
-		
+					
+					// writer.write(auth_res); // The output stream for authentication response. 
+					// writer.write("auth_res + X: " + rs.getString("X") + " , " + "Y: " + rs.getString("Y"));
 					writer.write("X: " + rs.getString("X") + " , " + "Y: " + rs.getString("Y"));
 					writer.flush();
 					writer.close();
@@ -96,29 +122,30 @@ public class MobileListener extends HttpServlet {
 				double D2 = Double.parseDouble(parseString[1]);
 				double D3 = Double.parseDouble(parseString[2]);
 				
-				double X1 = 1, Y1 = 3;
-				double X2 = 3, Y2 = 3;
-				double X3 = 3, Y3 = 1;
+				double X1 = 1, Y1 = 0;
+				double X2 = 0, Y2 = 1.732;
+				double X3 = 2, Y3 = 1.732;
 				
-				String intersec = null;
+				System.out.println("D1: " + D1 + "D2: " + D2 + "D3: " + D3);
+				// calculate
+				String intersec = calculateThreeCircleIntersection(X1, Y1, D1, // circle 1 (center_x, center_y, radius)
+						                        X2, Y2, D2, // circle 2 (center_x, center_y, radius)
+						                        X3, Y3, D3);// circle 3 (center_x, center_y, radius)
+//				String intersec = null;
+//				
+//				if(D1< D2 && D1 < D3 && D1 < 0.5){
+//					intersec = "1/Shirts - Brooks Brothers -  20 % off" ;
+//				}
+//				else if(D2< D1 && D2 < D3 && D2 < 0.5){
+//					intersec = "2/Shoes - Nike -  25 % off" ;
+//				}
+//				else if(D3< D2 && D3 < D1 && D3 < 0.5){
+//					intersec = "3/Jeans - Levi's -  10 % off" ; 
+//				}
+//				else {
+//					intersec = "4/Currently sales in shirts, shoes, jeans "   ; 
+//				}
 				
-				if(D1< D2 && D1 < D3 && D1 < 0.5){
-					intersec = "1/Shirts - Brooks Brothers -  20 % off" ;
-				}
-				else if(D2< D1 && D2 < D3 && D2 < 0.5){
-					intersec = "2/Shoes - Nike -  25 % off" ;
-				}
-				else if(D3< D2 && D3 < D1 && D3 < 0.5){
-					intersec = "3/Jeans - Levi's -  10 % off" ; 
-				}
-				else {
-					intersec = "4/Currently sales in shirts, shoes, jeans "   ; 
-				}
-				//System.out.println("D1: " + D1 + "D2: " + D2 + "D3: " + D3);
-				//// calculate
-				//String intersec = calculateThreeCircleIntersection(X1, Y1, D1, // circle 1 (center_x, center_y, radius)
-				//		                        X2, Y2, D2, // circle 2 (center_x, center_y, radius)
-				//		                        X3, Y3, D3);// circle 3 (center_x, center_y, radius)
 				
 				response.setStatus(HttpServletResponse.SC_OK);
 				OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
@@ -213,21 +240,7 @@ public class MobileListener extends HttpServlet {
 		dy = intersectionPoint2_y - y2;
 		double d2 = Math.sqrt((dy * dy) + (dx * dx));
 		
-		if (Math.abs(d1 - r2) < Math.abs(d2 - r2)) {
-			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3:(" + intersectionPoint1_x + "," + intersectionPoint1_y + ")");
-			return intersectionPoint1_x + "/" + intersectionPoint1_y;
-		} else if (Math.abs(d2 - r2) < EPSILON) {
-			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3:(" + intersectionPoint2_x + "," + intersectionPoint2_y + ")"); // here
-																					// was
-																					// an
-																					// error
-			return intersectionPoint2_x + "/" + intersectionPoint2_y;
-		} else {
-			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3: NONE");
-			return intersectionPoint1_x + "/" + intersectionPoint1_y;
-		}
-
-//		if (Math.abs(d1 - r2) < EPSILON) {
+//		if (Math.abs(d1 - r2) < Math.abs(d2 - r2)) {
 //			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3:(" + intersectionPoint1_x + "," + intersectionPoint1_y + ")");
 //			return intersectionPoint1_x + "/" + intersectionPoint1_y;
 //		} else if (Math.abs(d2 - r2) < EPSILON) {
@@ -240,6 +253,20 @@ public class MobileListener extends HttpServlet {
 //			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3: NONE");
 //			return intersectionPoint1_x + "/" + intersectionPoint1_y;
 //		}
+
+		if (Math.abs(d1 - r2) < EPSILON) {
+			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3:(" + intersectionPoint1_x + "," + intersectionPoint1_y + ")");
+			return intersectionPoint1_x + "/" + intersectionPoint1_y;
+		} else if (Math.abs(d2 - r2) < EPSILON) {
+			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3:(" + intersectionPoint2_x + "," + intersectionPoint2_y + ")"); // here
+																					// was
+																					// an
+																					// error
+			return intersectionPoint2_x + "/" + intersectionPoint2_y;
+		} else {
+			System.out.println("INTERSECTION Circle1 AND Circle2 AND Circle3: NONE");
+			return intersectionPoint1_x + "/" + intersectionPoint1_y;
+		}
 	}
 
 }

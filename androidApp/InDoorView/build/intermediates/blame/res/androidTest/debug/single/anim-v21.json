@@ -1,14 +1,14 @@
 [
     {
-        "merged": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
-        "source": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
+        "merged": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_bottom_sheet_slide_in.xml",
+        "source": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_bottom_sheet_slide_in.xml"
     },
     {
-        "merged": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
-        "source": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
+        "merged": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_appbar_state_list_animator.xml",
+        "source": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_appbar_state_list_animator.xml"
     },
     {
-        "merged": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_appbar_state_list_animator.xml",
-        "source": "C:\\Users\\user\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_appbar_state_list_animator.xml"
+        "merged": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim-v21\\design_bottom_sheet_slide_out.xml",
+        "source": "C:\\Users\\maxin\\Desktop\\IoT-MicroLocation\\androidApp\\InDoorView\\build\\intermediates\\exploded-aar\\com.android.support\\design\\24.0.0\\res\\anim-v21\\design_bottom_sheet_slide_out.xml"
     }
 ]
