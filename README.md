@@ -3,7 +3,12 @@
 [![Build Status](https://travis-ci.org/ipapapa/IoT-MicroLocation.svg)](https://travis-ci.org/ipapapa/IoT-MicroLocation)
 
 
-An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons and set of Cloud services. The project is a collaboration effort of the teams from Purdue University and North Carolina State University advised by Dr. Ioannis Papapanagiotou - ipapapa@ncsu.edu.
+An end-to-end Internet of Things (IoT) software package for Micro-Location, Proximity Aware services and Geofencing using Apple's iBeacons, mobile app (Android and iOS) and a set of Cloud services. The project is a collaboration effort across multiple institutions advised by Dr. Ioannis Papapanagiotou - ipapapa@ncsu.edu.
+
+## Institutions
+* Purdue University, West Lafayette IN, USA
+* NC State University, Raleigh NC, USA
+* University of New Mexico, Albuquerque NM, USA
 
 # Technical Summary
 
@@ -23,15 +28,17 @@ Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. 
 
 
 ### Videos
-[Senior Design Group ECE NC State University - Internet of Things with iBeacons](https://www.youtube.com/watch?v=rZIDv4PnV2U)
+[NC State University - Senior Design Group 2016 - Contextual Awareness in a Retails Store](https://www.youtube.com/watch?v=8U9wsc6tMWU)
 
-[Proximity based interaction with iBeacons at NCSU Hunt Library](http://www.youtube.com/watch?v=AwckTkpN4-Y)
+[NC State University - Senior Design Group 2015 - A smart building with iBeacons](https://www.youtube.com/watch?v=rZIDv4PnV2U)
+
+[NC State University - Summer Internship 2015 - Proximity based interaction with iBeacons at NCSU Hunt Library](http://www.youtube.com/watch?v=AwckTkpN4-Y)
  
-[Microlocation and Geofencing - Purdue University](http://www.youtube.com/watch?v=QCtc7z6PC70)
+[Purdue University - Microlocation and Geofencing](http://www.youtube.com/watch?v=QCtc7z6PC70)
 
-[1mx1m Accuracy - North Carolina State University](https://www.youtube.com/watch?v=uQul5LDdpLc)
+[NC State University - 1mx1m Accuracy](https://www.youtube.com/watch?v=uQul5LDdpLc)
 
-[Design Day Demo and Project Overview - North Carolina State University](https://www.youtube.com/watch?v=3bmHBxyk1qc)
+[NC State University - Design Day Demo and Project Overview](https://www.youtube.com/watch?v=3bmHBxyk1qc)
 
 
 <img src="images/Architecture.png" alt="alt text" width="" height="250">
