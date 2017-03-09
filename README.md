@@ -24,21 +24,30 @@ The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further i
 
 ### Research Papers
 
-Our research paper of how iBeacons can be used for MicroLocation: F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://people.engr.ncsu.edu/ipapapa/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
+A couple of research papers of how iBeacons can be used for MicroLocation or proximity utilizing the software of this repository:
+
+* F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://ipapapa.github.io/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
+
+* F. Zafari, I. Papapanagiotou, M. Devetsikiotis, T.J. Hacker, ["Enhancing the Accuracy of iBeacons for Indoor Proximity-based Services"](http://ipapapa.github.io/Files/icc2017_iot.pdf), IEEE ICC 2017, Paris, France
+
+
+A detailed survey about this area: 
+
+* F. Zafari, I. Papapanagiotou, K. Christidis, ["Micro-location for Internet of Things equipped Smart Buildings"](http://ipapapa.github.io/Files/IEEEIOT2015.pdf), IEEE Internet of Things Journal, pp. 96-112, Feb. 2016 ([publisher link](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=7120085))
 
 
 ### Videos
-[NC State University - Senior Design Group 2016 - Contextual Awareness in a Retails Store](https://www.youtube.com/watch?v=8U9wsc6tMWU)
+* [NC State University - Senior Design Group 2016 - Contextual Awareness in a Retails Store](https://www.youtube.com/watch?v=8U9wsc6tMWU)
 
-[NC State University - Senior Design Group 2015 - A smart building with iBeacons](https://www.youtube.com/watch?v=rZIDv4PnV2U)
+* [NC State University - Senior Design Group 2015 - A smart building with iBeacons](https://www.youtube.com/watch?v=rZIDv4PnV2U)
 
-[NC State University - Summer Internship 2015 - Proximity based interaction with iBeacons at NCSU Hunt Library](http://www.youtube.com/watch?v=AwckTkpN4-Y)
+* [NC State University - Summer Internship 2015 - Proximity based interaction with iBeacons at NCSU Hunt Library](http://www.youtube.com/watch?v=AwckTkpN4-Y)
  
-[Purdue University - Microlocation and Geofencing](http://www.youtube.com/watch?v=QCtc7z6PC70)
+* [Purdue University - Microlocation and Geofencing](http://www.youtube.com/watch?v=QCtc7z6PC70)
 
-[NC State University - 1mx1m Accuracy](https://www.youtube.com/watch?v=uQul5LDdpLc)
+* [NC State University - 1mx1m Accuracy](https://www.youtube.com/watch?v=uQul5LDdpLc)
 
-[NC State University - Design Day Demo and Project Overview](https://www.youtube.com/watch?v=3bmHBxyk1qc)
+* [NC State University - Design Day Demo and Project Overview](https://www.youtube.com/watch?v=3bmHBxyk1qc)
 
 
 <img src="images/Architecture.png" alt="alt text" width="" height="250">
