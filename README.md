@@ -26,9 +26,11 @@ The [Wiki](https://github.com/ipapapa/IoT-MicroLocation/wiki) contains further i
 
 A couple of research papers of how iBeacons can be used for MicroLocation or proximity utilizing the software of this repository:
 
-* F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://ipapapa.github.io/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
+* F. Zafari, I. Papapanagiotou, M. Devetsikiotis, T.J. Hacker, ["An iBeacon based Proximity and Indoor Localization System"](https://arxiv.org/pdf/1703.07876.pdf), arXiv:1703.07876 [cs.NI], Mar. 2017.
 
 * F. Zafari, I. Papapanagiotou, M. Devetsikiotis, T.J. Hacker, ["Enhancing the Accuracy of iBeacons for Indoor Proximity-based Services"](http://ipapapa.github.io/Files/icc2017_iot.pdf), IEEE ICC 2017, Paris, France
+
+* F. Zafari, I. Papapanagiotou, ["Enhancing iBeacon based Micro-Location with Particle Filtering"](http://ipapapa.github.io/Files/globecom2015.pdf), IEEE GLOBECOM 2015, San Diego CA.
 
 
 A detailed survey about this area: 
