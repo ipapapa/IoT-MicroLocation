@@ -37,6 +37,13 @@ A detailed survey about this area:
 
 * F. Zafari, I. Papapanagiotou, K. Christidis, ["Micro-location for Internet of Things equipped Smart Buildings"](http://ipapapa.github.io/Files/IEEEIOT2015.pdf), IEEE Internet of Things Journal, pp. 96-112, Feb. 2016 ([publisher link](http://ieeexplore.ieee.org/xpl/freeabs_all.jsp?arnumber=7120085))
 
+A few other related papers by the team:
+
+* D. Sikeridis, M. Devetsikiotis, I. Papapanagiotou, ["Occupant Tracking in Smart Facilities: An Experimental Study"](http://ipapapa.github.io/Files/GlobalSIP_2017.pdf), IEEE GlobalSIP Symposium on Signal Processing for Smart Cities & Internet of Things, Nov. 2017, Montreal, Canada
+
+* D. Sikeridis, M. Devetsikiotis, I. Papapanagiotou, ["A Cloud-Assisted Infrastructure for Occupancy Tracking in Smart Facilities"](http://ipapapa.github.io/Files/ICACON_2017.pdf), IBM Cloud Academy Conference (ICA CON) 2017, Wroclaw, Poland
+
+
 
 ### Videos
 * [NC State University - Senior Design Group 2016 - Contextual Awareness in a Retails Store](https://www.youtube.com/watch?v=8U9wsc6tMWU)
